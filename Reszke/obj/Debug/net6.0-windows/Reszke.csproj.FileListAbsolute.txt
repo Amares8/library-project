@@ -1,0 +1,17 @@
+D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\Reszke.exe
+D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\Reszke.deps.json
+D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\Reszke.runtimeconfig.json
+D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\Reszke.dll
+D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\Reszke.pdb
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.csproj.AssemblyReference.cache
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.mainForm.resources
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.csproj.GenerateResource.cache
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AssemblyInfoInputs.cache
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AssemblyInfo.cs
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.csproj.CoreCompileInputs.cache
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.dll
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\refint\Reszke.dll
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.pdb
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.genruntimeconfig.cache
+D:\Projekty_IT\VisualStudio\library-project\Reszke\obj\Debug\net6.0-windows\ref\Reszke.dll

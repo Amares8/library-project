@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projekty_IT\\VisualStudio\\BIBLIOTEKA\\Reszke\\Reszke\\Reszke.csproj",
+      "projectUniqueName": "D:\\Projekty_IT\\VisualStudio\\library-project\\Reszke\\Reszke.csproj",
       "projectName": "Reszke",
-      "projectPath": "D:\\Projekty_IT\\VisualStudio\\BIBLIOTEKA\\Reszke\\Reszke\\Reszke.csproj",
+      "projectPath": "D:\\Projekty_IT\\VisualStudio\\library-project\\Reszke\\Reszke.csproj",
       "packagesPath": "C:\\Users\\Amares8\\.nuget\\packages\\",
-      "outputPath": "D:\\Projekty_IT\\VisualStudio\\BIBLIOTEKA\\Reszke\\Reszke\\obj\\",
+      "outputPath": "D:\\Projekty_IT\\VisualStudio\\library-project\\Reszke\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

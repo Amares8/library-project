@@ -1,0 +1,1 @@
+28.02.2023 18:18:13 - Błąd ładowania konfiguracji DB z pliku dbConfig.json (Could not find file 'D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\dbConfig.json'.)
