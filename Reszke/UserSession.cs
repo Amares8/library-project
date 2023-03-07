@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Reszke
 {
@@ -18,7 +20,10 @@ namespace Reszke
         private string firstName;
         private string lastName;
 
-        public UserSession()
+        private MySqlConnection databaseConnection;
+
+
+        public UserSession (ref MySqlConnection dbConnection)
         {
             //Default values after creating object instance
             loggedID = -1;
@@ -26,6 +31,7 @@ namespace Reszke
             accessLevel = 0;
             firstName = "";
             lastName = "";
+            databaseConnection = dbConnection;
         }
 
 
@@ -68,6 +74,21 @@ namespace Reszke
 
 
 
+
+        public int Login (string login, string password)
+        {
+            return 4;
+        }
+
+        public int Logout()
+        {
+            loggedID = -1;
+            loggedLogin = "";
+            accessLevel = 0;
+            firstName = "";
+            lastName = "";
+            return 0;
+        }
 
 
 
