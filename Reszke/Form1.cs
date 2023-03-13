@@ -7,6 +7,7 @@ namespace Reszke
 {
     public partial class mainForm : Form
     {
+        //używany w aplikacji pakiet językowy
         LanguagePack currentLanguage;
 
 
@@ -17,7 +18,8 @@ namespace Reszke
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            currentLanguage = ConfigFileLoader.LoadLanguagePack("lang/german.json");
+            //Załadowanie pakietu językowego
+            currentLanguage = ConfigFileLoader.LoadLanguagePack("lang/polish.json");
             
             
         }

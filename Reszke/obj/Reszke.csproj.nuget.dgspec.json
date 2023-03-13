@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\Reszke.csproj": {}
+    "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\Reszke.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\Reszke.csproj": {
+    "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\Reszke.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\Reszke.csproj",
+        "projectUniqueName": "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\Reszke.csproj",
         "projectName": "Reszke",
-        "projectPath": "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\Reszke.csproj",
+        "projectPath": "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\Reszke.csproj",
         "packagesPath": "C:\\Users\\Amares8\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\obj\\",
+        "outputPath": "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Amares8\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
