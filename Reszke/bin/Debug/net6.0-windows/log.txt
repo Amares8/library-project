@@ -1,1 +1,9 @@
 28.02.2023 18:18:13 - Błąd ładowania konfiguracji DB z pliku dbConfig.json (Could not find file 'D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\dbConfig.json'.)
+13.03.2023 15:41:41 - {}
+13.03.2023 15:42:58 - {}
+13.03.2023 15:45:28 - {}
+13.03.2023 16:33:44 - {}
+13.03.2023 16:34:43 - {}
+13.03.2023 16:37:14 - {"ISOCode":"pl","langName":"polish","localLangName":"polski"}
+13.03.2023 16:42:29 - {"ISOCode":"pl","langName":"polish","localLangName":"polski","monday":"poniedzia\u0142ek","tuesday":"wtorek","wednesday":"\u015Broda","thursday":"czwartek","friday":"pi\u0105tek","saturday":"sobota","sunday":"niedziela"}
+13.03.2023 17:03:35 - Błąd przy ładowaniu pakietu językowego z pliku polish.json (Could not find file 'C:\Users\Amares8\Documents\Programy\Biblioteka\library-project\Reszke\bin\Debug\net6.0-windows\polish.json'.)

@@ -57,7 +57,6 @@
             this.navTimeLabel.Name = "navTimeLabel";
             this.navTimeLabel.Size = new System.Drawing.Size(123, 68);
             this.navTimeLabel.TabIndex = 1;
-            this.navTimeLabel.Text = "current\r\ntime displayed\r\nhere";
             this.navTimeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // navTopImage

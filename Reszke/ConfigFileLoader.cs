@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,11 @@ namespace Reszke
 {
     static class ConfigFileLoader
     {
-        static public string LoadDBConnectionString(string configFile)
+        static public string LoadDBConnectionString(string configFilePath)
         {
             try
             {
-                string jsonString = File.ReadAllText(configFile);
+                string jsonString = File.ReadAllText(configFilePath);
                 using JsonDocument document = JsonDocument.Parse(jsonString);
                 JsonElement root = document.RootElement;
 
@@ -25,7 +26,7 @@ namespace Reszke
                 string connectionString = $"server={server};userid={user};password={password};database={database}";
                 if (connectionString == "")
                 {
-                    Debugger.CreateLogMessage($"Błąd ładowania konfiguracji DB z pliku {configFile}");
+                    Debugger.CreateLogMessage($"Błąd ładowania konfiguracji DB z pliku {configFilePath}");
                     return "";
                 }
                 else
@@ -35,9 +36,27 @@ namespace Reszke
             }
             catch (Exception e)
             {
-                Debugger.CreateLogMessage($"Błąd ładowania konfiguracji DB z pliku {configFile} ({e.Message})");
+                Debugger.CreateLogMessage($"Błąd ładowania konfiguracji DB z pliku {configFilePath} ({e.Message})");
                 return "";
             }
+        }
+
+        static public LanguagePack LoadLanguagePack(string langFilePath)
+        {
+            //metoda ładująca pakiet językowy do obiektu typu LanguagePack
+
+            try
+            {
+                string jsonString = File.ReadAllText(langFilePath);
+                LanguagePack loadedLanguage = JsonSerializer.Deserialize<LanguagePack>(jsonString);
+                return loadedLanguage;
+            }
+            catch (Exception e)
+            {
+                Debugger.CreateLogMessage($"Błąd przy ładowaniu pakietu językowego z pliku {langFilePath} ({e.Message})");
+                return null;
+            }
+            
         }
     }
 }

@@ -1,7 +1,15 @@
+ï»¿using Microsoft.VisualBasic.ApplicationServices;
+using System.Diagnostics;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace Reszke
 {
     public partial class mainForm : Form
     {
+        LanguagePack currentLanguage;
+
+
         public mainForm()
         {
             InitializeComponent();
@@ -9,14 +17,12 @@ namespace Reszke
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            currentLanguage = ConfigFileLoader.LoadLanguagePack("lang/german.json");
+            
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
+        
 
         private void navTimeTimer_Tick(object sender, EventArgs e)
         {
@@ -24,25 +30,25 @@ namespace Reszke
             switch(((int)DateTime.Now.DayOfWeek))
             {
                 case 0:
-                    navTimeLabelText += "Niedziela";
+                    navTimeLabelText += currentLanguage.sunday;
                     break;
                 case 1:
-                    navTimeLabelText += "Poniedzia³ek";
+                    navTimeLabelText += currentLanguage.monday;
                     break;
                 case 2:
-                    navTimeLabelText += "Wtorek";
+                    navTimeLabelText += currentLanguage.tuesday;
                     break;
                 case 3:
-                    navTimeLabelText += "Œroda";
+                    navTimeLabelText += currentLanguage.wednesday;
                     break;
                 case 4:
-                    navTimeLabelText += "Czwartek";
+                    navTimeLabelText += currentLanguage.thursday;
                     break;
                 case 5:
-                    navTimeLabelText += "Pi¹tek";
+                    navTimeLabelText += currentLanguage.friday;
                     break;
                 case 6:
-                    navTimeLabelText += "Sobota";
+                    navTimeLabelText += currentLanguage.saturday;
                     break;
                 
             }
