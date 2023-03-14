@@ -7,3 +7,10 @@
 13.03.2023 16:37:14 - {"ISOCode":"pl","langName":"polish","localLangName":"polski"}
 13.03.2023 16:42:29 - {"ISOCode":"pl","langName":"polish","localLangName":"polski","monday":"poniedzia\u0142ek","tuesday":"wtorek","wednesday":"\u015Broda","thursday":"czwartek","friday":"pi\u0105tek","saturday":"sobota","sunday":"niedziela"}
 13.03.2023 17:03:35 - Błąd przy ładowaniu pakietu językowego z pliku polish.json (Could not find file 'C:\Users\Amares8\Documents\Programy\Biblioteka\library-project\Reszke\bin\Debug\net6.0-windows\polish.json'.)
+14.03.2023 18:53:32 - 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36
+14.03.2023 18:55:40 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Unknown database 'obi')
+14.03.2023 18:55:40 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
+14.03.2023 18:55:41 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Unknown database 'obi')
+14.03.2023 18:55:41 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
+14.03.2023 18:56:25 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Unknown column 'amares8' in 'where clause')
+14.03.2023 18:56:25 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)

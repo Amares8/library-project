@@ -34,6 +34,10 @@
             this.navTimeLabel = new System.Windows.Forms.Label();
             this.navTopImage = new System.Windows.Forms.PictureBox();
             this.navTimeTimer = new System.Windows.Forms.Timer(this.components);
+            this.login = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.loggedUserLabel = new System.Windows.Forms.Label();
             this.sideNavPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
             this.SuspendLayout();
@@ -79,11 +83,48 @@
             this.navTimeTimer.Interval = 500;
             this.navTimeTimer.Tick += new System.EventHandler(this.navTimeTimer_Tick);
             // 
+            // login
+            // 
+            this.login.Location = new System.Drawing.Point(394, 91);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(100, 23);
+            this.login.TabIndex = 1;
+            // 
+            // password
+            // 
+            this.password.Location = new System.Drawing.Point(394, 120);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(100, 23);
+            this.password.TabIndex = 2;
+            // 
+            // loginButton
+            // 
+            this.loginButton.Location = new System.Drawing.Point(394, 149);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(100, 35);
+            this.loginButton.TabIndex = 3;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
+            // loggedUserLabel
+            // 
+            this.loggedUserLabel.AutoSize = true;
+            this.loggedUserLabel.Location = new System.Drawing.Point(397, 202);
+            this.loggedUserLabel.Name = "loggedUserLabel";
+            this.loggedUserLabel.Size = new System.Drawing.Size(78, 15);
+            this.loggedUserLabel.TabIndex = 4;
+            this.loggedUserLabel.Text = "not logged in";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 574);
+            this.Controls.Add(this.loggedUserLabel);
+            this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.password);
+            this.Controls.Add(this.login);
             this.Controls.Add(this.sideNavPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(350, 250);
@@ -93,6 +134,7 @@
             this.sideNavPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -102,5 +144,9 @@
         private PictureBox navTopImage;
         private Label navTimeLabel;
         private System.Windows.Forms.Timer navTimeTimer;
+        private TextBox login;
+        private TextBox password;
+        private Button loginButton;
+        private Label loggedUserLabel;
     }
 }

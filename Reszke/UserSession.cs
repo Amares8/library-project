@@ -106,7 +106,7 @@ namespace Reszke
 
 
                     //Sprawdzenie czy login i hasło są zgodne
-                    string userExistTextSql = $"SELECT COUNT(*) FROM employees WHERE login = {loginSanitized} AND password = {passwordHash}";
+                    string userExistTextSql = $"SELECT COUNT(*) FROM employees WHERE login = '{loginSanitized}' AND password = '{passwordHash}'";
                     int userExistTestResult = int.Parse(DatabaseGateway.ExecuteScalarCommand(userExistTextSql, ref databaseConnection));
 
                     if (userExistTestResult != 1)

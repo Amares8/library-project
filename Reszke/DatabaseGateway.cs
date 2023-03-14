@@ -99,7 +99,7 @@ namespace Reszke
             {
                 //error
                 Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
-                return new string[,];
+                return new string[0,0];
             }
 
         }

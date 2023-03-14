@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Security;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -9,7 +11,8 @@ namespace Reszke
     {
         //używany w aplikacji pakiet językowy
         LanguagePack currentLanguage;
-
+        UserSession userSession;
+        
 
         public mainForm()
         {
@@ -20,11 +23,16 @@ namespace Reszke
         {
             //Załadowanie pakietu językowego
             currentLanguage = ConfigFileLoader.LoadLanguagePack("lang/polish.json");
+
+            //Utworzenie sesji uzytkonika
+            MySqlConnection mySqlConnection = new MySqlConnection(ConfigFileLoader.LoadDBConnectionString("dbConfig.json"));
+            userSession = new UserSession(ref mySqlConnection);
+
             
-            
+
         }
 
-        
+
 
         private void navTimeTimer_Tick(object sender, EventArgs e)
         {
@@ -58,6 +66,12 @@ namespace Reszke
             navTimeLabelText += "\n" + DateTime.Now.ToString("dd.MM.yyyy");
             navTimeLabelText += "\n" + DateTime.Now.ToString("HH:mm:ss");
             navTimeLabel.Text = navTimeLabelText;
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            userSession.Login(login.Text, password.Text);
+            loggedUserLabel.Text = "logged: " + userSession.GetFirstName() + " " + userSession.GetLastName();
         }
     }
 }
