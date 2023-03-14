@@ -82,9 +82,8 @@ namespace Reszke
             /*
             * - FUNCTION RETURN VALUES -
             * 0 - successfull
-            * 1 - not logged in
+            * 1 - already logged in
             * 2 - wrong login/password
-            * 3 - no permissions
             * 4 - sql/other error
             * 5 - invalid/empty parameters
             */
@@ -93,6 +92,11 @@ namespace Reszke
             {
                 //empty parameters
                 return 5;
+            }
+            else if (IsLoggedIn())
+            {
+                //juz zalogowany
+                return 1;
             }
             else
             {
@@ -147,12 +151,26 @@ namespace Reszke
 
         public int Logout()
         {
-            loggedID = -1;
-            loggedLogin = "";
-            privilege = 0;
-            firstName = "";
-            lastName = "";
-            return 0;
+            /*
+            * - FUNCTION RETURN VALUES -
+            * 0 - successfull
+            * 1 - not logged in
+            */
+            if (!IsLoggedIn())
+            {
+                //nie jest zalogowany
+                return 1;
+            }
+            else
+            {
+                loggedID = -1;
+                loggedLogin = "";
+                privilege = 0;
+                firstName = "";
+                lastName = "";
+                return 0;
+            }
+            
         }
 
 
