@@ -9,9 +9,8 @@ using MySql.Data.MySqlClient;
 
 namespace Reszke
 {
-    internal abstract class DatabaseGateway
+    internal static class DatabaseGateway
     {
-
 
         public static string ExecuteScalarCommand(string sql, ref MySqlConnection databaseConnection)
         {
@@ -65,6 +64,8 @@ namespace Reszke
 
                 MySqlDataReader reader = command.ExecuteReader();
 
+                
+
                 while (reader.Read())
                 {
                     List<string> row = new List<string>();
@@ -78,6 +79,7 @@ namespace Reszke
                 }
 
                 reader.Close();
+                databaseConnection.Close();
 
 
                 int rows = data.Count;
@@ -92,6 +94,7 @@ namespace Reszke
                         result[i, j] = data[i][j];
                     }
                 }
+
 
                 return result;
             }

@@ -14,3 +14,21 @@
 14.03.2023 18:55:41 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
 14.03.2023 18:56:25 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Unknown column 'amares8' in 'where clause')
 14.03.2023 18:56:25 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
+21.03.2023 11:54:51 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = '0' AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
+21.03.2023 11:54:51 - Błąd przy zmianie hasła Input string was not in a correct format.
+21.03.2023 12:12:27 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = '0' AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
+21.03.2023 12:12:27 - Błąd przy zmianie hasła Input string was not in a correct format.
+21.03.2023 12:24:41 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
+21.03.2023 12:24:41 - Błąd przy zmianie hasła Input string was not in a correct format.
+21.03.2023 12:25:46 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
+21.03.2023 12:25:46 - Błąd przy zmianie hasła Input string was not in a correct format.
+
+
+21.03.2023 12:29:32 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
+21.03.2023 12:29:32 - Błąd przy zmianie hasła Input string was not in a correct format.
+21.03.2023 12:30:40 - Błąd przy wykonywaniu komendy 'SELECT employeeID, firstName, lastName, privilege FROM employees WHERE login = 'amares8'', (Invalid attempt to Read when reader is closed.)
+21.03.2023 12:30:40 - Błąd przy próbie logowania. Użytkownik: amares8. (Index was outside the bounds of the array.)
+21.03.2023 12:31:22 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
+21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
+21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
+21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Security;
 using System.Diagnostics;
 using System.Text.Json;
@@ -72,6 +73,12 @@ namespace Reszke
         {
             userSession.Login(login.Text, password.Text);
             loggedUserLabel.Text = "logged: " + userSession.GetFirstName() + " " + userSession.GetLastName();
+        }
+
+        private void changePasswordButton_Click(object sender, EventArgs e)
+        {
+            int result = userSession.ChangePassword(password.Text, newPasswordBox.Text);
+            loggedUserLabel.Text = result.ToString();
         }
     }
 }

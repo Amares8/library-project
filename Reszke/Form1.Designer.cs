@@ -38,6 +38,8 @@
             this.password = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.loggedUserLabel = new System.Windows.Forms.Label();
+            this.newPasswordBox = new System.Windows.Forms.TextBox();
+            this.changePasswordButton = new System.Windows.Forms.Button();
             this.sideNavPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
             this.SuspendLayout();
@@ -116,11 +118,30 @@
             this.loggedUserLabel.TabIndex = 4;
             this.loggedUserLabel.Text = "not logged in";
             // 
+            // newPasswordBox
+            // 
+            this.newPasswordBox.Location = new System.Drawing.Point(580, 91);
+            this.newPasswordBox.Name = "newPasswordBox";
+            this.newPasswordBox.Size = new System.Drawing.Size(100, 23);
+            this.newPasswordBox.TabIndex = 5;
+            // 
+            // changePasswordButton
+            // 
+            this.changePasswordButton.Location = new System.Drawing.Point(580, 138);
+            this.changePasswordButton.Name = "changePasswordButton";
+            this.changePasswordButton.Size = new System.Drawing.Size(100, 35);
+            this.changePasswordButton.TabIndex = 6;
+            this.changePasswordButton.Text = "zmien haslo";
+            this.changePasswordButton.UseVisualStyleBackColor = true;
+            this.changePasswordButton.Click += new System.EventHandler(this.changePasswordButton_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 574);
+            this.Controls.Add(this.changePasswordButton);
+            this.Controls.Add(this.newPasswordBox);
             this.Controls.Add(this.loggedUserLabel);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.password);
@@ -148,5 +169,7 @@
         private TextBox password;
         private Button loginButton;
         private Label loggedUserLabel;
+        private TextBox newPasswordBox;
+        private Button changePasswordButton;
     }
 }

@@ -156,6 +156,7 @@ namespace Reszke
             * 0 - successfull
             * 1 - not logged in
             */
+
             if (!IsLoggedIn())
             {
                 //nie jest zalogowany
@@ -173,6 +174,70 @@ namespace Reszke
             
         }
 
+        public int ChangePassword(string oldPassword, string newPassword)
+        {
+
+            /*
+            * - FUNCTION RETURN VALUES -
+            * 0 - successfull
+            * 1 - already logged in
+            * 2 - wrong password
+            * 4 - sql/other error
+            * 5 - invalid/empty parameters
+            */
+
+
+            if (loggedLogin == "")
+            {
+                //not logged in
+                return 1;
+            }
+            else if (oldPassword == "" || newPassword == "")
+            {
+                return 5;
+            }
+            try
+            {
+                string oldPasswordHash = DatabaseGateway.GetStringSha256Hash(oldPassword);
+                string newPasswordHash = DatabaseGateway.GetStringSha256Hash(newPassword);
+                
+                string sql = $"SELECT COUNT(*) FROM employees WHERE employeeID = {loggedID} AND password = '{oldPasswordHash}';";
+                int passwordCheckResult = int.Parse(DatabaseGateway.ExecuteScalarCommand(sql, ref databaseConnection));
+                    
+                if (passwordCheckResult == 1)
+                {
+                    
+                    string changePasswordSql = $"UPDATE employees SET password = '{newPasswordHash}' WHERE employeeID = {loggedID}";
+
+                    int passwordChangeResult = DatabaseGateway.ExecuteNonQueryCommand(changePasswordSql, ref databaseConnection);
+                    
+                    if (passwordChangeResult == 1)
+                    {
+                        //success
+                        return 0;
+                    }
+                    else
+                    {
+                        //sql/other error
+                        Debugger.CreateLogMessage($"Błąd przy zmianie hasła, użytkownik {loggedLogin}");
+                        return 4;
+                    }
+                }
+                else
+                {
+                    //wrong password
+                    Debugger.CreateLogMessage($"Podano błędne hasło przy zmianie hasła, użytkownik: {loggedLogin}");
+                    return 2;
+                }
+            }
+            catch (Exception e)
+            {
+                //sql/other error
+                Debugger.CreateLogMessage("Błąd przy zmianie hasła " + e.Message);
+                return 4;
+            }
+
+        }
 
 
 
