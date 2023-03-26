@@ -25,7 +25,7 @@ namespace Reszke
         private MySqlConnection databaseConnection;
 
 
-        public UserSession (ref MySqlConnection dbConnection)
+        public UserSession(ref MySqlConnection dbConnection)
         {
             //Default values after creating object instance
             loggedID = -1;
@@ -34,6 +34,11 @@ namespace Reszke
             firstName = "";
             lastName = "";
             databaseConnection = dbConnection;
+        }
+
+        public ref MySqlConnection GetDatabaseConnectionRef()
+        {
+            return ref databaseConnection;
         }
 
 
