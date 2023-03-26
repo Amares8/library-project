@@ -32,3 +32,10 @@
 21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
 21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
 21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
+26.03.2023 23:10:47 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
+26.03.2023 23:13:43 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
+26.03.2023 23:14:00 - Błąd przy rejestracji nowego pracownika
+26.03.2023 23:16:01 - Błąd przy rejestracji nowego pracownika: Użytkownik z loginem ogru już istnieje!
+26.03.2023 23:16:39 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
+26.03.2023 23:54:27 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8
+26.03.2023 23:54:31 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8

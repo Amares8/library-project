@@ -77,7 +77,9 @@ namespace Reszke
 
         private void changePasswordButton_Click(object sender, EventArgs e)
         {
-            int result = userSession.ChangePassword(password.Text, newPasswordBox.Text);
+            //int result = UserManagement.RegisterUser(ref userSession, "ogru", "Olaf", "Gruszkiewicz", "ogru@obi.org", 8, "Qwerty1@3", 2);
+            //int result = UserManagement.DeleteUser(ref userSession, "ogru");
+            int result = UserManagement.ResetUsersPassword(ref userSession, "amares8");
             loggedUserLabel.Text = result.ToString();
         }
     }
