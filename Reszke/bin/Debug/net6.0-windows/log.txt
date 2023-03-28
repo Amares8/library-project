@@ -39,3 +39,11 @@
 26.03.2023 23:16:39 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
 26.03.2023 23:54:27 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8
 26.03.2023 23:54:31 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8
+27.03.2023 17:08:48 - Próba rejestracji nowego klinta nie będąc zalogowanym
+27.03.2023 17:11:27 - Próba rejestracji nowego klienta nie będąc zalogowanym
+27.03.2023 17:11:35 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = '7'', (Unknown column 'customerID' in 'where clause')
+27.03.2023 17:11:35 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 
+27.03.2023 17:34:05 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = '7'', (Unknown column 'customerID' in 'where clause')
+27.03.2023 17:34:06 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 
+27.03.2023 17:35:32 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = 7', (Unknown column 'customerID' in 'where clause')
+27.03.2023 17:35:32 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 

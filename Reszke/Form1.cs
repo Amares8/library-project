@@ -79,7 +79,9 @@ namespace Reszke
         {
             //int result = UserManagement.RegisterUser(ref userSession, "ogru", "Olaf", "Gruszkiewicz", "ogru@obi.org", 8, "Qwerty1@3", 2);
             //int result = UserManagement.DeleteUser(ref userSession, "ogru");
-            int result = UserManagement.ResetUsersPassword(ref userSession, "amares8");
+            //int result = UserManagement.ResetUsersPassword(ref userSession, "ogru");
+            //int result = ClientManagement.RegisterClient(ref userSession, "Dawid", "Tylson", "668221323", "84-230", "Rumia", "Kosynierów", "3", "21", "dtylka@polki.pl");
+            int result = ClientManagement.DeleteClient(ref userSession, 7);
             loggedUserLabel.Text = result.ToString();
         }
     }
