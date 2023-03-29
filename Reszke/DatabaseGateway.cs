@@ -14,6 +14,8 @@ namespace Reszke
 
         public static string ExecuteScalarCommand(string sql, ref MySqlConnection databaseConnection)
         {
+            //Funkcja pobierająca pojedynczą wartość z bazy, zwraca ją w formie stringa
+            //W przypadku błędu zwraca pusty łańcuch
             string result;
             try
             {
@@ -33,6 +35,8 @@ namespace Reszke
 
         public static int ExecuteNonQueryCommand(string sql, ref MySqlConnection databaseConnection)
         {
+            //Funkcja zwraca ilość wierszy, na które wpłynęło wykonanie polecenia
+            //W przypadku wystąpienia błędu, zwraca -1
             int result;
             try
             {
@@ -54,7 +58,8 @@ namespace Reszke
         {
             try
             {
-                //funkcja ładująca dane z bazy pobrane poleceniem select i zwracajaza je w formie tabeli
+                //funkcja ładująca dane z bazy pobrane poleceniem select i zwracająca je w formie tabeli
+                //W przypadku błędu zwróci pustą tabelę
                 List<List<string>> data = new List<List<string>>();
 
 

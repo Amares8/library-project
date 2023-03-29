@@ -67,8 +67,6 @@ namespace Reszke
                 string newHouseNumberSanitized = DatabaseGateway.SanitizeString(newHouseNumber);
                 string newApartmentNumberSanitized = DatabaseGateway.SanitizeString(newApartmentNumber);
                 string newEmailSanitized = DatabaseGateway.SanitizeString(newEmail);
-                
-    
 
                 try
                 {
