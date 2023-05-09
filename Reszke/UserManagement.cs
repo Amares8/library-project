@@ -113,7 +113,6 @@ namespace Reszke
             }
         }
 
-
         public static int DeleteUser (ref UserSession userSession, string loginToDelete)
         {
             /*
@@ -261,5 +260,6 @@ namespace Reszke
             }
         
         }
+
     }
 }

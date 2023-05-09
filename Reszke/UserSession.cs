@@ -10,7 +10,7 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Reszke
 {
-    internal class UserSession
+    public class UserSession
     {
         //A class representing ongoing logged user session
         //loggedLogin being equal to "" means user is not logged in
@@ -88,15 +88,22 @@ namespace Reszke
             * - FUNCTION RETURN VALUES -
             * 0 - successfull
             * 1 - already logged in
-            * 2 - wrong login/password
+            * 2 - wrong login
+            * 3 - wrong password
             * 4 - sql/other error
-            * 5 - invalid/empty parameters
+            * 5 - empty login
+            * 6 - empty password
             */
 
-            if (login == "" || password == "")
+            if (login == "")
             {
-                //empty parameters
+                //empty login
                 return 5;
+            }
+            else if (password == "")
+            {
+                //empty password
+                return 6;
             }
             else if (IsLoggedIn())
             {
@@ -108,38 +115,47 @@ namespace Reszke
                 try
                 {
                     //Przetwarzanie podanego loginu i hasła,
-                    //login ma być zabezpieczony przed wstrzykiwaniem sql, haslo ma być zahaszowane
+                    //login jest zabezpieczony przed wstrzykiwaniem sql, haslo jest zahaszowane
 
                     string loginSanitized = DatabaseGateway.SanitizeString(login);
                     string passwordHash = DatabaseGateway.GetStringSha256Hash(password);
 
 
                     //Sprawdzenie czy login i hasło są zgodne
-                    string userExistTextSql = $"SELECT COUNT(*) FROM employees WHERE login = '{loginSanitized}' AND password = '{passwordHash}'";
+                    string userExistTextSql = $"SELECT COUNT(*) FROM employees WHERE login = '{loginSanitized}'";
                     int userExistTestResult = int.Parse(DatabaseGateway.ExecuteScalarCommand(userExistTextSql, ref databaseConnection));
 
                     if (userExistTestResult != 1)
                     {
-                        //wrong password or login
-                        Debugger.CreateLogMessage($"Podano zły login lub hasło przy próbie zalogowania użytkownika {login}");
+                        //wrong login
+                        Debugger.CreateLogMessage($"Podano zły login przy próbie zalogowania użytkownika {login}");
                         return 2;
                     }
-                    else
+
+                    string userPasswordCheckSql = $"SELECT COUNT(*) FROM employees WHERE login = '{loginSanitized}' AND password = '{passwordHash}'";
+                    int userPasswordCheckResult = int.Parse(DatabaseGateway.ExecuteScalarCommand(userPasswordCheckSql, ref databaseConnection));
+
+                    if (userPasswordCheckResult != 1)
                     {
-                        //udane logowanie
-
-                        //pobieranie danych z baza o zalogowanym uzytkowniku
-                        string loadUserDataSql = $"SELECT employeeID, firstName, lastName, privilege FROM employees WHERE login = '{loginSanitized}'";
-                        string[,] userData = DatabaseGateway.ExecuteSelectCommand(loadUserDataSql, ref databaseConnection);
-                        loggedID = int.Parse(userData[0, 0]);
-                        loggedLogin = loginSanitized;
-                        firstName = userData[0, 1];
-                        lastName = userData[0, 2];
-                        privilege = int.Parse(userData[0, 3]);
-
-                        return 0;
-                        
+                        //wrong password
+                        Debugger.CreateLogMessage($"Podano zły login przy próbie zalogowania użytkownika {login}");
+                        return 3;
                     }
+
+                    //udane logowanie
+
+                    //pobieranie danych z baza o zalogowanym uzytkowniku
+                    string loadUserDataSql = $"SELECT employeeID, firstName, lastName, privilege FROM employees WHERE login = '{loginSanitized}'";
+                    string[,] userData = DatabaseGateway.ExecuteSelectCommand(loadUserDataSql, ref databaseConnection);
+                    loggedID = int.Parse(userData[0, 0]);
+                    loggedLogin = loginSanitized;
+                    firstName = userData[0, 1];
+                    lastName = userData[0, 2];
+                    privilege = int.Parse(userData[0, 3]);
+
+                    return 0;
+                        
+                    
                 }
                 catch (Exception e)
                 {

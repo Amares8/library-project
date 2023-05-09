@@ -1,49 +1,24 @@
-28.02.2023 18:18:13 - Błąd ładowania konfiguracji DB z pliku dbConfig.json (Could not find file 'D:\Projekty_IT\VisualStudio\library-project\Reszke\bin\Debug\net6.0-windows\dbConfig.json'.)
-13.03.2023 15:41:41 - {}
-13.03.2023 15:42:58 - {}
-13.03.2023 15:45:28 - {}
-13.03.2023 16:33:44 - {}
-13.03.2023 16:34:43 - {}
-13.03.2023 16:37:14 - {"ISOCode":"pl","langName":"polish","localLangName":"polski"}
-13.03.2023 16:42:29 - {"ISOCode":"pl","langName":"polish","localLangName":"polski","monday":"poniedzia\u0142ek","tuesday":"wtorek","wednesday":"\u015Broda","thursday":"czwartek","friday":"pi\u0105tek","saturday":"sobota","sunday":"niedziela"}
-13.03.2023 17:03:35 - Błąd przy ładowaniu pakietu językowego z pliku polish.json (Could not find file 'C:\Users\Amares8\Documents\Programy\Biblioteka\library-project\Reszke\bin\Debug\net6.0-windows\polish.json'.)
-14.03.2023 18:53:32 - 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36
-14.03.2023 18:55:40 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Unknown database 'obi')
-14.03.2023 18:55:40 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
-14.03.2023 18:55:41 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Authentication to host 'localhost' for user 'root' using method 'mysql_native_password' failed with message: Unknown database 'obi')
-14.03.2023 18:55:41 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
-14.03.2023 18:56:25 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = amares8 AND password = 9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36', (Unknown column 'amares8' in 'where clause')
-14.03.2023 18:56:25 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
-21.03.2023 11:54:51 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = '0' AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
-21.03.2023 11:54:51 - Błąd przy zmianie hasła Input string was not in a correct format.
-21.03.2023 12:12:27 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = '0' AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
-21.03.2023 12:12:27 - Błąd przy zmianie hasła Input string was not in a correct format.
-21.03.2023 12:24:41 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
-21.03.2023 12:24:41 - Błąd przy zmianie hasła Input string was not in a correct format.
-21.03.2023 12:25:46 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
-21.03.2023 12:25:46 - Błąd przy zmianie hasła Input string was not in a correct format.
-
-
-21.03.2023 12:29:32 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE employeeID = 0 AND password = '9EF836C161A1A9F5BCC5746795A058CE976190680E51EEA128558EBE4D66BE36';', (The connection is already open.)
-21.03.2023 12:29:32 - Błąd przy zmianie hasła Input string was not in a correct format.
-21.03.2023 12:30:40 - Błąd przy wykonywaniu komendy 'SELECT employeeID, firstName, lastName, privilege FROM employees WHERE login = 'amares8'', (Invalid attempt to Read when reader is closed.)
-21.03.2023 12:30:40 - Błąd przy próbie logowania. Użytkownik: amares8. (Index was outside the bounds of the array.)
-21.03.2023 12:31:22 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
-21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
-21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
-21.03.2023 12:32:44 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
-26.03.2023 23:10:47 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
-26.03.2023 23:13:43 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
-26.03.2023 23:14:00 - Błąd przy rejestracji nowego pracownika
-26.03.2023 23:16:01 - Błąd przy rejestracji nowego pracownika: Użytkownik z loginem ogru już istnieje!
-26.03.2023 23:16:39 - Próba rejestracji nowego użytkownika nie będąc zalogowanym
-26.03.2023 23:54:27 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8
-26.03.2023 23:54:31 - Podano zły login lub hasło przy próbie zalogowania użytkownika amares8
-27.03.2023 17:08:48 - Próba rejestracji nowego klinta nie będąc zalogowanym
-27.03.2023 17:11:27 - Próba rejestracji nowego klienta nie będąc zalogowanym
-27.03.2023 17:11:35 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = '7'', (Unknown column 'customerID' in 'where clause')
-27.03.2023 17:11:35 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 
-27.03.2023 17:34:05 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = '7'', (Unknown column 'customerID' in 'where clause')
-27.03.2023 17:34:06 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 
-27.03.2023 17:35:32 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM `employees` WHERE customerID = 7', (Unknown column 'customerID' in 'where clause')
-27.03.2023 17:35:32 - Błąd przy usuwaniu klienta: Input string was not in a correct format.. 
+09.05.2023 22:06:54
+09.05.2023 22:13:31 - a
+09.05.2023 22:14:20 - a
+09.05.2023 22:21:16 - a
+09.05.2023 22:21:16
+                  
+                 
+09.05.2023 22:22:15 - a
+09.05.2023 22:22:16
+                   
+                  
+09.05.2023 22:23:08 - a
+09.05.2023 22:23:08
+ID Title  Cus. name Last name Empl. name Last name 434                 34                  4                   34 
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                   
+                  
+09.05.2023 22:23:46 - a
+09.05.2023 22:24:03 - a
+09.05.2023 22:24:03
+ID Title  Cus. name Last name Empl. name Last name 434                 34                  4                   34 
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                   
+                  

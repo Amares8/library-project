@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Reszke
 {
-    internal class Debugger
+    internal static class Debugger
     {
+        
+
         public static void CreateLogMessage(string message)
         {
             //Metoda do tworzenia logów w pliku log.txt. W parametrze podajemy treść wiadomości, znacznik czasowy zostanie dodany automatycznie. 
@@ -21,5 +24,7 @@ namespace Reszke
                 streamWriter.WriteLine(timestamp.ToString() + " - " + message);
             }
         }
+
+       
     }
 }

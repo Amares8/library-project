@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -59,7 +61,7 @@ namespace Reszke
             try
             {
                 //funkcja ładująca dane z bazy pobrane poleceniem select i zwracająca je w formie tabeli
-                //W przypadku błędu zwróci pustą tabelę
+                //W przypadku błędu zwróci null
                 List<List<string>> data = new List<List<string>>();
 
 
@@ -107,9 +109,36 @@ namespace Reszke
             {
                 //error
                 Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
-                return new string[0,0];
+                return null;
             }
 
+        }
+
+        public static DataTable ExecuteSelectDataTableCommand(string sql, ref MySqlConnection databaseConnection)
+        {
+            try
+            {
+                //funkcja ładująca dane z bazy pobrane poleceniem select i zwracająca je w formie obiektu DataTable
+                //W przypadku błędu zwróci null
+                DataTable dataTable = new DataTable();
+
+
+                MySqlCommand command = new MySqlCommand(sql, databaseConnection);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+
+                databaseConnection.Open();
+                dataAdapter.Fill(dataTable);
+                databaseConnection.Close();
+
+
+                return dataTable;
+            }
+            catch (Exception e)
+            {
+                //error
+                Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
+                return null;
+            }
         }
 
         public static string GetStringSha256Hash(string text)
@@ -133,5 +162,15 @@ namespace Reszke
             Regex ruleRegex = new Regex(@"[^\w\.\s@-]");
             return Regex.Replace(input, $"{ruleRegex}", "");
         }
+
+
+        public static bool IsValidSqlDate(string dateStr)
+        {
+            //returns true if input string is valid date in YYYY-MM-DD format, else returns false
+            DateTime date;
+            bool isValid = DateTime.TryParseExact(dateStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
+            return isValid;
+        }
+
     }
 }

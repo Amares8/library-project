@@ -12,7 +12,7 @@ namespace Reszke
     {
         //używany w aplikacji pakiet językowy
         LanguagePack currentLanguage;
-        UserSession userSession;
+        public UserSession userSession;
         
 
         public mainForm()
@@ -71,18 +71,73 @@ namespace Reszke
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            userSession.Login(login.Text, password.Text);
-            loggedUserLabel.Text = "logged: " + userSession.GetFirstName() + " " + userSession.GetLastName();
+            //temporary
+            loginTextBox.Text = "amares8";
+            passwordTextBox.Text = "Qwerty1@3";
+
+
+            //logging in
+            int userLoginResult = userSession.Login(loginTextBox.Text, passwordTextBox.Text);
+            passwordTextBox.Text = string.Empty;
+
+            switch (userLoginResult)
+            {
+                case 0:
+                    //login successfull
+                    loginErrorLabel.Text = string.Empty;
+          
+                    lendingsPanel.Show();
+                    navButtonsPanel.Show();
+                    currentUserLabel.Text = userSession.GetFirstName() + " " + userSession.GetLastName();
+
+                    loginPanel.Hide();
+                    break;
+                case 1:
+                    //already logged in
+                    loginErrorLabel.Text = "Użytkownik jest już zalogowany. ";
+                    break;
+                case 2:
+                    //wrong login
+                    loginErrorLabel.Text = "Podano błędny login. ";
+                    break;
+                case 3:
+                    //wrong password
+                    loginErrorLabel.Text = "Podano błędne hasło. ";
+                    break;
+                case 4:
+                    //other error
+                    loginErrorLabel.Text = "Wystapił nieznany błąd. ";
+                    break;
+                case 5:
+                    //empty login
+                    loginErrorLabel.Text = "Login nie może być pusty. ";
+                    break;
+                case 6:
+                    //empty password
+                    loginErrorLabel.Text = "Hasło nie może być puste. ";
+                    break;
+
+            }
+
+            
+
         }
 
-        private void changePasswordButton_Click(object sender, EventArgs e)
+        private void lendingsPanel_VisibleChanged(object sender, EventArgs e)
         {
-            //int result = UserManagement.RegisterUser(ref userSession, "ogru", "Olaf", "Gruszkiewicz", "ogru@obi.org", 8, "Qwerty1@3", 2);
-            //int result = UserManagement.DeleteUser(ref userSession, "ogru");
-            //int result = UserManagement.ResetUsersPassword(ref userSession, "ogru");
-            //int result = ClientManagement.RegisterClient(ref userSession, "Dawid", "Tylson", "668221323", "84-230", "Rumia", "Kosynierów", "3", "21", "dtylka@polki.pl");
-            int result = ClientManagement.DeleteClient(ref userSession, 7);
-            loggedUserLabel.Text = result.ToString();
+            if (lendingsPanel.Visible)
+            {
+                //when panel turned on
+                LibraryManagement.FillLendingsDataGrid(lendingsDataGridView, ref userSession);
+            }
+        }
+
+        private void lendingsNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to lendings
+            lendingsPanel.Visible = true;
+
+            //otherPanels.Visible = false;
         }
     }
 }
