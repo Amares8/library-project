@@ -297,36 +297,80 @@ namespace Reszke
 
         }
     
-        public static void FillLendingsDataGrid(DataGridView dataGridView, ref UserSession userSession)
+        public static int FillLendingsDataGrid(DataGridView dataGridView, ref UserSession userSession)
         {
+            //if success, returns 0
+            //if fail returns 1
+
+
             dataGridView.Rows.Clear();
 
             //getting lendings info from database
-            string getLendingsSql = "SELECT lendings.lendingID, books.bookName, customers.firstName, customers.lastName, employees.firstName, employees.lastName, lendings.lendingDate, lendings.returnDate, lendings.finalReturnedDate, lendings.statusID FROM lendings, employees, books, customers WHERE employees.employeeID = lendings.employeeID AND customers.customerID = lendings.customerID AND books.bookID = lendings.bookID";
-            string[,] lendingsSelectArray = DatabaseGateway.ExecuteSelectCommand(getLendingsSql, ref userSession.GetDatabaseConnectionRef());   
+            string getLendingsSql = "SELECT lendings.lendingID, books.bookName, bookauthors.firstName, bookauthors.lastName, bookauthors.name, customers.firstName, customers.lastName, employees.firstName, employees.lastName, lendings.lendingDate, lendings.returnDate, lendings.finalReturnedDate, lendings.statusID FROM bookauthors, lendings, employees, books, customers WHERE employees.employeeID = lendings.employeeID AND customers.customerID = lendings.customerID AND books.bookID = lendings.bookID AND books.bookAuthorID = bookauthors.authorID";
+            string[,] lendingsSelectArray = DatabaseGateway.ExecuteSelectCommand(getLendingsSql, ref userSession.GetDatabaseConnectionRef());
+
+            //array to show in interface
+            string[,] lendingsArray = new string[lendingsSelectArray.GetLength(0), 9];
+      
+
+            for (int j = 0; j < lendingsArray.GetLength(0); j++)
+            {
+                
+                lendingsArray[j, 0] = lendingsSelectArray[j, 0]; //lending id
+                lendingsArray[j, 1] = lendingsSelectArray[j, 1]; //title
+                if (lendingsSelectArray[j, 4] == "") //author
+                    lendingsArray[j, 2] = lendingsSelectArray[j, 2] + " " + lendingsSelectArray[j, 3];
+                else
+                    lendingsArray[j, 2] = lendingsSelectArray[j, 4];
+                lendingsArray[j, 3] = lendingsSelectArray[j, 5] + " " + lendingsSelectArray[j, 6]; //customer
+                lendingsArray[j, 4] = lendingsSelectArray[j, 7] + " " + lendingsSelectArray[j, 8]; //employee
+                lendingsArray[j, 5] = lendingsSelectArray[j, 9]; //date of lending
+                lendingsArray[j, 6] = lendingsSelectArray[j, 10]; //return deadline
+                lendingsArray[j, 7] = lendingsSelectArray[j, 11]; //date of book being returned
+                Debugger.CreateLogMessage(lendingsSelectArray[j, 12]);
+                switch (lendingsSelectArray[j, 12]) // lending status
+                {
+                    case "0":
+                        lendingsArray[j, 8] = "inny";
+                        break;
+                    case "1":
+                        lendingsArray[j, 8] = "wypożyczona";
+                        break;
+                    case "2":
+                        lendingsArray[j, 8] = "oddana";
+                        break;
+                    case "3":
+                        lendingsArray[j, 8] = "oddana po czasie";
+                        break;
+                }
+
+            }
+            
+
 
             if (lendingsSelectArray == null)
             {
                 //error occured
-
+                return 1;
             }
             else
             {
                 //succedeed
-                
-                for (int i = 0; i < lendingsSelectArray.GetLength(0); i++)
+
+
+                for (int j = 0; j < lendingsArray.GetLength(0); j++)
                 {
-                    //DataGridViewRow row = new DataGridViewRow();
-                    //row.CreateCells(dataGridView);
-                    for (int j = 0; j < lendingsSelectArray.GetLength(1); j++)
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridView);
+                    for (int i = 0; i < 8; i++)
                     {
-                        //.Cells[j].Value = lendingsSelectArray[i, j];
+                        row.Cells[i].Value = lendingsArray[j, i];
                         
                     }
-                    //dataGridView.Rows.Add(row);
+                    dataGridView.Rows.Add(row);
                     
                 }
-
+                return 0;
 
             }
             

@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.sideNavPanel = new System.Windows.Forms.Panel();
             this.navButtonsPanel = new System.Windows.Forms.Panel();
+            this.statisticsNavButton = new System.Windows.Forms.Button();
+            this.employeesNavButton = new System.Windows.Forms.Button();
+            this.customersNavButton = new System.Windows.Forms.Button();
+            this.booksNavButton = new System.Windows.Forms.Button();
             this.lendingsNavButton = new System.Windows.Forms.Button();
             this.navTimeLabel = new System.Windows.Forms.Label();
             this.navTopImage = new System.Windows.Forms.PictureBox();
@@ -42,14 +46,17 @@
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.lendingsPanel = new System.Windows.Forms.Panel();
+            this.lendingsBottomPanel = new System.Windows.Forms.Panel();
             this.lendingsDataGridView = new System.Windows.Forms.DataGridView();
             this.lendingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lendingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lendingStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.topPanel = new System.Windows.Forms.Panel();
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.userSessionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -77,16 +84,56 @@
             // 
             // navButtonsPanel
             // 
+            this.navButtonsPanel.Controls.Add(this.statisticsNavButton);
+            this.navButtonsPanel.Controls.Add(this.employeesNavButton);
+            this.navButtonsPanel.Controls.Add(this.customersNavButton);
+            this.navButtonsPanel.Controls.Add(this.booksNavButton);
             this.navButtonsPanel.Controls.Add(this.lendingsNavButton);
             this.navButtonsPanel.Location = new System.Drawing.Point(12, 96);
             this.navButtonsPanel.Name = "navButtonsPanel";
-            this.navButtonsPanel.Size = new System.Drawing.Size(173, 274);
+            this.navButtonsPanel.Size = new System.Drawing.Size(173, 365);
             this.navButtonsPanel.TabIndex = 3;
             this.navButtonsPanel.Visible = false;
             // 
+            // statisticsNavButton
+            // 
+            this.statisticsNavButton.Location = new System.Drawing.Point(32, 245);
+            this.statisticsNavButton.Name = "statisticsNavButton";
+            this.statisticsNavButton.Size = new System.Drawing.Size(107, 38);
+            this.statisticsNavButton.TabIndex = 3;
+            this.statisticsNavButton.Text = "Statystyki";
+            this.statisticsNavButton.UseVisualStyleBackColor = true;
+            // 
+            // employeesNavButton
+            // 
+            this.employeesNavButton.Location = new System.Drawing.Point(32, 192);
+            this.employeesNavButton.Name = "employeesNavButton";
+            this.employeesNavButton.Size = new System.Drawing.Size(107, 38);
+            this.employeesNavButton.TabIndex = 3;
+            this.employeesNavButton.Text = "Pracownicy";
+            this.employeesNavButton.UseVisualStyleBackColor = true;
+            // 
+            // customersNavButton
+            // 
+            this.customersNavButton.Location = new System.Drawing.Point(32, 139);
+            this.customersNavButton.Name = "customersNavButton";
+            this.customersNavButton.Size = new System.Drawing.Size(107, 38);
+            this.customersNavButton.TabIndex = 3;
+            this.customersNavButton.Text = "Klienci";
+            this.customersNavButton.UseVisualStyleBackColor = true;
+            // 
+            // booksNavButton
+            // 
+            this.booksNavButton.Location = new System.Drawing.Point(32, 86);
+            this.booksNavButton.Name = "booksNavButton";
+            this.booksNavButton.Size = new System.Drawing.Size(107, 38);
+            this.booksNavButton.TabIndex = 3;
+            this.booksNavButton.Text = "Książki";
+            this.booksNavButton.UseVisualStyleBackColor = true;
+            // 
             // lendingsNavButton
             // 
-            this.lendingsNavButton.Location = new System.Drawing.Point(32, 22);
+            this.lendingsNavButton.Location = new System.Drawing.Point(32, 30);
             this.lendingsNavButton.Name = "lendingsNavButton";
             this.lendingsNavButton.Size = new System.Drawing.Size(107, 38);
             this.lendingsNavButton.TabIndex = 2;
@@ -182,6 +229,7 @@
             // lendingsPanel
             // 
             this.lendingsPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.lendingsPanel.Controls.Add(this.lendingsBottomPanel);
             this.lendingsPanel.Controls.Add(this.lendingsDataGridView);
             this.lendingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lendingsPanel.Location = new System.Drawing.Point(211, 56);
@@ -191,21 +239,34 @@
             this.lendingsPanel.Visible = false;
             this.lendingsPanel.VisibleChanged += new System.EventHandler(this.lendingsPanel_VisibleChanged);
             // 
+            // lendingsBottomPanel
+            // 
+            this.lendingsBottomPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lendingsBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 424);
+            this.lendingsBottomPanel.Name = "lendingsBottomPanel";
+            this.lendingsBottomPanel.Size = new System.Drawing.Size(717, 94);
+            this.lendingsBottomPanel.TabIndex = 1;
+            // 
             // lendingsDataGridView
             // 
             this.lendingsDataGridView.AllowUserToAddRows = false;
             this.lendingsDataGridView.AllowUserToDeleteRows = false;
             this.lendingsDataGridView.AllowUserToResizeColumns = false;
             this.lendingsDataGridView.AllowUserToResizeRows = false;
+            this.lendingsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.lendingsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.lendingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lendingsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.lendingID,
             this.bookName,
+            this.bookAuthor,
             this.customer,
             this.employee,
             this.lendingDate,
             this.returnDate,
-            this.finalReturnDate});
+            this.finalReturnDate,
+            this.lendingStatus});
             this.lendingsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lendingsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.lendingsDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -220,49 +281,54 @@
             this.lendingID.HeaderText = "ID";
             this.lendingID.Name = "lendingID";
             this.lendingID.ReadOnly = true;
-            this.lendingID.Width = 43;
             // 
             // bookName
             // 
             this.bookName.HeaderText = "Tytuł";
             this.bookName.Name = "bookName";
             this.bookName.ReadOnly = true;
-            this.bookName.Width = 57;
+            // 
+            // bookAuthor
+            // 
+            this.bookAuthor.HeaderText = "Autor";
+            this.bookAuthor.Name = "bookAuthor";
+            this.bookAuthor.ReadOnly = true;
             // 
             // customer
             // 
             this.customer.HeaderText = "Klient";
             this.customer.Name = "customer";
             this.customer.ReadOnly = true;
-            this.customer.Width = 62;
             // 
             // employee
             // 
             this.employee.HeaderText = "Pracownik";
             this.employee.Name = "employee";
             this.employee.ReadOnly = true;
-            this.employee.Width = 87;
             // 
             // lendingDate
             // 
             this.lendingDate.HeaderText = "Data wypożyczenia";
             this.lendingDate.Name = "lendingDate";
             this.lendingDate.ReadOnly = true;
-            this.lendingDate.Width = 121;
             // 
             // returnDate
             // 
             this.returnDate.HeaderText = "Termin zwrotu";
             this.returnDate.Name = "returnDate";
             this.returnDate.ReadOnly = true;
-            this.returnDate.Width = 98;
             // 
             // finalReturnDate
             // 
             this.finalReturnDate.HeaderText = "Data oddania";
             this.finalReturnDate.Name = "finalReturnDate";
             this.finalReturnDate.ReadOnly = true;
-            this.finalReturnDate.Width = 94;
+            // 
+            // lendingStatus
+            // 
+            this.lendingStatus.HeaderText = "Status";
+            this.lendingStatus.Name = "lendingStatus";
+            this.lendingStatus.ReadOnly = true;
             // 
             // topPanel
             // 
@@ -330,15 +396,22 @@
         private Panel lendingsPanel;
         private DataGridView lendingsDataGridView;
         private BindingSource userSessionBindingSource;
+        private Button lendingsNavButton;
+        private Panel navButtonsPanel;
+        private Label currentUserLabel;
+        private Button statisticsNavButton;
+        private Button employeesNavButton;
+        private Button customersNavButton;
+        private Button booksNavButton;
+        private Panel lendingsBottomPanel;
         private DataGridViewTextBoxColumn lendingID;
         private DataGridViewTextBoxColumn bookName;
+        private DataGridViewTextBoxColumn bookAuthor;
         private DataGridViewTextBoxColumn customer;
         private DataGridViewTextBoxColumn employee;
         private DataGridViewTextBoxColumn lendingDate;
         private DataGridViewTextBoxColumn returnDate;
         private DataGridViewTextBoxColumn finalReturnDate;
-        private Button lendingsNavButton;
-        private Panel navButtonsPanel;
-        private Label currentUserLabel;
+        private DataGridViewTextBoxColumn lendingStatus;
     }
 }
