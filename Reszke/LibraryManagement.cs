@@ -297,85 +297,158 @@ namespace Reszke
 
         }
     
-        public static int FillLendingsDataGrid(DataGridView dataGridView, ref UserSession userSession)
+        public static int FillLendingsDataGrid(ref UserSession userSession, DataGridView dataGridView)
         {
-            //if success, returns 0
-            //if fail returns 1
+            //funciotn tha fills dataGridView with lendings data
+            //returns: 0 - success, 1 - error
 
+            //Colours used to mark lendings with
+            Color otherStatusColor = Color.FromArgb(204, 204, 204); // light gray
+            Color lendedColor = Color.FromArgb(255, 255, 255); //white
+            Color returnedColor = Color.FromArgb(245, 255, 245); // light green
+            Color returnedLateColor = Color.FromArgb(248, 255, 229); // light yellow
+            Color overdueColor = Color.FromArgb(255, 204, 204); // light red
+            Color errorColor = Color.FromArgb(255, 0, 0); // red
 
+            //clear all data form grid view
             dataGridView.Rows.Clear();
 
             //getting lendings info from database
-            string getLendingsSql = "SELECT lendings.lendingID, books.bookName, bookauthors.firstName, bookauthors.lastName, bookauthors.name, customers.firstName, customers.lastName, employees.firstName, employees.lastName, lendings.lendingDate, lendings.returnDate, lendings.finalReturnedDate, lendings.statusID FROM bookauthors, lendings, employees, books, customers WHERE employees.employeeID = lendings.employeeID AND customers.customerID = lendings.customerID AND books.bookID = lendings.bookID AND books.bookAuthorID = bookauthors.authorID";
+            string getLendingsSql = "SELECT lendings.lendingID, books.bookName, bookauthors.firstName, bookauthors.lastName, bookauthors.name, customers.firstName, customers.lastName, employees.firstName, employees.lastName, DATE_FORMAT(lendings.lendingDate, '%d.%m.%Y'), DATE_FORMAT(lendings.returnDate, '%d.%m.%Y'), DATE_FORMAT(lendings.finalReturnedDate, '%d.%m.%Y'), lendings.statusID FROM bookauthors, lendings, employees, books, customers WHERE employees.employeeID = lendings.employeeID AND customers.customerID = lendings.customerID AND books.bookID = lendings.bookID AND books.bookAuthorID = bookauthors.authorID";
             string[,] lendingsSelectArray = DatabaseGateway.ExecuteSelectCommand(getLendingsSql, ref userSession.GetDatabaseConnectionRef());
 
-            //array to show in interface
-            string[,] lendingsArray = new string[lendingsSelectArray.GetLength(0), 9];
-      
 
-            for (int j = 0; j < lendingsArray.GetLength(0); j++)
+            //check for error
+            if (getLendingsSql == null)
             {
-                
-                lendingsArray[j, 0] = lendingsSelectArray[j, 0]; //lending id
-                lendingsArray[j, 1] = lendingsSelectArray[j, 1]; //title
-                if (lendingsSelectArray[j, 4] == "") //author
-                    lendingsArray[j, 2] = lendingsSelectArray[j, 2] + " " + lendingsSelectArray[j, 3];
-                else
-                    lendingsArray[j, 2] = lendingsSelectArray[j, 4];
-                lendingsArray[j, 3] = lendingsSelectArray[j, 5] + " " + lendingsSelectArray[j, 6]; //customer
-                lendingsArray[j, 4] = lendingsSelectArray[j, 7] + " " + lendingsSelectArray[j, 8]; //employee
-                lendingsArray[j, 5] = lendingsSelectArray[j, 9]; //date of lending
-                lendingsArray[j, 6] = lendingsSelectArray[j, 10]; //return deadline
-                lendingsArray[j, 7] = lendingsSelectArray[j, 11]; //date of book being returned
-                Debugger.CreateLogMessage(lendingsSelectArray[j, 12]);
-                switch (lendingsSelectArray[j, 12]) // lending status
-                {
-                    case "0":
-                        lendingsArray[j, 8] = "inny";
-                        break;
-                    case "1":
-                        lendingsArray[j, 8] = "wypożyczona";
-                        break;
-                    case "2":
-                        lendingsArray[j, 8] = "oddana";
-                        break;
-                    case "3":
-                        lendingsArray[j, 8] = "oddana po czasie";
-                        break;
-                }
-
-            }
-            
-
-
-            if (lendingsSelectArray == null)
-            {
-                //error occured
                 return 1;
             }
-            else
+
+            for (int i = 0; i < lendingsSelectArray.GetLength(0); i++)
             {
-                //succedeed
+                //creatuing new data grid row
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+                
+
+                //assigning values to row cells
+                row.Cells[0].Value = lendingsSelectArray[i, 0]; //lending id
+                row.Cells[1].Value = lendingsSelectArray[i, 1]; //title
+                if (lendingsSelectArray[i, 4] == "") //author
+                    row.Cells[2].Value = lendingsSelectArray[i, 2] + " " + lendingsSelectArray[i, 3];
+                else
+                    row.Cells[2].Value = lendingsSelectArray[i, 4];
+                row.Cells[3].Value = lendingsSelectArray[i, 5] + " " + lendingsSelectArray[i, 6]; //customer
+                row.Cells[4].Value = lendingsSelectArray[i, 7] + " " + lendingsSelectArray[i, 8]; //employee
+                row.Cells[5].Value = lendingsSelectArray[i, 9]; //date of lending
+                row.Cells[6].Value = lendingsSelectArray[i, 10]; //return deadline
+                row.Cells[7].Value = lendingsSelectArray[i, 11]; //date of book being returned
 
 
-                for (int j = 0; j < lendingsArray.GetLength(0); j++)
+                switch (lendingsSelectArray[i, 12]) // lending status 
                 {
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(dataGridView);
-                    for (int i = 0; i < 8; i++)
-                    {
-                        row.Cells[i].Value = lendingsArray[j, i];
-                        
-                    }
-                    dataGridView.Rows.Add(row);
-                    
+                    case "0":
+                        //other status
+                        row.Cells[8].Value = "inny";
+                        row.DefaultCellStyle.BackColor = otherStatusColor;
+                        break;
+                    case "1":
+                        //lended
+
+                        //checking if book is overdue
+                        DateTime returnDateTime;
+                        if (!DateTime.TryParse(row.Cells[6].Value.ToString(), out returnDateTime))
+                        {
+                            Debugger.CreateLogMessage("Błąd konwersji daty");
+                            return 1;
+                        }
+
+                        int lateReturnTest = DateTime.Compare(DateTime.Now, returnDateTime);
+                        if (lateReturnTest < 0)
+                        {
+                            //not late
+                            row.Cells[8].Value = "wypożyczona";
+                            row.DefaultCellStyle.BackColor = lendedColor;
+                        }
+                        else
+                        {
+                            // is late
+                            row.Cells[8].Value = "zaległa";
+                            row.DefaultCellStyle.BackColor = overdueColor;
+                        }
+                        break;
+
+                    case "2":
+                        //returned
+                        row.Cells[8].Value = "oddana";
+                        row.DefaultCellStyle.BackColor = returnedColor;
+                        break;
+
+                    case "3":
+                        //returned late
+                        row.Cells[8].Value = "oddana po czasie";
+                        row.DefaultCellStyle.BackColor = returnedLateColor;
+                        break;
+
+                    default:
+                        //error
+                        row.Cells[8].Value = "błąd";
+                        row.DefaultCellStyle.BackColor = errorColor;
+                        break;
                 }
-                return 0;
+
+
+
+                //adding create row to dataGridViev passed in the parameter
+                dataGridView.Rows.Add(row);
 
             }
             
+            //retruning 0 as success code 
+            return 0;
+
         }
 
+        public static int FillBookSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //funcion for getting all book list for book to choose lending
+            string selectBooksSql = "SELECT books.bookId, books.bookName, bookauthors.firstName, bookauthors.lastName, bookauthors.name, publishers.name, DATE_FORMAT(books.releaseDate, '%Y'), books.quantityInStock FROM bookauthors, publishers, books WHERE books.bookAuthorID = bookauthors.authorID AND books.publisherID = publishers.publisherID";
+            string[,] bookSelectList = DatabaseGateway.ExecuteSelectCommand(selectBooksSql, ref userSession.GetDatabaseConnectionRef());
+
+            //check for error
+            if (bookSelectList == null)
+            {
+                //error
+                return 1;
+            }
+
+
+
+            //clear old data
+            dataGridView.Rows.Clear();
+
+            //0:id, 1:title, 2:author, 3:publisher, 4:releaseDate, 5:quantityInStock
+            int rows = bookSelectList.GetLength(0);
+            for (int i = 0; i < rows; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+                row.Cells[0].Value = bookSelectList[i, 0]; //id
+                row.Cells[1].Value = bookSelectList[i, 1]; //title
+                if (bookSelectList[i, 4] == "") //author
+                    row.Cells[2].Value = bookSelectList[i, 2] + " " + bookSelectList[i, 3];
+                else
+                    row.Cells[2].Value = bookSelectList[i, 4];
+                row.Cells[3].Value = bookSelectList[i, 5]; // publisher
+                row.Cells[4].Value = bookSelectList[i, 6]; // releaseDate
+                row.Cells[5].Value = bookSelectList[i, 7]; //quantity in stock
+                dataGridView.Rows.Add(row);
+            }
+
+            //returning success
+            return 0;
+        }
     }
 }
 

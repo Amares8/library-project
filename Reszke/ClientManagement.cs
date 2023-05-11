@@ -173,8 +173,41 @@ namespace Reszke
 
         }
 
-        
 
-        
+        public static int FillClientSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //function for getting all customers list  to select while creatnig new lending
+            // returns: 0 - success, 1 - error
+            string selectClientSql = "SELECT customerID, firstName, lastName FROM customers";
+            string[,] clientSelectList = DatabaseGateway.ExecuteSelectCommand(selectClientSql, ref userSession.GetDatabaseConnectionRef());
+
+            //check for error
+            if (clientSelectList == null)
+            {
+                //error
+                return 1;
+            }
+
+
+            //clear old data
+            dataGridView.Rows.Clear();
+
+            //fill grid with new data
+            int rows = clientSelectList.GetLength(0);
+            for (int i = 0; i < rows; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+                row.Cells[0].Value = clientSelectList[i, 0]; //id
+                row.Cells[1].Value = clientSelectList[i, 1] + " " + clientSelectList[i, 2]; //name + lastname
+
+                dataGridView.Rows.Add(row);
+            }
+
+            //returning success
+            return 0;
+        }
+
     }
 }

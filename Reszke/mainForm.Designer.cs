@@ -47,8 +47,12 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.lendingsPanel = new System.Windows.Forms.Panel();
             this.lendingsBottomPanel = new System.Windows.Forms.Panel();
+            this.modifyLendingButton = new System.Windows.Forms.Button();
+            this.deleteLendingButton = new System.Windows.Forms.Button();
+            this.returnLendingButton = new System.Windows.Forms.Button();
+            this.newLendingButton = new System.Windows.Forms.Button();
             this.lendingsDataGridView = new System.Windows.Forms.DataGridView();
-            this.lendingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
             this.loginPanel.SuspendLayout();
             this.lendingsPanel.SuspendLayout();
+            this.lendingsBottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lendingsDataGridView)).BeginInit();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).BeginInit();
@@ -241,12 +246,53 @@
             // 
             // lendingsBottomPanel
             // 
-            this.lendingsBottomPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lendingsBottomPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.lendingsBottomPanel.Controls.Add(this.modifyLendingButton);
+            this.lendingsBottomPanel.Controls.Add(this.deleteLendingButton);
+            this.lendingsBottomPanel.Controls.Add(this.returnLendingButton);
+            this.lendingsBottomPanel.Controls.Add(this.newLendingButton);
             this.lendingsBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 424);
             this.lendingsBottomPanel.Name = "lendingsBottomPanel";
             this.lendingsBottomPanel.Size = new System.Drawing.Size(717, 94);
             this.lendingsBottomPanel.TabIndex = 1;
+            // 
+            // modifyLendingButton
+            // 
+            this.modifyLendingButton.Location = new System.Drawing.Point(279, 26);
+            this.modifyLendingButton.Name = "modifyLendingButton";
+            this.modifyLendingButton.Size = new System.Drawing.Size(103, 40);
+            this.modifyLendingButton.TabIndex = 0;
+            this.modifyLendingButton.Text = "Modyfikuj";
+            this.modifyLendingButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteLendingButton
+            // 
+            this.deleteLendingButton.Location = new System.Drawing.Point(406, 26);
+            this.deleteLendingButton.Name = "deleteLendingButton";
+            this.deleteLendingButton.Size = new System.Drawing.Size(103, 40);
+            this.deleteLendingButton.TabIndex = 0;
+            this.deleteLendingButton.Text = "Usuń";
+            this.deleteLendingButton.UseVisualStyleBackColor = true;
+            // 
+            // returnLendingButton
+            // 
+            this.returnLendingButton.Location = new System.Drawing.Point(148, 26);
+            this.returnLendingButton.Name = "returnLendingButton";
+            this.returnLendingButton.Size = new System.Drawing.Size(103, 40);
+            this.returnLendingButton.TabIndex = 0;
+            this.returnLendingButton.Text = "Oddaj";
+            this.returnLendingButton.UseVisualStyleBackColor = true;
+            // 
+            // newLendingButton
+            // 
+            this.newLendingButton.Location = new System.Drawing.Point(21, 26);
+            this.newLendingButton.Name = "newLendingButton";
+            this.newLendingButton.Size = new System.Drawing.Size(103, 40);
+            this.newLendingButton.TabIndex = 0;
+            this.newLendingButton.Text = "Wypożycz";
+            this.newLendingButton.UseVisualStyleBackColor = true;
+            this.newLendingButton.Click += new System.EventHandler(this.newLendingButton_Click);
             // 
             // lendingsDataGridView
             // 
@@ -258,7 +304,7 @@
             this.lendingsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.lendingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lendingsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lendingID,
+            this.dataGridViewTextBoxColumn1,
             this.bookName,
             this.bookAuthor,
             this.customer,
@@ -276,56 +322,67 @@
             this.lendingsDataGridView.Size = new System.Drawing.Size(717, 518);
             this.lendingsDataGridView.TabIndex = 0;
             // 
-            // lendingID
+            // dataGridViewTextBoxColumn1
             // 
-            this.lendingID.HeaderText = "ID";
-            this.lendingID.Name = "lendingID";
-            this.lendingID.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.FillWeight = 68.52792F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 40;
             // 
             // bookName
             // 
+            this.bookName.FillWeight = 85.32957F;
             this.bookName.HeaderText = "Tytuł";
             this.bookName.Name = "bookName";
             this.bookName.ReadOnly = true;
             // 
             // bookAuthor
             // 
+            this.bookAuthor.FillWeight = 85.32957F;
             this.bookAuthor.HeaderText = "Autor";
             this.bookAuthor.Name = "bookAuthor";
             this.bookAuthor.ReadOnly = true;
             // 
             // customer
             // 
+            this.customer.FillWeight = 85.32957F;
             this.customer.HeaderText = "Klient";
             this.customer.Name = "customer";
             this.customer.ReadOnly = true;
             // 
             // employee
             // 
+            this.employee.FillWeight = 85.32957F;
             this.employee.HeaderText = "Pracownik";
             this.employee.Name = "employee";
             this.employee.ReadOnly = true;
             // 
             // lendingDate
             // 
+            this.lendingDate.FillWeight = 85.32957F;
             this.lendingDate.HeaderText = "Data wypożyczenia";
             this.lendingDate.Name = "lendingDate";
             this.lendingDate.ReadOnly = true;
             // 
             // returnDate
             // 
+            this.returnDate.FillWeight = 85.32957F;
             this.returnDate.HeaderText = "Termin zwrotu";
             this.returnDate.Name = "returnDate";
             this.returnDate.ReadOnly = true;
             // 
             // finalReturnDate
             // 
+            this.finalReturnDate.FillWeight = 85.32957F;
             this.finalReturnDate.HeaderText = "Data oddania";
             this.finalReturnDate.Name = "finalReturnDate";
             this.finalReturnDate.ReadOnly = true;
             // 
             // lendingStatus
             // 
+            this.lendingStatus.FillWeight = 82.09976F;
             this.lendingStatus.HeaderText = "Status";
             this.lendingStatus.Name = "lendingStatus";
             this.lendingStatus.ReadOnly = true;
@@ -342,6 +399,7 @@
             // 
             // currentUserLabel
             // 
+            this.currentUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.currentUserLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.currentUserLabel.Location = new System.Drawing.Point(534, 9);
             this.currentUserLabel.Name = "currentUserLabel";
@@ -374,6 +432,7 @@
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
             this.lendingsPanel.ResumeLayout(false);
+            this.lendingsBottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lendingsDataGridView)).EndInit();
             this.topPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).EndInit();
@@ -404,7 +463,7 @@
         private Button customersNavButton;
         private Button booksNavButton;
         private Panel lendingsBottomPanel;
-        private DataGridViewTextBoxColumn lendingID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn bookName;
         private DataGridViewTextBoxColumn bookAuthor;
         private DataGridViewTextBoxColumn customer;
@@ -413,5 +472,9 @@
         private DataGridViewTextBoxColumn returnDate;
         private DataGridViewTextBoxColumn finalReturnDate;
         private DataGridViewTextBoxColumn lendingStatus;
+        private Button modifyLendingButton;
+        private Button deleteLendingButton;
+        private Button returnLendingButton;
+        private Button newLendingButton;
     }
 }

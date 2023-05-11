@@ -71,7 +71,7 @@ namespace Reszke
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            //temporary
+            //temporary !!!
             loginTextBox.Text = "amares8";
             passwordTextBox.Text = "Qwerty1@3";
 
@@ -128,7 +128,7 @@ namespace Reszke
             if (lendingsPanel.Visible)
             {
                 //when panel turned on
-                LibraryManagement.FillLendingsDataGrid(lendingsDataGridView, ref userSession);
+                LibraryManagement.FillLendingsDataGrid(ref userSession, lendingsDataGridView);
             }
         }
 
@@ -136,8 +136,20 @@ namespace Reszke
         {
             //switch panel to lendings
             lendingsPanel.Visible = true;
+            //refreshPanel
+            lendingsPanel_VisibleChanged(sender, e);
 
             //otherPanels.Visible = false;
+        }
+
+        private void newLendingButton_Click(object sender, EventArgs e)
+        {
+            //open new lending panel
+            Debugger.CreateLogMessage("adad");
+            newLendingForm addLendingForm = new newLendingForm();
+            addLendingForm.userSession = userSession;
+
+            addLendingForm.ShowDialog();
         }
     }
 }
