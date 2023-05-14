@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.DirectoryServices;
 
 
 namespace Reszke
@@ -182,6 +184,42 @@ namespace Reszke
 
         }
 
+        public static int DeleteLending(ref UserSession userSession, int lendingID)
+        {
+
+            //fuinction first "returns" the book, to preserve correct stock quantities
+            //then deletes the lending record from the base of data
+            /*
+             * - FUNCTION RETURN VALUES -
+             * 0 - successfull
+             * 1 - not logged in
+             * 3 - no permissions
+             * 4 - sql/other error
+             * 5 - invalid/empty parameters
+             */
+
+            int bookReturnResult = ReturnBook(ref userSession, lendingID, DateTime.Now.Date.ToString("yyyy-MM-dd"));
+
+            if (bookReturnResult != 0 && bookReturnResult != 6)
+            {
+                //returning of a book failed
+                return bookReturnResult;
+            }
+
+            //if returning successfull or previously done, delete record
+            string deleteLendingRecordSql = $"DELETE FROM lendings WHERE `lendings`.`lendingID` = {lendingID}";
+            int recordDeletingResult = DatabaseGateway.ExecuteNonQueryCommand(deleteLendingRecordSql, ref userSession.GetDatabaseConnectionRef());
+
+            if (recordDeletingResult != 1)
+            {
+                //unknown error
+                return 4;
+            }
+
+            //successfull
+            return 0;
+
+        }
 
         public static int ModifyBookStockLevel(ref UserSession userSession, int bookID, int modAmount)
         {
@@ -319,7 +357,7 @@ namespace Reszke
 
 
             //check for error
-            if (getLendingsSql == null)
+            if (lendingsSelectArray == null)
             {
                 return 1;
             }
@@ -327,6 +365,24 @@ namespace Reszke
             for (int i = 0; i < lendingsSelectArray.GetLength(0); i++)
             {
                 //creatuing new data grid row
+
+                /* Extended lending status column (9)
+                 * is a hidden column for storing information about lending status taking into account
+                 * if a ongoing lending is overdue or not
+                 * 
+                 * Unlike column lendingStatus(8) information is numerical, for programming usage
+                 * Id's and their meaning:
+                 * 
+                 * 0 - other
+                 * 1 - lended (not overdue)
+                 * 2 - returned on time
+                 * 3 - returned late
+                 * 4 - lended and overdue
+                 * 5 - error
+                 * Any other values should be treated as errors :)
+                 * 
+                */
+
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(dataGridView);
                 
@@ -350,6 +406,7 @@ namespace Reszke
                     case "0":
                         //other status
                         row.Cells[8].Value = "inny";
+                        row.Cells[9].Value = "0"; //extended lending status
                         row.DefaultCellStyle.BackColor = otherStatusColor;
                         break;
                     case "1":
@@ -363,17 +420,19 @@ namespace Reszke
                             return 1;
                         }
 
-                        int lateReturnTest = DateTime.Compare(DateTime.Now, returnDateTime);
-                        if (lateReturnTest < 0)
+                        int lateReturnTest = DateTime.Compare(DateTime.Now.Date, returnDateTime.Date);
+                        if (lateReturnTest <= 0)
                         {
                             //not late
                             row.Cells[8].Value = "wypożyczona";
+                            row.Cells[9].Value = "1"; //extended lending status
                             row.DefaultCellStyle.BackColor = lendedColor;
                         }
                         else
                         {
                             // is late
                             row.Cells[8].Value = "zaległa";
+                            row.Cells[9].Value = "4"; //extended lending status
                             row.DefaultCellStyle.BackColor = overdueColor;
                         }
                         break;
@@ -381,18 +440,21 @@ namespace Reszke
                     case "2":
                         //returned
                         row.Cells[8].Value = "oddana";
+                        row.Cells[9].Value = "2"; //extended lending status
                         row.DefaultCellStyle.BackColor = returnedColor;
                         break;
 
                     case "3":
                         //returned late
                         row.Cells[8].Value = "oddana po czasie";
+                        row.Cells[9].Value = "3"; //extended lending status
                         row.DefaultCellStyle.BackColor = returnedLateColor;
                         break;
 
                     default:
                         //error
                         row.Cells[8].Value = "błąd";
+                        row.Cells[9].Value = "5"; //extended lending status
                         row.DefaultCellStyle.BackColor = errorColor;
                         break;
                 }
@@ -449,6 +511,42 @@ namespace Reszke
             //returning success
             return 0;
         }
+
+    
+
+
+        /*
+        public static bool IsLendingReturnable(ref UserSession userSession, int lendingID)
+        {
+
+            if (!userSession.IsLoggedIn())
+            {
+                //not logged in
+                return false;
+            }
+            if (lendingID < 0 || userSession.GetPrivilege() < bookLendPrivilege)
+            {
+                //no permissions
+                Debugger.CreateLogMessage($"Brak uprawnien do infomracji o stanie wypozyecznia, uzytkownik {userSession.GetLogin()}");
+                return false;
+            }
+
+            string checkReturnAbilitySql = $"SELECT statusID FROM lendings WHERE lendingID = {lendingID}";
+            string lendingStatus = DatabaseGateway.ExecuteScalarCommand(checkReturnAbilitySql, ref userSession.GetDatabaseConnectionRef());
+
+            
+            if (lendingStatus == "1")
+            {
+                //valud to return
+                return true;
+            }
+
+            //invalid for returning
+            return false;
+        }
+        */
+
+
     }
 }
 

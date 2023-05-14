@@ -21,6 +21,7 @@ namespace Reszke
             string result;
             try
             {
+                
                 databaseConnection.Open();
                 MySqlCommand command = new MySqlCommand(sql, databaseConnection);
                 result = command.ExecuteScalar().ToString();

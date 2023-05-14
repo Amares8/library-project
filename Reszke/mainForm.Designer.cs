@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.sideNavPanel = new System.Windows.Forms.Panel();
             this.navButtonsPanel = new System.Windows.Forms.Panel();
@@ -47,7 +49,6 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.lendingsPanel = new System.Windows.Forms.Panel();
             this.lendingsBottomPanel = new System.Windows.Forms.Panel();
-            this.modifyLendingButton = new System.Windows.Forms.Button();
             this.deleteLendingButton = new System.Windows.Forms.Button();
             this.returnLendingButton = new System.Windows.Forms.Button();
             this.newLendingButton = new System.Windows.Forms.Button();
@@ -61,9 +62,15 @@
             this.returnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lendingStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lendingStatusExtended = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.topPanel = new System.Windows.Forms.Panel();
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.userSessionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lendingsFiltersLabel = new System.Windows.Forms.Label();
+            this.lendedFilterButton = new System.Windows.Forms.Button();
+            this.overdueFilterButton = new System.Windows.Forms.Button();
+            this.returnedFilterButton = new System.Windows.Forms.Button();
+            this.allFilterButton = new System.Windows.Forms.Button();
             this.sideNavPanel.SuspendLayout();
             this.navButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
@@ -247,46 +254,43 @@
             // lendingsBottomPanel
             // 
             this.lendingsBottomPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lendingsBottomPanel.Controls.Add(this.modifyLendingButton);
+            this.lendingsBottomPanel.Controls.Add(this.allFilterButton);
+            this.lendingsBottomPanel.Controls.Add(this.returnedFilterButton);
+            this.lendingsBottomPanel.Controls.Add(this.overdueFilterButton);
+            this.lendingsBottomPanel.Controls.Add(this.lendedFilterButton);
+            this.lendingsBottomPanel.Controls.Add(this.lendingsFiltersLabel);
             this.lendingsBottomPanel.Controls.Add(this.deleteLendingButton);
             this.lendingsBottomPanel.Controls.Add(this.returnLendingButton);
             this.lendingsBottomPanel.Controls.Add(this.newLendingButton);
             this.lendingsBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 424);
+            this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 410);
             this.lendingsBottomPanel.Name = "lendingsBottomPanel";
-            this.lendingsBottomPanel.Size = new System.Drawing.Size(717, 94);
+            this.lendingsBottomPanel.Size = new System.Drawing.Size(717, 108);
             this.lendingsBottomPanel.TabIndex = 1;
-            // 
-            // modifyLendingButton
-            // 
-            this.modifyLendingButton.Location = new System.Drawing.Point(279, 26);
-            this.modifyLendingButton.Name = "modifyLendingButton";
-            this.modifyLendingButton.Size = new System.Drawing.Size(103, 40);
-            this.modifyLendingButton.TabIndex = 0;
-            this.modifyLendingButton.Text = "Modyfikuj";
-            this.modifyLendingButton.UseVisualStyleBackColor = true;
             // 
             // deleteLendingButton
             // 
-            this.deleteLendingButton.Location = new System.Drawing.Point(406, 26);
+            this.deleteLendingButton.Location = new System.Drawing.Point(268, 56);
             this.deleteLendingButton.Name = "deleteLendingButton";
             this.deleteLendingButton.Size = new System.Drawing.Size(103, 40);
             this.deleteLendingButton.TabIndex = 0;
             this.deleteLendingButton.Text = "Usuń";
             this.deleteLendingButton.UseVisualStyleBackColor = true;
+            this.deleteLendingButton.Click += new System.EventHandler(this.deleteLendingButton_Click);
             // 
             // returnLendingButton
             // 
-            this.returnLendingButton.Location = new System.Drawing.Point(148, 26);
+            this.returnLendingButton.Location = new System.Drawing.Point(142, 56);
             this.returnLendingButton.Name = "returnLendingButton";
             this.returnLendingButton.Size = new System.Drawing.Size(103, 40);
             this.returnLendingButton.TabIndex = 0;
             this.returnLendingButton.Text = "Oddaj";
             this.returnLendingButton.UseVisualStyleBackColor = true;
+            this.returnLendingButton.Click += new System.EventHandler(this.returnLendingButton_Click);
             // 
             // newLendingButton
             // 
-            this.newLendingButton.Location = new System.Drawing.Point(21, 26);
+            this.newLendingButton.Location = new System.Drawing.Point(17, 56);
             this.newLendingButton.Name = "newLendingButton";
             this.newLendingButton.Size = new System.Drawing.Size(103, 40);
             this.newLendingButton.TabIndex = 0;
@@ -298,10 +302,16 @@
             // 
             this.lendingsDataGridView.AllowUserToAddRows = false;
             this.lendingsDataGridView.AllowUserToDeleteRows = false;
-            this.lendingsDataGridView.AllowUserToResizeColumns = false;
             this.lendingsDataGridView.AllowUserToResizeRows = false;
             this.lendingsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lendingsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lendingsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.lendingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lendingsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -312,15 +322,30 @@
             this.lendingDate,
             this.returnDate,
             this.finalReturnDate,
-            this.lendingStatus});
+            this.lendingStatus,
+            this.lendingStatusExtended});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lendingsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.lendingsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lendingsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.lendingsDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.lendingsDataGridView.MultiSelect = false;
             this.lendingsDataGridView.Name = "lendingsDataGridView";
             this.lendingsDataGridView.ReadOnly = true;
+            this.lendingsDataGridView.RowHeadersVisible = false;
+            this.lendingsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.lendingsDataGridView.RowTemplate.Height = 25;
+            this.lendingsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.lendingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lendingsDataGridView.Size = new System.Drawing.Size(717, 518);
             this.lendingsDataGridView.TabIndex = 0;
+            this.lendingsDataGridView.SelectionChanged += new System.EventHandler(this.lendingsDataGridView_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -387,6 +412,13 @@
             this.lendingStatus.Name = "lendingStatus";
             this.lendingStatus.ReadOnly = true;
             // 
+            // lendingStatusExtended
+            // 
+            this.lendingStatusExtended.HeaderText = "status_extended";
+            this.lendingStatusExtended.Name = "lendingStatusExtended";
+            this.lendingStatusExtended.ReadOnly = true;
+            this.lendingStatusExtended.Visible = false;
+            // 
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -412,6 +444,52 @@
             // 
             this.userSessionBindingSource.DataSource = typeof(Reszke.UserSession);
             // 
+            // lendingsFiltersLabel
+            // 
+            this.lendingsFiltersLabel.AutoSize = true;
+            this.lendingsFiltersLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lendingsFiltersLabel.Location = new System.Drawing.Point(17, 15);
+            this.lendingsFiltersLabel.Name = "lendingsFiltersLabel";
+            this.lendingsFiltersLabel.Size = new System.Drawing.Size(50, 20);
+            this.lendingsFiltersLabel.TabIndex = 1;
+            this.lendingsFiltersLabel.Text = "Pokaż:";
+            // 
+            // lendedFilterButton
+            // 
+            this.lendedFilterButton.Location = new System.Drawing.Point(73, 15);
+            this.lendedFilterButton.Name = "lendedFilterButton";
+            this.lendedFilterButton.Size = new System.Drawing.Size(95, 25);
+            this.lendedFilterButton.TabIndex = 2;
+            this.lendedFilterButton.Text = "Wypożyczone";
+            this.lendedFilterButton.UseVisualStyleBackColor = true;
+            // 
+            // overdueFilterButton
+            // 
+            this.overdueFilterButton.Location = new System.Drawing.Point(174, 15);
+            this.overdueFilterButton.Name = "overdueFilterButton";
+            this.overdueFilterButton.Size = new System.Drawing.Size(95, 25);
+            this.overdueFilterButton.TabIndex = 2;
+            this.overdueFilterButton.Text = "Zaległe";
+            this.overdueFilterButton.UseVisualStyleBackColor = true;
+            // 
+            // returnedFilterButton
+            // 
+            this.returnedFilterButton.Location = new System.Drawing.Point(276, 15);
+            this.returnedFilterButton.Name = "returnedFilterButton";
+            this.returnedFilterButton.Size = new System.Drawing.Size(95, 25);
+            this.returnedFilterButton.TabIndex = 2;
+            this.returnedFilterButton.Text = "Zwrócone";
+            this.returnedFilterButton.UseVisualStyleBackColor = true;
+            // 
+            // allFilterButton
+            // 
+            this.allFilterButton.Location = new System.Drawing.Point(377, 14);
+            this.allFilterButton.Name = "allFilterButton";
+            this.allFilterButton.Size = new System.Drawing.Size(95, 25);
+            this.allFilterButton.TabIndex = 2;
+            this.allFilterButton.Text = "Wszystkie";
+            this.allFilterButton.UseVisualStyleBackColor = true;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -433,6 +511,7 @@
             this.loginPanel.PerformLayout();
             this.lendingsPanel.ResumeLayout(false);
             this.lendingsBottomPanel.ResumeLayout(false);
+            this.lendingsBottomPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lendingsDataGridView)).EndInit();
             this.topPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).EndInit();
@@ -453,7 +532,6 @@
         private Button loginButton;
         private Panel topPanel;
         private Panel lendingsPanel;
-        private DataGridView lendingsDataGridView;
         private BindingSource userSessionBindingSource;
         private Button lendingsNavButton;
         private Panel navButtonsPanel;
@@ -463,6 +541,10 @@
         private Button customersNavButton;
         private Button booksNavButton;
         private Panel lendingsBottomPanel;
+        private Button deleteLendingButton;
+        private Button returnLendingButton;
+        private Button newLendingButton;
+        public DataGridView lendingsDataGridView;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn bookName;
         private DataGridViewTextBoxColumn bookAuthor;
@@ -472,9 +554,11 @@
         private DataGridViewTextBoxColumn returnDate;
         private DataGridViewTextBoxColumn finalReturnDate;
         private DataGridViewTextBoxColumn lendingStatus;
-        private Button modifyLendingButton;
-        private Button deleteLendingButton;
-        private Button returnLendingButton;
-        private Button newLendingButton;
+        private DataGridViewTextBoxColumn lendingStatusExtended;
+        private Button allFilterButton;
+        private Button returnedFilterButton;
+        private Button overdueFilterButton;
+        private Button lendedFilterButton;
+        private Label lendingsFiltersLabel;
     }
 }

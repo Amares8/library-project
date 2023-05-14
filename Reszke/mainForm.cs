@@ -5,6 +5,7 @@ using Org.BouncyCastle.Security;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
 
 namespace Reszke
 {
@@ -145,11 +146,90 @@ namespace Reszke
         private void newLendingButton_Click(object sender, EventArgs e)
         {
             //open new lending panel
-            Debugger.CreateLogMessage("adad");
             newLendingForm addLendingForm = new newLendingForm();
             addLendingForm.userSession = userSession;
 
             addLendingForm.ShowDialog();
+            //refresh datagridview
+            lendingsPanel_VisibleChanged(null, null);
+
+        }
+
+        private void lendingsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            //Managing disabling and enabling returnLendingButton button
+            DataGridViewRow selectedRow = lendingsDataGridView.CurrentRow;
+            bool isReturnable = false;
+            if (selectedRow.Cells[9].Value.ToString() == "1" || selectedRow.Cells[9].Value.ToString() == "4")
+            {
+                //is returnable
+                isReturnable = true;
+            }
+            returnLendingButton.Enabled = isReturnable;
+
+        }
+
+        private void returnLendingButton_Click(object sender, EventArgs e)
+        {
+            //return book button click
+            //open return book panel
+            int returnedBookID = int.Parse(lendingsDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string lendingDetails = String.Empty;
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[2].Value.ToString() + " - "; // author
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n"; // title
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[3].Value.ToString() + "\nz: "; // lending date
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[5].Value.ToString() + "\ndo: "; // lending date
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[6].Value.ToString();            //return date
+
+            DateTime returnDateTime;
+            DateTime finalReturnedDateTime;
+
+            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[5].Value.ToString(), out returnDateTime))
+            {
+                Debugger.CreateLogMessage("Błąd konwersji daty przy próbie oddania książki");
+                return;
+            }
+
+            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[6].Value.ToString(), out finalReturnedDateTime))
+            {
+                Debugger.CreateLogMessage("Błąd konwersji daty przy próbie oddania książki");
+                return;
+            }
+
+            //create now form
+            ReturnLendingForm returnLendingForm = new ReturnLendingForm(ref userSession, returnedBookID, lendingDetails, returnDateTime, finalReturnedDateTime);
+            returnLendingForm.ShowDialog();
+            //refresh datagridview
+            lendingsPanel_VisibleChanged(null, null);
+
+        }
+
+        private void deleteLendingButton_Click(object sender, EventArgs e)
+        {
+            //delete lending record button click
+            int deleteLendingID = int.Parse(lendingsDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string lendingDetails = String.Empty;
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[2].Value.ToString() + " - ";
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n";
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[3].Value.ToString() + "\nz: ";
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[5].Value.ToString() + "\ndo: ";
+            lendingDetails += lendingsDataGridView.CurrentRow.Cells[6].Value.ToString();
+            DateTime finalReturnedDateTime;
+
+            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[6].Value.ToString(), out finalReturnedDateTime))
+            {
+                Debugger.CreateLogMessage("Błąd konwersji daty przy próbie usunięcia rekordu wypożyczenia");
+                return;
+            }
+
+            //create now form
+            DeleteLendingForm deleteLendingForm = new DeleteLendingForm(ref userSession, deleteLendingID, lendingDetails);
+            deleteLendingForm.ShowDialog();
+
+
+            //refresh datagridview
+            lendingsPanel_VisibleChanged(null, null);
+
         }
     }
 }

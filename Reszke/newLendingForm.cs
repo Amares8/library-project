@@ -43,6 +43,14 @@ namespace Reszke
                 newLendingErrorLabel.Text = "Błąd przy pobieraniu listy klientów. ";
             }
 
+            //colors
+            customerSelectDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(118, 181, 197);
+            bookSelectDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(118, 181, 197);
+
+
+            //caledars max date
+            lendingDateTimePicker.MaxDate = DateTime.Now.Date;
+            returnDateTimePicker.MinDate = DateTime.Now.Date;
 
         }
 
@@ -128,6 +136,7 @@ namespace Reszke
         {
             //datetike picked
             chosenReturnDateLabel.Text = "Wybrano: " + returnDateTimePicker.Value.ToString("dd.MM.yyyy");
+            
         }
 
         private void calculateReturnDateNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -140,11 +149,8 @@ namespace Reszke
         {
             //lending date picked
 
-            //checking if later than today, if yes limit to today
-            if (DateTime.Compare(DateTime.Now.Date, lendingDateTimePicker.Value.Date) < 1)
-            {
-                lendingDateTimePicker.Value = DateTime.Now.Date;
-            }
+            //adjusting minimal date
+            returnDateTimePicker.MinDate = lendingDateTimePicker.Value;
 
             //writing in "Chosen: xx-xx-xxxx" label
             chosenLendingDateLabel.Text = "Wybrano " + lendingDateTimePicker.Value.ToString("dd.MM.yyyy");
@@ -177,6 +183,9 @@ namespace Reszke
         {
             //selected book to lend
 
+
+           
+
             
             if (bookSelectDataGridView.CurrentRow != null)
             {
@@ -198,6 +207,8 @@ namespace Reszke
             if (customerSelectDataGridView.CurrentRow != null)
             {
                 DataGridViewRow selectedRow = customerSelectDataGridView.CurrentRow;
+
+                
 
                 string firstName = selectedRow.Cells[1].Value.ToString();
                 //name lastname

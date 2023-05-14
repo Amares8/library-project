@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bookSelectDataGridView = new System.Windows.Forms.DataGridView();
             this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +68,14 @@
             this.bookSelectDataGridView.AllowUserToDeleteRows = false;
             this.bookSelectDataGridView.AllowUserToResizeColumns = false;
             this.bookSelectDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bookSelectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.bookSelectDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bookSelectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bookID,
@@ -76,11 +86,13 @@
             this.quantityInStock});
             this.bookSelectDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.bookSelectDataGridView.Location = new System.Drawing.Point(33, 88);
+            this.bookSelectDataGridView.MultiSelect = false;
             this.bookSelectDataGridView.Name = "bookSelectDataGridView";
             this.bookSelectDataGridView.ReadOnly = true;
             this.bookSelectDataGridView.RowHeadersVisible = false;
             this.bookSelectDataGridView.RowHeadersWidth = 20;
             this.bookSelectDataGridView.RowTemplate.Height = 25;
+            this.bookSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bookSelectDataGridView.Size = new System.Drawing.Size(485, 238);
             this.bookSelectDataGridView.TabIndex = 0;
             this.bookSelectDataGridView.SelectionChanged += new System.EventHandler(this.bookSelectDataGridView_SelectionChanged);
@@ -153,16 +165,26 @@
             this.customerSelectDataGridView.AllowUserToDeleteRows = false;
             this.customerSelectDataGridView.AllowUserToResizeColumns = false;
             this.customerSelectDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.customerSelectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.customerSelectDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerSelectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerID,
             this.name});
             this.customerSelectDataGridView.Location = new System.Drawing.Point(541, 88);
+            this.customerSelectDataGridView.MultiSelect = false;
             this.customerSelectDataGridView.Name = "customerSelectDataGridView";
             this.customerSelectDataGridView.ReadOnly = true;
             this.customerSelectDataGridView.RowHeadersVisible = false;
             this.customerSelectDataGridView.RowHeadersWidth = 20;
             this.customerSelectDataGridView.RowTemplate.Height = 25;
+            this.customerSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerSelectDataGridView.Size = new System.Drawing.Size(182, 238);
             this.customerSelectDataGridView.TabIndex = 0;
             this.customerSelectDataGridView.SelectionChanged += new System.EventHandler(this.customerSelectDataGridView_SelectionChanged);
