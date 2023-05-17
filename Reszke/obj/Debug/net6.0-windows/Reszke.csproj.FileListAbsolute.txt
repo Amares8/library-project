@@ -80,3 +80,8 @@ D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-w
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.newLendingForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.ReturnLendingForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.DeleteLendingForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.ChangeBookQuantityForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\bin\Debug\net6.0-windows\af\Reszke.resources.dll
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddBookForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddBookForm.af.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\af\Reszke.resources.dll

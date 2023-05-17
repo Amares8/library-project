@@ -12,6 +12,11 @@
         },
         "runtime": {
           "Reszke.dll": {}
+        },
+        "resources": {
+          "af/Reszke.resources.dll": {
+            "locale": "af"
+          }
         }
       },
       "Google.Protobuf/3.21.9": {

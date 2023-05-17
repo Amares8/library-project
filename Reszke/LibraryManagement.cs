@@ -149,8 +149,8 @@ namespace Reszke
             }
 
             int newLendingStatus;
-            int lateReturnTest = DateTime.Compare(finalReturnedDateTime, returnDateTime);
-            if (lateReturnTest  < 0)
+            int lateReturnTest = DateTime.Compare(finalReturnedDateTime.Date, returnDateTime.Date);
+            if (lateReturnTest  <= 0)
             {
                 newLendingStatus = 2;
             }
@@ -315,8 +315,8 @@ namespace Reszke
 
             string addNewBookSql =
             $"INSERT INTO `books`" +
-            $"(`bookID`, `bookName`, `bookAuthorID`, `publisherID`, `releaseDate`, `bookCategoryID`, `bookDescription`, `quantityInStock`, `totalQuantityInStock`, `receivedBookDetailID`)" +
-            $"VALUES (NULL, '{bookNameSanitized}', {authorID}, {publisherID}, '{releaseDate}', {bookCategoryID}, '{bookDescriptionSanitized}', 0, 0, NULL)";
+            $"(`bookID`, `bookName`, `bookAuthorID`, `publisherID`, `releaseDate`, `bookCategoryID`, `bookDescription`, `quantityInStock`, `totalQuantityInStock`)" +
+            $"VALUES (NULL, '{bookNameSanitized}', {authorID}, {publisherID}, '{releaseDate}', {bookCategoryID}, '{bookDescriptionSanitized}', 0, 0)";
 
             int bookAddResult = DatabaseGateway.ExecuteNonQueryCommand(addNewBookSql, ref userSession.GetDatabaseConnectionRef());
 
@@ -334,7 +334,119 @@ namespace Reszke
 
 
         }
-    
+
+
+        public static int AddNewPublisher(ref UserSession userSession, string publisherName)
+        {
+
+            /*
+             * - FUNCTION RETURN VALUES -
+             * 0 - successfull
+             * 1 - not logged in
+             * 3 - no permissions
+             * 4 - sql/other error
+             * 5 - invalid/empty parameters
+
+             */
+
+            if (!userSession.IsLoggedIn())
+            {
+                //not logged in
+                return 1;
+            }
+            if (publisherName == String.Empty)
+            {
+                //wrong parameters
+                return 5;
+            }
+            if (userSession.GetPrivilege() < bookAddPrivilege)
+            {
+                //no privilege
+                return 3;
+            }
+
+
+            string publisherNameSanitized = DatabaseGateway.SanitizeString(publisherName);
+
+            string addNewPublisherSql = $"INSERT INTO `publishers` (`publisherID`, `name`) VALUES ('', '{publisherNameSanitized}');";
+
+
+            int publisherAddResult = DatabaseGateway.ExecuteNonQueryCommand(addNewPublisherSql, ref userSession.GetDatabaseConnectionRef());
+
+            if (publisherAddResult != 1)
+            {
+                return 4;
+            }
+
+
+
+
+            //success
+            return 0;
+
+
+
+        }
+
+
+        public static int AddNewAuthor(ref UserSession userSession, string authorFirstName, string authorLastName, string authorName)
+        {
+
+            /*
+             * - FUNCTION RETURN VALUES -
+             * 0 - successfull
+             * 1 - not logged in
+             * 3 - no permissions
+             * 4 - sql/other error
+             * 5 - invalid/empty parameters
+
+             */
+
+            if (!userSession.IsLoggedIn())
+            {
+                //not logged in
+                return 1;
+            }
+            if ((authorFirstName == String.Empty && authorLastName == String.Empty && authorName == String.Empty)
+                || (authorName == String.Empty && (authorFirstName == String.Empty || authorLastName == String.Empty)))
+            {
+                //wrong parameters
+                return 5;
+            }
+            if (userSession.GetPrivilege() < bookAddPrivilege)
+            {
+                //no privilege
+                return 3;
+            }
+
+
+            string authorFirstNameSanitized = DatabaseGateway.SanitizeString(authorFirstName);
+            string authorLastNameSanitized = DatabaseGateway.SanitizeString(authorLastName);
+            string authorNameSanitized = DatabaseGateway.SanitizeString(authorName);
+
+            
+
+            string addNewAuthorSql = $"INSERT INTO `bookauthors` (`authorID`, `firstName`, `lastName`, `name`) VALUES ('', '{authorFirstNameSanitized}', '{authorLastNameSanitized}', '{authorNameSanitized}')";
+
+
+            int authorAddResult = DatabaseGateway.ExecuteNonQueryCommand(addNewAuthorSql, ref userSession.GetDatabaseConnectionRef());
+
+            if (authorAddResult != 1)
+            {
+                return 4;
+            }
+
+
+
+
+            //success
+            return 0;
+
+
+
+        }
+
+
         public static int FillLendingsDataGrid(ref UserSession userSession, DataGridView dataGridView)
         {
             //funciotn tha fills dataGridView with lendings data
@@ -512,8 +624,256 @@ namespace Reszke
             return 0;
         }
 
-    
 
+        public static int FillBooksDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //funciotn tha fills dataGridView with books data
+            //returns: 0 - success, 1 - error
+
+            //clear all data form grid view
+            dataGridView.Rows.Clear();
+
+            //getting lendings info from database
+            string getBooksSql = "SELECT books.bookID, books.bookName, bookauthors.firstName, bookauthors.lastName, bookauthors.name, publishers.name, DATE_FORMAT(books.releaseDate, '%Y'), books.bookCategoryID, books.bookDescription, books.quantityInStock, books.totalQuantityInStock FROM bookauthors, books, publishers WHERE bookauthors.authorID = books.bookAuthorID AND publishers.publisherID = books.publisherID";
+            string[,] booksSelectArray = DatabaseGateway.ExecuteSelectCommand(getBooksSql, ref userSession.GetDatabaseConnectionRef());
+
+
+            //check for error
+            if (booksSelectArray == null)
+            {
+                return 1;
+            }
+
+            for (int i = 0; i < booksSelectArray.GetLength(0); i++)
+            {
+                //creating new data grid row
+
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+
+                //assigning values to row cells
+                row.Cells[0].Value = booksSelectArray[i, 0]; //book id
+                row.Cells[1].Value = booksSelectArray[i, 1]; //title
+                if (booksSelectArray[i, 4] == "") //author
+                    row.Cells[2].Value = booksSelectArray[i, 2] + " " + booksSelectArray[i, 3];
+                else
+                    row.Cells[2].Value = booksSelectArray[i, 4];
+                row.Cells[3].Value = booksSelectArray[i, 5]; //publisher
+                row.Cells[4].Value = booksSelectArray[i, 6]; //releaseDate
+                switch (booksSelectArray[i, 7])
+                {
+                    case "0":
+                        row.Cells[5].Value = "inny";
+                        break;
+                    case "1":
+                        row.Cells[5].Value = "fantasy";
+                        break;
+                    case "2":
+                        row.Cells[5].Value = "science-fiction";
+                        break;
+                    case "3":
+                        row.Cells[5].Value = "horror";
+                        break;
+                    case "4":
+                        row.Cells[5].Value = "kryminał";
+                        break;
+                    case "5":
+                        row.Cells[5].Value = "klasyka";
+                        break;
+                    case "6":
+                        row.Cells[5].Value = "sensacja";
+                        break;
+                    case "8":
+                        row.Cells[5].Value = "romans";
+                        break;
+                    case "9":
+                        row.Cells[5].Value = "nauka";
+                        break;
+                    case "10":
+                        row.Cells[5].Value = "dla dzieci";
+                        break;
+                    case "11":
+                        row.Cells[5].Value = "faktu";
+                        break;
+                    case "13":
+                        row.Cells[5].Value = "powieść";
+                        break;
+                    default:
+                        row.Cells[5].Value = "nieznany";
+                        break;
+
+                }//category
+                row.Cells[6].Value = booksSelectArray[i, 8]; //description
+                row.Cells[7].Value = booksSelectArray[i, 9] + " / " + booksSelectArray[i, 10]; //stock Level
+                row.Cells[8].Value = booksSelectArray[i, 9]; // hidden available quantity
+                row.Cells[9].Value = booksSelectArray[i, 10]; // hidden total stock level;
+
+                //adding create row to dataGridViev passed in the parameter
+                dataGridView.Rows.Add(row);
+
+            }
+
+            //retruning 0 as success code 
+            return 0;
+
+        }
+
+        public static int FillAuthorsSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //function for getting all authors list to select while adding new book
+            // returns: 0 - success, 1 - error
+            string selectClientSql = "SELECT authorID, firstName, lastName, name FROM bookauthors";
+            string[,] clientSelectList = DatabaseGateway.ExecuteSelectCommand(selectClientSql, ref userSession.GetDatabaseConnectionRef());
+
+            //check for error
+            if (clientSelectList == null)
+            {
+                //error
+                return 1;
+            }
+
+
+            //clear old data
+            dataGridView.Rows.Clear();
+
+            //fill grid with new data
+            int rows = clientSelectList.GetLength(0);
+            for (int i = 0; i < rows; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+                row.Cells[0].Value = clientSelectList[i, 0]; //id
+                if (clientSelectList[i, 3] == "") //author
+                    row.Cells[1].Value = clientSelectList[i, 1] + " " + clientSelectList[i, 2];
+                else
+                    row.Cells[1].Value = clientSelectList[i, 3];
+
+                dataGridView.Rows.Add(row);
+            }
+
+            //returning success
+            return 0;
+        }
+
+
+        public static int FillPublishersSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //function for getting all publishers list to select while adding new book
+            // returns: 0 - success, 1 - error
+            string selectPublishersSql = "SELECT publisherID, name FROM publishers";
+            string[,] publishersSelectList = DatabaseGateway.ExecuteSelectCommand(selectPublishersSql, ref userSession.GetDatabaseConnectionRef());
+
+            //check for error
+            if (publishersSelectList == null)
+            {
+                //error
+                return 1;
+            }
+
+
+            //clear old data
+            dataGridView.Rows.Clear();
+
+            //fill grid with new data
+            int rows = publishersSelectList.GetLength(0);
+            for (int i = 0; i < rows; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+                row.Cells[0].Value = publishersSelectList[i, 0]; //id
+                row.Cells[1].Value = publishersSelectList[i, 1]; //name
+                
+
+                dataGridView.Rows.Add(row);
+            }
+
+            //returning success
+            return 0;
+        }
+
+
+        public static int FillCategoriesSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //function for getting all categories / genres list to select while adding new book
+            // returns: 0 - success, 1 - error
+            string selectCategoriesSql = "SELECT id FROM bookCategories";
+            string[,] categoriesSelectList = DatabaseGateway.ExecuteSelectCommand(selectCategoriesSql, ref userSession.GetDatabaseConnectionRef());
+
+            //check for error
+            if (categoriesSelectList == null)
+            {
+                //error
+                return 1;
+            }
+
+
+            //clear old data
+            dataGridView.Rows.Clear();
+
+            //fill grid with new data
+            int rows = categoriesSelectList.GetLength(0);
+            for (int i = 0; i < rows; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+
+                switch (categoriesSelectList[i, 0])
+                {
+                    case "0":
+                        row.Cells[1].Value = "inny";
+                        break;
+                    case "1":
+                        row.Cells[1].Value = "fantasy";
+                        break;
+                    case "2":
+                        row.Cells[1].Value = "science-fiction";
+                        break;
+                    case "3":
+                        row.Cells[1].Value = "horror";
+                        break;
+                    case "4":
+                        row.Cells[1].Value = "kryminał";
+                        break;
+                    case "5":
+                        row.Cells[1].Value = "klasyka";
+                        break;
+                    case "6":
+                        row.Cells[1].Value = "sensacja";
+                        break;
+                    case "8":
+                        row.Cells[1].Value = "romans";
+                        break;
+                    case "9":
+                        row.Cells[1].Value = "nauka";
+                        break;
+                    case "10":
+                        row.Cells[1].Value = "dla dzieci";
+                        break;
+                    case "11":
+                        row.Cells[1].Value = "faktu";
+                        break;
+                    case "13":
+                        row.Cells[1].Value = "powieść";
+                        break;
+                    default:
+                        row.Cells[1].Value = "nieznany";
+                        break;
+
+                }//category
+                row.Cells[0].Value = categoriesSelectList[i, 0]; //id
+                
+
+
+                dataGridView.Rows.Add(row);
+            }
+
+            //returning success
+            return 0;
+        }
 
         /*
         public static bool IsLendingReturnable(ref UserSession userSession, int lendingID)

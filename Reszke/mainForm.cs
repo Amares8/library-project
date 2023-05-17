@@ -14,6 +14,11 @@ namespace Reszke
         //używany w aplikacji pakiet językowy
         LanguagePack currentLanguage;
         public UserSession userSession;
+
+
+
+
+        
         
 
         public mainForm()
@@ -30,7 +35,11 @@ namespace Reszke
             MySqlConnection mySqlConnection = new MySqlConnection(ConfigFileLoader.LoadDBConnectionString("dbConfig.json"));
             userSession = new UserSession(ref mySqlConnection);
 
-            
+
+            //setting the mainTabControl to hide the tab selector from user
+            mainTabControl.Appearance = TabAppearance.FlatButtons;
+            mainTabControl.ItemSize = new Size(0, 1);
+            mainTabControl.SizeMode = TabSizeMode.Fixed;
 
         }
 
@@ -70,6 +79,9 @@ namespace Reszke
             navTimeLabel.Text = navTimeLabelText;
         }
 
+
+        /* ------------------------------ Login page ------------------------------ */
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             //temporary !!!
@@ -86,8 +98,8 @@ namespace Reszke
                 case 0:
                     //login successfull
                     loginErrorLabel.Text = string.Empty;
-          
-                    lendingsPanel.Show();
+
+                    lendingsNavButton_Click(null, null);
                     navButtonsPanel.Show();
                     currentUserLabel.Text = userSession.GetFirstName() + " " + userSession.GetLastName();
 
@@ -124,25 +136,117 @@ namespace Reszke
 
         }
 
-        private void lendingsPanel_VisibleChanged(object sender, EventArgs e)
-        {
-            if (lendingsPanel.Visible)
-            {
-                //when panel turned on
-                LibraryManagement.FillLendingsDataGrid(ref userSession, lendingsDataGridView);
-            }
-        }
+        /* ------------------------------------------------------------------------- */
+
+
+
+        /* -------------------- Navigation panel buttons ------------------------ */
 
         private void lendingsNavButton_Click(object sender, EventArgs e)
         {
             //switch panel to lendings
-            lendingsPanel.Visible = true;
-            //refreshPanel
-            lendingsPanel_VisibleChanged(sender, e);
+            mainTabControl.SelectTab("lendingsPage");
+            currentTabLabel.Text = "Wypożyczenia";
 
-            //otherPanels.Visible = false;
+
+
         }
 
+        private void booksNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to books
+            mainTabControl.SelectTab("booksPage");
+            currentTabLabel.Text = "Książki";
+        }
+
+
+        private void customersNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to customers
+            mainTabControl.SelectTab("customersPage");
+            currentTabLabel.Text = "Klienci";
+        }
+
+        private void employeesNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to emplyees
+            mainTabControl.SelectTab("employeesPage");
+            currentTabLabel.Text = "Pracownicy";
+        }
+
+        private void statisticsNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to statistics
+            mainTabControl.SelectTab("statisticsPage");
+            currentTabLabel.Text = "Statystyki";
+        }
+
+        private void publishersNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to publishers
+            mainTabControl.SelectTab("publishersPage");
+            currentTabLabel.Text = "Wydawcy";
+        }
+
+        private void authorsNavButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to authors
+            mainTabControl.SelectTab("authorsPage");
+            currentTabLabel.Text = "Autorzy";
+        }
+
+        /* ----------------------------------------------------------------------- */
+
+
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mainTabControl.SelectedTab.Name == "lendingsPage")
+            {
+                RefreshLendingsPanel();
+            }
+            else if (mainTabControl.SelectedTab.Name == "booksPage")
+            {
+                RefreshBooksPanel();
+            }
+
+
+        }
+
+
+        /* ------------------------------------------------------------------------ */
+        /*                              Lendings panel                              */
+        /* ------------------------------------------------------------------------ */
+
+
+        private void RefreshLendingsPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillLendingsDataGrid(ref userSession, lendingsDataGridView);
+            //apply "all" filter
+            allFilterButton_Click(null, null);
+        }
+
+        private void lendingsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            //Managing disabling and enabling returnLendingButton button
+            DataGridViewRow selectedRow = lendingsDataGridView.CurrentRow;
+            bool isReturnable = false;
+            if (selectedRow != null)
+            { 
+                if (selectedRow.Cells[9].Value.ToString() == "1" || selectedRow.Cells[9].Value.ToString() == "4")
+                {
+                    //is returnable
+                    isReturnable = true;
+                }
+                
+            }
+            returnLendingButton.Enabled = isReturnable;
+        }
+
+
+
+
+        /* ----------------------- Lendings function buttons ------------------------ */
         private void newLendingButton_Click(object sender, EventArgs e)
         {
             //open new lending panel
@@ -151,21 +255,7 @@ namespace Reszke
 
             addLendingForm.ShowDialog();
             //refresh datagridview
-            lendingsPanel_VisibleChanged(null, null);
-
-        }
-
-        private void lendingsDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            //Managing disabling and enabling returnLendingButton button
-            DataGridViewRow selectedRow = lendingsDataGridView.CurrentRow;
-            bool isReturnable = false;
-            if (selectedRow.Cells[9].Value.ToString() == "1" || selectedRow.Cells[9].Value.ToString() == "4")
-            {
-                //is returnable
-                isReturnable = true;
-            }
-            returnLendingButton.Enabled = isReturnable;
+            RefreshLendingsPanel();
 
         }
 
@@ -200,7 +290,7 @@ namespace Reszke
             ReturnLendingForm returnLendingForm = new ReturnLendingForm(ref userSession, returnedBookID, lendingDetails, returnDateTime, finalReturnedDateTime);
             returnLendingForm.ShowDialog();
             //refresh datagridview
-            lendingsPanel_VisibleChanged(null, null);
+            RefreshLendingsPanel();
 
         }
 
@@ -228,8 +318,174 @@ namespace Reszke
 
 
             //refresh datagridview
-            lendingsPanel_VisibleChanged(null, null);
+            RefreshLendingsPanel();
 
         }
+
+        /* ------------------------------------------------------------------------- */
+
+
+
+        /* ---------------------- Lendings datagridview filters ------------------------ */
+
+        private void lendedFilterButton_Click(object sender, EventArgs e)
+        {
+            //filter only lended (and overdue books)
+
+            foreach (DataGridViewRow row in lendingsDataGridView.Rows)
+            {
+                if (row.Cells[9].Value.ToString() != "1" && row.Cells[9].Value.ToString() != "4")
+                {
+                    //if not lended, hide
+                    row.Visible = false;
+                }
+                else
+                {
+                    //ptherwise are lended, show
+                    row.Visible = true;
+                }
+            }
+
+            //disable button
+            lendedFilterButton.Enabled = false;
+
+            //enable other buttons
+            overdueFilterButton.Enabled = true;
+            returnedFilterButton.Enabled = true;
+            allFilterButton.Enabled = true;
+
+
+        }
+
+        private void overdueFilterButton_Click(object sender, EventArgs e)
+        {
+            //filter only lended (and overdue books)
+
+            foreach (DataGridViewRow row in lendingsDataGridView.Rows)
+            {
+                if (row.Cells[9].Value.ToString() != "4")
+                {
+                    //if not lended, hide
+                    row.Visible = false;
+                }
+                else
+                {
+                    //ptherwise are lended, show
+                    row.Visible = true;
+                }
+            }
+
+            //disable button
+            overdueFilterButton.Enabled = false;
+
+            //enable other buttons
+            lendedFilterButton.Enabled = true;
+            returnedFilterButton.Enabled = true;
+            allFilterButton.Enabled = true;
+        }
+
+        private void returnedFilterButton_Click(object sender, EventArgs e)
+        {
+            //filter only lended (and overdue books)
+
+            foreach (DataGridViewRow row in lendingsDataGridView.Rows)
+            {
+                if (row.Cells[9].Value.ToString() != "2" && row.Cells[9].Value.ToString() != "3")
+                {
+                    //if not lended, hide
+                    row.Visible = false;
+                }
+                else
+                {
+                    //ptherwise are lended, show
+                    row.Visible = true;
+                }
+            }
+
+            //disable button
+            returnedFilterButton.Enabled = false;
+
+            //enable other buttons
+            lendedFilterButton.Enabled = true;
+            overdueFilterButton.Enabled = true;
+            allFilterButton.Enabled = true;
+        }
+
+        private void allFilterButton_Click(object sender, EventArgs e)
+        {
+            //filter only lended (and overdue books)
+
+            foreach (DataGridViewRow row in lendingsDataGridView.Rows)
+            {
+                row.Visible = true;
+            }
+
+            //disable button
+            allFilterButton.Enabled = false;
+            
+
+            //enable other buttons
+            lendedFilterButton.Enabled = true;
+            overdueFilterButton.Enabled = true;
+            returnedFilterButton.Enabled = true;
+
+        }
+
+
+
+        /* ------------------------------------------------------------------------------ */
+
+
+
+
+
+        /* ------------------------------------------------------------------------ */
+        /*                                Books panel                               */
+        /* ------------------------------------------------------------------------ */
+
+
+        private void RefreshBooksPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillBooksDataGrid(ref userSession, booksDataGridView);
+            //apply "all" filter
+            //allFilterButton_Click(null, null);
+        }
+
+
+
+        /* ----------------------- Books function buttons ------------------------ */
+        private void changeBookQuantityButton_Click(object sender, EventArgs e)
+        {
+            //change book stock lvbel button click
+            //open chnage quantity of book panel
+
+            int bookID = int.Parse(booksDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string bookDetails = String.Empty;
+            int stockLevel = int.Parse(booksDataGridView.CurrentRow.Cells[8].Value.ToString());
+            int totalStockLevel = int.Parse(booksDataGridView.CurrentRow.Cells[9].Value.ToString());
+
+            bookDetails += booksDataGridView.CurrentRow.Cells[2].Value.ToString() + " - "; // author
+            bookDetails += booksDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n"; // title
+            bookDetails += booksDataGridView.CurrentRow.Cells[3].Value.ToString() + ", ";//publisher
+            bookDetails += booksDataGridView.CurrentRow.Cells[4].Value.ToString() + "\nStan: ";//year
+            bookDetails += stockLevel + " / ";//stock level
+            bookDetails += totalStockLevel;//total stock level
+
+            //create now form
+            ChangeBookQuantityForm changeBookQuantityForm = new ChangeBookQuantityForm(ref userSession, bookID, bookDetails, stockLevel, totalStockLevel);
+            changeBookQuantityForm.ShowDialog();
+            //refresh datagridview
+            RefreshBooksPanel();
+        }
+
+        private void addNewBookButton_Click(object sender, EventArgs e)
+        {
+            AddBookForm addBookForm = new AddBookForm(ref userSession);
+            addBookForm.ShowDialog();
+            RefreshBooksPanel();
+        }
+
+        /* ----------------------------------------------------------------------- */
     }
 }
