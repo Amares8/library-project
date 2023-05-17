@@ -52,3 +52,4 @@
 17.05.2023 02:00:39 - Błąd przy wykonywaniu komendy 'INSERT INTO `books`(`bookID`, `bookName`, `bookAuthorID`, `publisherID`, `releaseDate`, `bookCategoryID`, `bookDescription`, `quantityInStock`, `totalQuantityInStock`, `receivedBookDetailID`)VALUES (NULL, 'Przygody Puchatka', 3, 4, '2023-01-01', 4, 'الجامعة البحرية في غدينيا', 0, 0, NULL)', (The connection is already open.)
 17.05.2023 02:02:49 - Błąd przy wykonywaniu komendy 'INSERT INTO `books`(`bookID`, `bookName`, `bookAuthorID`, `publisherID`, `releaseDate`, `bookCategoryID`, `bookDescription`, `quantityInStock`, `totalQuantityInStock`, `receivedBookDetailID`)VALUES (NULL, 'Puchatek', 5, 2, '1946-01-01', 4, 'الجامعة البحرية في غدينيا', 0, 0, NULL)', (Unknown column 'receivedBookDetailID' in 'field list')
 17.05.2023 02:05:59 - 2023-05-17
+17.05.2023 10:16:50 - 2023-05-17

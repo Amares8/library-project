@@ -343,10 +343,20 @@
             0,
             0,
             0});
+            this.chooseYearUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.chooseYearUpDown.Name = "chooseYearUpDown";
             this.chooseYearUpDown.Size = new System.Drawing.Size(120, 23);
             this.chooseYearUpDown.TabIndex = 22;
             this.chooseYearUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chooseYearUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // bookAddErrorLabel
             // 

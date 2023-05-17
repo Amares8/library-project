@@ -34,7 +34,7 @@ namespace Reszke
         {
             toChangeInfoLabel.Text = bookDetails;
             quantityChangeUpDown.Minimum = -stockLevel;
-            afterChangeQuantityInfoLabel.Text = (stockLevel + quantityChangeUpDown.Value).ToString() + "/" + (stockLevel + quantityChangeUpDown.Value).ToString();
+            afterChangeQuantityInfoLabel.Text = (stockLevel + quantityChangeUpDown.Value).ToString() + "/" + (totalStockLevel + quantityChangeUpDown.Value).ToString();
 
         }
 

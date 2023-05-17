@@ -298,6 +298,18 @@ namespace Reszke
                 //not logged in
                 return 1;
             }
+            
+            if (releaseDate.Length < 10)
+            {
+                string temp = "";
+                for (int  i = 0; i < 10 - releaseDate.Length; i++)
+                {
+                    temp += "0";
+                }
+                temp += releaseDate;
+                releaseDate = temp;
+            }
+
             if (bookName == "" || authorID < 0 || publisherID < 0 || !DatabaseGateway.IsValidSqlDate(releaseDate) || bookCategoryID < 0)
             {
                 //wrong parameters
@@ -718,6 +730,60 @@ namespace Reszke
             return 0;
 
         }
+
+
+        public static int FillCustomersDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //funciotn tha fills dataGridView with customers data
+            //returns: 0 - success, 1 - error
+
+            //clear all data form grid view
+            dataGridView.Rows.Clear();
+
+            //getting lendings info from database
+            string getCustomersSql = "SELECT * FROM customers";
+            string[,] customersSelectArray = DatabaseGateway.ExecuteSelectCommand(getCustomersSql, ref userSession.GetDatabaseConnectionRef());
+
+            
+            //check for error
+            if (customersSelectArray == null)
+            {
+                return 1;
+            }
+
+            for (int i = 0; i < customersSelectArray.GetLength(0); i++)
+            {
+                //creating new data grid row
+
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+                
+
+                //assigning values to row cells
+                row.Cells[0].Value = customersSelectArray[i, 0];       //customer id
+                row.Cells[1].Value = customersSelectArray[i, 1] + " "; //first name
+                row.Cells[1].Value += customersSelectArray[i, 2];      // last name
+                row.Cells[2].Value = customersSelectArray[i, 3];       //phone number
+                row.Cells[3].Value += customersSelectArray[i, 4] + " "; //address
+                row.Cells[3].Value += customersSelectArray[i, 5] + " "; 
+                row.Cells[3].Value += customersSelectArray[i, 6] + " "; 
+                row.Cells[3].Value += customersSelectArray[i, 7] + " "; 
+                row.Cells[3].Value += customersSelectArray[i, 8]; 
+                row.Cells[4].Value = customersSelectArray[i, 9]; //email aderess
+
+
+
+                //adding create row to dataGridViev passed in the parameter
+                dataGridView.Rows.Add(row);
+
+            }
+
+            //retruning 0 as success code 
+            return 0;
+
+        }
+
+
 
         public static int FillAuthorsSelectDataGrid(ref UserSession userSession, DataGridView dataGridView)
         {

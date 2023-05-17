@@ -140,16 +140,14 @@ namespace Reszke
 
 
 
-        /* -------------------- Navigation panel buttons ------------------------ */
+        /* --------------------- Navigation panel buttons ------------------------ */
 
         private void lendingsNavButton_Click(object sender, EventArgs e)
         {
             //switch panel to lendings
             mainTabControl.SelectTab("lendingsPage");
             currentTabLabel.Text = "Wypożyczenia";
-
-
-
+            RefreshLendingsPanel();
         }
 
         private void booksNavButton_Click(object sender, EventArgs e)
@@ -157,6 +155,7 @@ namespace Reszke
             //switch panel to books
             mainTabControl.SelectTab("booksPage");
             currentTabLabel.Text = "Książki";
+            RefreshBooksPanel();
         }
 
 
@@ -165,6 +164,7 @@ namespace Reszke
             //switch panel to customers
             mainTabControl.SelectTab("customersPage");
             currentTabLabel.Text = "Klienci";
+            RefreshCustomersPanel();
         }
 
         private void employeesNavButton_Click(object sender, EventArgs e)
@@ -172,6 +172,7 @@ namespace Reszke
             //switch panel to emplyees
             mainTabControl.SelectTab("employeesPage");
             currentTabLabel.Text = "Pracownicy";
+            RefreshEmployeesPanel();
         }
 
         private void statisticsNavButton_Click(object sender, EventArgs e)
@@ -200,14 +201,7 @@ namespace Reszke
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (mainTabControl.SelectedTab.Name == "lendingsPage")
-            {
-                RefreshLendingsPanel();
-            }
-            else if (mainTabControl.SelectedTab.Name == "booksPage")
-            {
-                RefreshBooksPanel();
-            }
+            
 
 
         }
@@ -487,5 +481,34 @@ namespace Reszke
         }
 
         /* ----------------------------------------------------------------------- */
+
+
+        /* ------------------------------------------------------------------------ */
+        /*                             Customers panel                              */
+        /* ------------------------------------------------------------------------ */
+
+
+        private void RefreshCustomersPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillCustomersDataGrid(ref userSession, customersDataGridView);
+            //apply "all" filter
+            //allFilterButton_Click(null, null);
+        }
+
+
+
+        /* ------------------------------------------------------------------------ */
+        /*                             Employees panel                              */
+        /* ------------------------------------------------------------------------ */
+
+        private void RefreshEmployeesPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillCustomersDataGrid(ref userSession, employeesDataGridView);
+
+        }
+
+
     }
 }

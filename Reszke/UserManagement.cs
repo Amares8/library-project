@@ -261,5 +261,90 @@ namespace Reszke
         
         }
 
+
+
+        public static int FillEmployeesDataGrid(ref UserSession userSession, DataGridView dataGridView)
+        {
+            //funciotn tha fills dataGridView with employees data
+            //returns: 0 - success, 1 - error
+
+            //clear all data form grid viewo
+            dataGridView.Rows.Clear();
+            
+            //getting lendings info from database
+            string getEpmloyeesSql = "SELECT employeeID, login, firstName, lastName, email, jobTitle FROM employees";
+            string[,] employeesSelectArray = DatabaseGateway.ExecuteSelectCommand(getEpmloyeesSql, ref userSession.GetDatabaseConnectionRef());
+
+
+            //check for error
+            if (employeesSelectArray == null)
+            {
+                return 1;
+            }
+
+            for (int i = 0; i < employeesSelectArray.GetLength(0); i++)
+            {
+                //creating new data grid row
+
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView);
+
+
+                //assigning values to row cells
+                row.Cells[0].Value = employeesSelectArray[i, 0];       //employe id
+                row.Cells[1].Value = employeesSelectArray[i, 1] + " "; //first name + lastname
+                row.Cells[1].Value += employeesSelectArray[i, 2]; 
+                row.Cells[2].Value += employeesSelectArray[i, 3]; //email
+                switch(employeesSelectArray[i, 3]) // job title
+                {
+                    case "0":
+                        row.Cells[3].Value = "stażysta";
+                        break;
+                    case "1":
+                        row.Cells[3].Value = "informatyk";
+                        break;
+                    case "2":
+                        row.Cells[3].Value = "księgowy";
+                        break;
+                    case "3":
+                        row.Cells[3].Value = "kadrowy";
+                        break;
+                    case "4":
+                        row.Cells[3].Value = "kierownik";
+                        break;
+                    case "5":
+                        row.Cells[3].Value = "asystent";
+                        break;
+                    case "6":
+                        row.Cells[3].Value = "nadzorca";
+                        break;
+                    case "7":
+                        row.Cells[3].Value = "prezes";
+                        break;
+                    case "8":
+                        row.Cells[3].Value = "bibliotkarz";
+                        break;
+                    default:
+                        row.Cells[3].Value = "inny";
+                        break;
+                }
+                row.Cells[5].Value += employeesSelectArray[i, 4]; //jobtitle ID
+
+
+                
+
+
+
+                //adding create row to dataGridViev passed in the parameter
+                dataGridView.Rows.Add(row);
+
+            }
+
+            //retruning 0 as success code 
+            return 0;
+
+        }
+
+
     }
 }

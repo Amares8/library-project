@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EOMq+tzYSeM4FUuaOIdpxU+SSTqf4S1MDy4CXTkenD1c8lib1UzqybROYAxNgCMgzJATbJIeujEWilB+QQAVoQ==",
+  "dgSpecHash": "04Fb3PU+SgzwTtubxwODtuthgjz0e3rP1ln4J7fEotTJQkWn0hUB64XETHkbWaiXfnDMvbPM7uA/ZsKHC9aLEA==",
   "success": true,
-  "projectFilePath": "D:\\Projekty_IT\\VisualStudio\\biblioteka\\library-project\\Reszke\\Reszke.csproj",
+  "projectFilePath": "C:\\Users\\Amares8\\Documents\\Programy\\Biblioteka\\library-project\\Reszke\\Reszke.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amares8\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\Amares8\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
