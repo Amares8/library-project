@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,18 @@ namespace Reszke
             string result;
             try
             {
-                
-                databaseConnection.Open();
-                MySqlCommand command = new MySqlCommand(sql, databaseConnection);
-                result = command.ExecuteScalar().ToString();
-                databaseConnection.Close();
-                return result;
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Closed)
+                {
+                    databaseConnection.Open();
+                    MySqlCommand command = new MySqlCommand(sql, databaseConnection);
+                    result = command.ExecuteScalar().ToString();
+                    databaseConnection.Close();
+                    return result;
+                }
+                else
+                {
+                    return "";
+                }
             }
             catch (Exception e)
             {
@@ -43,11 +50,18 @@ namespace Reszke
             int result;
             try
             {
-                databaseConnection.Open();
-                MySqlCommand command = new MySqlCommand(sql, databaseConnection);
-                result = command.ExecuteNonQuery();
-                databaseConnection.Close();
-                return result;
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Closed)
+                {
+                    databaseConnection.Open();
+                    MySqlCommand command = new MySqlCommand(sql, databaseConnection);
+                    result = command.ExecuteNonQuery();
+                    databaseConnection.Close();
+                    return result;
+                }
+                else
+                {
+                    return -1;
+                }
             }
             catch (Exception e)
             {
@@ -61,50 +75,57 @@ namespace Reszke
         {
             try
             {
-                //funkcja ładująca dane z bazy pobrane poleceniem select i zwracająca je w formie tabeli
-                //W przypadku błędu zwróci null
-                List<List<string>> data = new List<List<string>>();
-
-
-                MySqlCommand command = new MySqlCommand(sql, databaseConnection);
-
-                databaseConnection.Open();
-
-                MySqlDataReader reader = command.ExecuteReader();
-
-                
-
-                while (reader.Read())
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Closed)
                 {
-                    List<string> row = new List<string>();
+                    //funkcja ładująca dane z bazy pobrane poleceniem select i zwracająca je w formie tabeli
+                    //W przypadku błędu zwróci null
+                    List<List<string>> data = new List<List<string>>();
 
-                    for (int i = 0; i < reader.FieldCount; i++)
+
+                    MySqlCommand command = new MySqlCommand(sql, databaseConnection);
+
+                    databaseConnection.Open();
+
+                    MySqlDataReader reader = command.ExecuteReader();
+
+
+
+                    while (reader.Read())
                     {
-                        row.Add(reader.GetValue(i).ToString());
+                        List<string> row = new List<string>();
+
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            row.Add(reader.GetValue(i).ToString());
+                        }
+
+                        data.Add(row);
                     }
 
-                    data.Add(row);
-                }
-
-                reader.Close();
-                databaseConnection.Close();
+                    reader.Close();
+                    databaseConnection.Close();
 
 
-                int rows = data.Count;
-                int columns = data[0].Count;
+                    int rows = data.Count;
+                    int columns = data[0].Count;
 
-                string[,] result = new string[rows, columns];
+                    string[,] result = new string[rows, columns];
 
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < columns; j++)
+                    for (int i = 0; i < rows; i++)
                     {
-                        result[i, j] = data[i][j];
+                        for (int j = 0; j < columns; j++)
+                        {
+                            result[i, j] = data[i][j];
+                        }
                     }
+
+
+                    return result;
                 }
-
-
-                return result;
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception e)
             {

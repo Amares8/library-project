@@ -113,7 +113,7 @@ namespace Reszke
             }
         }
 
-        public static int DeleteUser (ref UserSession userSession, string loginToDelete)
+        public static int DeleteUser (ref UserSession userSession, int IDToDelete)
         {
             /*
              * - FUNCTION RETURN VALUES -
@@ -126,7 +126,7 @@ namespace Reszke
              */
 
 
-            if (loginToDelete == "" )
+            if (IDToDelete < 0)
             {
                 //invalid parameters
                 Debugger.CreateLogMessage("Błędny lub pusty parametr przy próbie usunięcia pracownika");
@@ -146,21 +146,21 @@ namespace Reszke
             }
             else
             {
-                string loginToDeleteSanitized = DatabaseGateway.SanitizeString(loginToDelete);
+                
 
                 try
                 {
-                    string userExistSql = $"SELECT COUNT(*) FROM `employees` WHERE login = '{loginToDeleteSanitized}'";
+                    string userExistSql = $"SELECT COUNT(*) FROM `employees` WHERE employeeID = {IDToDelete}";
                     int userExistResult = int.Parse(DatabaseGateway.ExecuteScalarCommand(userExistSql, ref userSession.GetDatabaseConnectionRef()));
                     if (userExistResult != 1)
                     {
                         //no such user
-                        Debugger.CreateLogMessage($"Błąd przy usuwaniu pracownika: nie ma takiego użytkownika jak {loginToDeleteSanitized}");
+                        Debugger.CreateLogMessage($"Błąd przy usuwaniu pracownika: nie uzytkownika o id {IDToDelete}");
                         return 6;
                     }
                     else
                     {
-                        string userDeleteSql = $"DELETE FROM employees WHERE `employees`.`login` = '{loginToDeleteSanitized}'";
+                        string userDeleteSql = $"DELETE FROM employees WHERE `employees`.`employeeID` = {IDToDelete}";
                         int userDeleteResult = DatabaseGateway.ExecuteNonQueryCommand(userDeleteSql, ref userSession.GetDatabaseConnectionRef());
                         if (userDeleteResult != 1)
                         {
@@ -272,8 +272,8 @@ namespace Reszke
             dataGridView.Rows.Clear();
             
             //getting lendings info from database
-            string getEpmloyeesSql = "SELECT employeeID, login, firstName, lastName, email, jobTitle FROM employees";
-            string[,] employeesSelectArray = DatabaseGateway.ExecuteSelectCommand(getEpmloyeesSql, ref userSession.GetDatabaseConnectionRef());
+            string getEmployeesSql = "SELECT employeeID, login, firstName, lastName, email, jobTitle, privilege FROM employees";
+            string[,] employeesSelectArray = DatabaseGateway.ExecuteSelectCommand(getEmployeesSql, ref userSession.GetDatabaseConnectionRef());
 
 
             //check for error
@@ -292,43 +292,45 @@ namespace Reszke
 
                 //assigning values to row cells
                 row.Cells[0].Value = employeesSelectArray[i, 0];       //employe id
-                row.Cells[1].Value = employeesSelectArray[i, 1] + " "; //first name + lastname
-                row.Cells[1].Value += employeesSelectArray[i, 2]; 
-                row.Cells[2].Value += employeesSelectArray[i, 3]; //email
-                switch(employeesSelectArray[i, 3]) // job title
+                row.Cells[1].Value = employeesSelectArray[i, 1];       //employe login
+                row.Cells[2].Value = employeesSelectArray[i, 2] + " "; //first name + lastname
+                row.Cells[2].Value += employeesSelectArray[i, 3]; 
+                row.Cells[3].Value += employeesSelectArray[i, 4]; //email
+                switch(employeesSelectArray[i, 5]) // job title
                 {
                     case "0":
-                        row.Cells[3].Value = "stażysta";
+                        row.Cells[4].Value = "stażysta";
                         break;
                     case "1":
-                        row.Cells[3].Value = "informatyk";
+                        row.Cells[4].Value = "informatyk";
                         break;
                     case "2":
-                        row.Cells[3].Value = "księgowy";
+                        row.Cells[4].Value = "księgowy";
                         break;
                     case "3":
-                        row.Cells[3].Value = "kadrowy";
+                        row.Cells[4].Value = "kadrowy";
                         break;
                     case "4":
-                        row.Cells[3].Value = "kierownik";
+                        row.Cells[4].Value = "kierownik";
                         break;
                     case "5":
-                        row.Cells[3].Value = "asystent";
+                        row.Cells[4].Value = "asystent";
                         break;
                     case "6":
-                        row.Cells[3].Value = "nadzorca";
+                        row.Cells[4].Value = "nadzorca";
                         break;
                     case "7":
-                        row.Cells[3].Value = "prezes";
+                        row.Cells[4].Value = "prezes";
                         break;
                     case "8":
-                        row.Cells[3].Value = "bibliotkarz";
+                        row.Cells[4].Value = "bibliotekarz";
                         break;
                     default:
-                        row.Cells[3].Value = "inny";
+                        row.Cells[4].Value = "inny";
                         break;
-                }
-                row.Cells[5].Value += employeesSelectArray[i, 4]; //jobtitle ID
+                }//jobtitle ID
+                row.Cells[5].Value += employeesSelectArray[i, 6]; //privilege
+                row.Cells[6].Value += employeesSelectArray[i, 5]; //jobtitleID
 
 
                 

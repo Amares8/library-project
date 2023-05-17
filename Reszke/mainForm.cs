@@ -18,8 +18,8 @@ namespace Reszke
 
 
 
-        
-        
+
+
 
         public mainForm()
         {
@@ -48,7 +48,7 @@ namespace Reszke
         private void navTimeTimer_Tick(object sender, EventArgs e)
         {
             string navTimeLabelText = string.Empty;
-            switch(((int)DateTime.Now.DayOfWeek))
+            switch (((int)DateTime.Now.DayOfWeek))
             {
                 case 0:
                     navTimeLabelText += currentLanguage.sunday;
@@ -71,7 +71,7 @@ namespace Reszke
                 case 6:
                     navTimeLabelText += currentLanguage.saturday;
                     break;
-                
+
             }
 
             navTimeLabelText += "\n" + DateTime.Now.ToString("dd.MM.yyyy");
@@ -132,7 +132,7 @@ namespace Reszke
 
             }
 
-            
+
 
         }
 
@@ -187,6 +187,7 @@ namespace Reszke
             //switch panel to publishers
             mainTabControl.SelectTab("publishersPage");
             currentTabLabel.Text = "Wydawcy";
+            RefreshPublishersPanel();
         }
 
         private void authorsNavButton_Click(object sender, EventArgs e)
@@ -194,17 +195,12 @@ namespace Reszke
             //switch panel to authors
             mainTabControl.SelectTab("authorsPage");
             currentTabLabel.Text = "Autorzy";
+            RefreshAuthorsPanel();
         }
 
         /* ----------------------------------------------------------------------- */
 
 
-        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-
-        }
 
 
         /* ------------------------------------------------------------------------ */
@@ -217,7 +213,19 @@ namespace Reszke
             //when panel turned on
             LibraryManagement.FillLendingsDataGrid(ref userSession, lendingsDataGridView);
             //apply "all" filter
-            allFilterButton_Click(null, null);
+            lendedFilterButton_Click(null, null);
+        }
+
+        private int getFirstVisibleRowIndex(DataGridView dataGridView)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (row.Visible == true)
+                {
+                    return row.Index;
+                }
+            }
+            return -1;
         }
 
         private void lendingsDataGridView_SelectionChanged(object sender, EventArgs e)
@@ -226,13 +234,13 @@ namespace Reszke
             DataGridViewRow selectedRow = lendingsDataGridView.CurrentRow;
             bool isReturnable = false;
             if (selectedRow != null)
-            { 
+            {
                 if (selectedRow.Cells[9].Value.ToString() == "1" || selectedRow.Cells[9].Value.ToString() == "4")
                 {
                     //is returnable
                     isReturnable = true;
                 }
-                
+
             }
             returnLendingButton.Enabled = isReturnable;
         }
@@ -348,7 +356,17 @@ namespace Reszke
             returnedFilterButton.Enabled = true;
             allFilterButton.Enabled = true;
 
-
+            //auto select or disable delete button
+            int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
+            if (firstVisibleIndex == -1)
+            {
+                deleteLendingButton.Enabled = false;
+            }
+            else
+            {
+                lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
+                deleteLendingButton.Enabled = true;
+            }
         }
 
         private void overdueFilterButton_Click(object sender, EventArgs e)
@@ -376,6 +394,18 @@ namespace Reszke
             lendedFilterButton.Enabled = true;
             returnedFilterButton.Enabled = true;
             allFilterButton.Enabled = true;
+
+            // auto select or disable delete button
+            int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
+            if (firstVisibleIndex == -1)
+            {
+                deleteLendingButton.Enabled = false;
+            }
+            else
+            {
+                lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
+                deleteLendingButton.Enabled = true;
+            }
         }
 
         private void returnedFilterButton_Click(object sender, EventArgs e)
@@ -403,6 +433,18 @@ namespace Reszke
             lendedFilterButton.Enabled = true;
             overdueFilterButton.Enabled = true;
             allFilterButton.Enabled = true;
+
+            // auto select or disable delete button
+            int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
+            if (firstVisibleIndex == -1)
+            {
+                deleteLendingButton.Enabled = false;
+            }
+            else
+            {
+                lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
+                deleteLendingButton.Enabled = true;
+            }
         }
 
         private void allFilterButton_Click(object sender, EventArgs e)
@@ -416,12 +458,25 @@ namespace Reszke
 
             //disable button
             allFilterButton.Enabled = false;
-            
+
 
             //enable other buttons
             lendedFilterButton.Enabled = true;
             overdueFilterButton.Enabled = true;
             returnedFilterButton.Enabled = true;
+
+
+            // auto select or disable delete button
+            int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
+            if (firstVisibleIndex == -1)
+            {
+                deleteLendingButton.Enabled = false;
+            }
+            else
+            {
+                lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
+                deleteLendingButton.Enabled = true;
+            }
 
         }
 
@@ -442,8 +497,7 @@ namespace Reszke
         {
             //when panel turned on
             LibraryManagement.FillBooksDataGrid(ref userSession, booksDataGridView);
-            //apply "all" filter
-            //allFilterButton_Click(null, null);
+
         }
 
 
@@ -480,7 +534,25 @@ namespace Reszke
             RefreshBooksPanel();
         }
 
+
+        private void deleteBookButton_Click(object sender, EventArgs e)
+        {
+            //delete book record button click
+            int bookID = int.Parse(booksDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string bookDetails = "";
+            bookDetails += booksDataGridView.CurrentRow.Cells[2].Value.ToString() + " - ";
+            bookDetails += booksDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n(";
+            bookDetails += booksDataGridView.CurrentRow.Cells[3].Value.ToString() + ", ";
+            bookDetails += booksDataGridView.CurrentRow.Cells[4].Value.ToString() + ")";
+
+            DeleteBookForm deleteBookForm = new DeleteBookForm(ref userSession, bookID, bookDetails);
+            deleteBookForm.ShowDialog();
+            RefreshBooksPanel();
+        }
         /* ----------------------------------------------------------------------- */
+
+
+
 
 
         /* ------------------------------------------------------------------------ */
@@ -491,12 +563,23 @@ namespace Reszke
         private void RefreshCustomersPanel()
         {
             //when panel turned on
-            LibraryManagement.FillCustomersDataGrid(ref userSession, customersDataGridView);
-            //apply "all" filter
-            //allFilterButton_Click(null, null);
+            ClientManagement.FillCustomersDataGrid(ref userSession, customersDataGridView);
         }
 
+        private void deleteCustomerButton_Click(object sender, EventArgs e)
+        {
+            //delete client record button click
+            int bookID = int.Parse(customersDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string clientDetails = "";
+            clientDetails += customersDataGridView.CurrentRow.Cells[1].Value.ToString() + ", ";
+            clientDetails += customersDataGridView.CurrentRow.Cells[2].Value.ToString() + "\n";
+            clientDetails += customersDataGridView.CurrentRow.Cells[3].Value.ToString();
 
+
+            CustomerDeleteForm customerDeleteForm = new CustomerDeleteForm(ref userSession, bookID, clientDetails);
+            customerDeleteForm.ShowDialog();
+            RefreshCustomersPanel();
+        }
 
         /* ------------------------------------------------------------------------ */
         /*                             Employees panel                              */
@@ -505,10 +588,284 @@ namespace Reszke
         private void RefreshEmployeesPanel()
         {
             //when panel turned on
-            LibraryManagement.FillCustomersDataGrid(ref userSession, employeesDataGridView);
+            UserManagement.FillEmployeesDataGrid(ref userSession, employeesDataGridView);
+
+        }
+
+        private void deleteEmployeeButton_Click(object sender, EventArgs e)
+        {
+            //delete employee record button click
+            int employeeID = int.Parse(employeesDataGridView.CurrentRow.Cells[0].Value.ToString());
+            string employeeDetails = "";
+            employeeDetails += employeesDataGridView.CurrentRow.Cells[1].Value.ToString() + ", ";
+            employeeDetails += employeesDataGridView.CurrentRow.Cells[2].Value.ToString() + "\n";
+            employeeDetails += employeesDataGridView.CurrentRow.Cells[4].Value.ToString() + ", ";
+            employeeDetails += employeesDataGridView.CurrentRow.Cells[3].Value.ToString();
+
+
+            EmployeeDeleteForm employeeDeleteForm = new EmployeeDeleteForm(ref userSession, employeeID, employeeDetails);
+            employeeDeleteForm.ShowDialog();
+            RefreshEmployeesPanel();
+        }
+
+        /* ------------------------------------------------------------------------ */
+        /*                            Publishers panel                              */
+        /* ------------------------------------------------------------------------ */
+
+
+        private void RefreshPublishersPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillPublishersSelectDataGrid(ref userSession, publishersDataGridView);
+            publishersErrorLabel.Text = string.Empty;
+
+        }
+
+        private void addPublisherButton_Click(object sender, EventArgs e)
+        {
+            /*
+             * - PUBLISHER ADDING FUNCTION RETURN VALUES -
+             * 0 - successfull
+             * 1 - not logged in
+             * 3 - no permissions
+             * 4 - sql/other error
+             * 5 - invalid/empty parameters
+
+             */
+
+
+            int publisherAddResult = LibraryManagement.AddNewPublisher(ref userSession, publisherNameTextBox.Text);
+
+            switch (publisherAddResult)
+            {
+                case 0:
+                    //success
+                    publishersErrorLabel.Text = String.Empty;
+                    publisherNameTextBox.Text = "";
+                    MessageBox.Show("Pomyślnie dodano nowego wydawcę. ");
+                    RefreshPublishersPanel();
+                    break;
+                case 1:
+                    //success
+                    publishersErrorLabel.Text = "Użytkownik nie jest zalogowany. ";
+                    break;
+                case 3:
+                    //no pemissions
+                    publishersErrorLabel.Text = "Brak uprawnień do wykonania operacji. ";
+                    break;
+                case 4:
+                    //unknown erroro
+                    publishersErrorLabel.Text = "Wystąpił nieznany błąd. ";
+                    break;
+                case 5:
+                    //wrong parameters
+                    publishersErrorLabel.Text = "Podano błędne parametry. ";
+                    break;
+                default:
+                    //unhandled exeption
+                    publishersErrorLabel.Text = "Wystąpił nieobsłużony wyjątek. ";
+                    break;
+            }
+        }
+
+
+        private void deletePublisherButton_Click(object sender, EventArgs e)
+        {
+            //delete
+            int publisherID = int.Parse(publishersDataGridView.CurrentRow.Cells[0].Value.ToString());
+
+
+            int publisherDeletingResult = LibraryManagement.DeletePublisher(ref userSession, publisherID);
+
+
+            /*
+            * - PUBLISHER DELETE FUNCTION RETURN VALUES -
+            * 0 - successfull
+            * 1 - not logged in
+            * 3 - no permissions
+            * 4 - sql/other error (cannot be returned)
+            * 5 - invalid/empty parameters
+            */
+
+
+            switch (publisherDeletingResult)
+            {
+                case 0:
+                    //success
+                    publishersDeleteErrorLabel.Text = "";
+                    MessageBox.Show("Pomyślnie usunięto rekord klienta. ");
+                    RefreshPublishersPanel();
+                    break;
+                case 1:
+                    //not logged in
+                    publishersDeleteErrorLabel.Text = "Użytkownik nie jest zalogowany. ";
+                    break;
+                case 3:
+                    //no permissions
+                    publishersDeleteErrorLabel.Text = "Brak uprawnień do wykonania operacji";
+                    break;
+                case 4:
+                    //cannot delete
+                    publishersDeleteErrorLabel.Text = "Klient nie mógł zostać usunięty. ";
+                    break;
+                case 5:
+                    //wrong paramteretrs
+                    publishersDeleteErrorLabel.Text = "Podano błędne parametry. ";
+                    break;
+                default:
+                    //unbhandled
+                    publishersDeleteErrorLabel.Text = "Wystąpił nieobsługiwany wyjątek. ";
+                    break;
+
+            }
+        }
+
+        /* ------------------------------------------------------------------------ */
+        /*                              Authors panel                               */
+        /* ------------------------------------------------------------------------ */
+
+        private void RefreshAuthorsPanel()
+        {
+            //when panel turned on
+            LibraryManagement.FillAuthorsSelectDataGrid(ref userSession, authorsDataGridView);
+            authorsErrorLabel.Text = string.Empty;
+
+        }
+
+        private void firstLastNameRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (firstLastNameRadioButton.Checked)
+            {
+                //selected name and surname mode
+                authorFirstNameTextBox.Enabled = true;
+                authorLastNameTextBox.Enabled = true;
+
+                authorNameTextBox.Enabled = false;
+                authorNameTextBox.Text = "";
+            }
+            else
+            {
+                //selected only name mode
+                authorFirstNameTextBox.Enabled = false;
+                authorLastNameTextBox.Enabled = false;
+                authorFirstNameTextBox.Text = "";
+                authorLastNameTextBox.Text = "";
+
+                authorNameTextBox.Enabled = true;
+            }
+
+
 
         }
 
 
+        private void addAuthorButton_Click(object sender, EventArgs e)
+        {
+            /*
+             * - FUNCTION RETURN VALUES -
+             * 0 - successfull
+             * 1 - not logged in
+             * 3 - no permissions
+             * 4 - sql/other error
+             * 5 - invalid/empty parameters
+
+             */
+
+            int authorAddResult;
+
+            if (firstLastNameRadioButton.Checked)
+            {
+                //name and suranme
+                authorAddResult = LibraryManagement.AddNewAuthor(ref userSession, authorFirstNameTextBox.Text, authorLastNameTextBox.Text, "");
+
+            }
+            else
+            {
+                //only name
+                authorAddResult = LibraryManagement.AddNewAuthor(ref userSession, "", "", authorNameTextBox.Text);
+            }
+
+
+            switch (authorAddResult)
+            {
+                case 0:
+                    //success
+                    authorsErrorLabel.Text = "";
+                    MessageBox.Show("Dodano nowego autora pomyślnie. ");
+                    RefreshAuthorsPanel();
+                    break;
+                case 1:
+                    //not logged in
+                    authorsErrorLabel.Text = "Użytkownik nie jest zalogowany. ";
+                    break;
+                case 3:
+                    //not logged in
+                    authorsErrorLabel.Text = "Brak uprawnień do wykonania operacji. ";
+                    break;
+                case 4:
+                    //other error
+                    authorsErrorLabel.Text = "Wystąpił nieznany błąd. ";
+                    break;
+                case 5:
+                    //wrong parameters
+                    authorsErrorLabel.Text = "Podano błędne parametry. ";
+                    break;
+                default:
+                    //unhandled exception
+                    authorsErrorLabel.Text = "Wystąpił nieobsługiwany wyjątek. ";
+                    break;
+            }
+
+        }
+
+        private void deleteAuthorButton_Click(object sender, EventArgs e)
+        {
+            //delete
+            int authorID = int.Parse(authorsDataGridView.CurrentRow.Cells[0].Value.ToString());
+
+
+            int authorDeletingResult = LibraryManagement.DeleteAuthor(ref userSession, authorID);
+
+
+            /*
+            * - AUTHOR DELETE FUNCTION RETURN VALUES -
+            * 0 - successfull
+            * 1 - not logged in
+            * 3 - no permissions
+            * 4 - sql/other error (cannot be returned)
+            * 5 - invalid/empty parameters
+            */
+
+
+            switch (authorDeletingResult)
+            {
+                case 0:
+                    //success
+                    authorsDeleteErrorLabel.Text = "";
+                    MessageBox.Show("Pomyślnie usunięto rekord autora. ");
+                    RefreshAuthorsPanel();
+                    break;
+                case 1:
+                    //not logged in
+                    authorsDeleteErrorLabel.Text = "Użytkownik nie jest zalogowany. ";
+                    break;
+                case 3:
+                    //no permissions
+                    authorsDeleteErrorLabel.Text = "Brak uprawnień do wykonania operacji";
+                    break;
+                case 4:
+                    //cannot delete
+                    authorsDeleteErrorLabel.Text = "Klient nie mógł zostać usunięty. ";
+                    break;
+                case 5:
+                    //wrong paramteretrs
+                    authorsDeleteErrorLabel.Text = "Podano błędne parametry. ";
+                    break;
+                default:
+                    //unbhandled
+                    authorsDeleteErrorLabel.Text = "Wystąpił nieobsługiwany wyjątek. ";
+                    break;
+            }
+        }
     }
 }

@@ -29,14 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.sideNavPanel = new System.Windows.Forms.Panel();
             this.navButtonsPanel = new System.Windows.Forms.Panel();
@@ -55,9 +59,33 @@
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.userSessionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorsPage = new System.Windows.Forms.TabPage();
+            this.authorsPanel = new System.Windows.Forms.Panel();
+            this.authors = new System.Windows.Forms.Panel();
+            this.authorsErrorLabel = new System.Windows.Forms.Label();
+            this.nameRadioButton = new System.Windows.Forms.RadioButton();
+            this.firstLastNameRadioButton = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.authorLastNameTextBox = new System.Windows.Forms.TextBox();
+            this.authorFirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.authorNameTextBox = new System.Windows.Forms.TextBox();
+            this.authorLastNameLabel = new System.Windows.Forms.Label();
+            this.authorFirstNameLabel = new System.Windows.Forms.Label();
+            this.authorNameLabel = new System.Windows.Forms.Label();
+            this.newAuthorLabel = new System.Windows.Forms.Label();
+            this.addAuthorButton = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.authorsDeleteErrorLabel = new System.Windows.Forms.Label();
+            this.deleteAuthorButton = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.authorsDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.booksPage = new System.Windows.Forms.TabPage();
             this.booksPanel = new System.Windows.Forms.Panel();
             this.booksBottonPanel = new System.Windows.Forms.Panel();
+            this.deleteBookButton = new System.Windows.Forms.Button();
             this.changeBookQuantityButton = new System.Windows.Forms.Button();
             this.addNewBookButton = new System.Windows.Forms.Button();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
@@ -103,6 +131,7 @@
             this.customersPage = new System.Windows.Forms.TabPage();
             this.customersPanel = new System.Windows.Forms.Panel();
             this.customersBottomPanel = new System.Windows.Forms.Panel();
+            this.deleteCustomerButton = new System.Windows.Forms.Button();
             this.modifyCustomerButton = new System.Windows.Forms.Button();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -117,24 +146,48 @@
             this.employeesPage = new System.Windows.Forms.TabPage();
             this.employeesPanel = new System.Windows.Forms.Panel();
             this.employeesBottomPanel = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.deleteEmployeeButton = new System.Windows.Forms.Button();
+            this.addEmployeeButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.employeesDataGridView = new System.Windows.Forms.DataGridView();
-            this.clientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientEmailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statisticsPage = new System.Windows.Forms.TabPage();
+            this.employeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeEmailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeJobTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeePrivilege = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobTitleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.publishersPage = new System.Windows.Forms.TabPage();
+            this.publishersPanel = new System.Windows.Forms.Panel();
+            this.publishersSidePanel = new System.Windows.Forms.Panel();
+            this.publishersErrorLabel = new System.Windows.Forms.Label();
+            this.publisherNameTextBox = new System.Windows.Forms.TextBox();
+            this.publisherNameLabel = new System.Windows.Forms.Label();
+            this.newPublisherLabel = new System.Windows.Forms.Label();
+            this.addPublisherButton = new System.Windows.Forms.Button();
+            this.publishersBottomPanel = new System.Windows.Forms.Panel();
+            this.publishersDeleteErrorLabel = new System.Windows.Forms.Label();
+            this.deletePublisherButton = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.publishersDataGridView = new System.Windows.Forms.DataGridView();
+            this.publisherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statisticsPage = new System.Windows.Forms.TabPage();
             this.sideNavPanel.SuspendLayout();
             this.navButtonsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).BeginInit();
+            this.authorsPage.SuspendLayout();
+            this.authorsPanel.SuspendLayout();
+            this.authors.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.authorsDataGridView)).BeginInit();
             this.booksPage.SuspendLayout();
             this.booksPanel.SuspendLayout();
             this.booksBottonPanel.SuspendLayout();
@@ -156,6 +209,12 @@
             this.employeesBottomPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeesDataGridView)).BeginInit();
+            this.publishersPage.SuspendLayout();
+            this.publishersPanel.SuspendLayout();
+            this.publishersSidePanel.SuspendLayout();
+            this.publishersBottomPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.publishersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // sideNavPanel
@@ -187,7 +246,7 @@
             // 
             // authorsNavButton
             // 
-            this.authorsNavButton.Location = new System.Drawing.Point(32, 354);
+            this.authorsNavButton.Location = new System.Drawing.Point(32, 299);
             this.authorsNavButton.Name = "authorsNavButton";
             this.authorsNavButton.Size = new System.Drawing.Size(107, 38);
             this.authorsNavButton.TabIndex = 3;
@@ -197,7 +256,7 @@
             // 
             // publishersNavButton
             // 
-            this.publishersNavButton.Location = new System.Drawing.Point(32, 299);
+            this.publishersNavButton.Location = new System.Drawing.Point(32, 246);
             this.publishersNavButton.Name = "publishersNavButton";
             this.publishersNavButton.Size = new System.Drawing.Size(107, 38);
             this.publishersNavButton.TabIndex = 3;
@@ -207,7 +266,7 @@
             // 
             // statisticsNavButton
             // 
-            this.statisticsNavButton.Location = new System.Drawing.Point(32, 245);
+            this.statisticsNavButton.Location = new System.Drawing.Point(32, 352);
             this.statisticsNavButton.Name = "statisticsNavButton";
             this.statisticsNavButton.Size = new System.Drawing.Size(107, 38);
             this.statisticsNavButton.TabIndex = 3;
@@ -323,12 +382,277 @@
             // 
             // authorsPage
             // 
+            this.authorsPage.Controls.Add(this.authorsPanel);
             this.authorsPage.Location = new System.Drawing.Point(4, 27);
             this.authorsPage.Name = "authorsPage";
             this.authorsPage.Size = new System.Drawing.Size(709, 487);
             this.authorsPage.TabIndex = 3;
             this.authorsPage.Text = "authorsPage";
             this.authorsPage.UseVisualStyleBackColor = true;
+            // 
+            // authorsPanel
+            // 
+            this.authorsPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.authorsPanel.Controls.Add(this.authors);
+            this.authorsPanel.Controls.Add(this.panel6);
+            this.authorsPanel.Controls.Add(this.panel7);
+            this.authorsPanel.Controls.Add(this.authorsDataGridView);
+            this.authorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.authorsPanel.Location = new System.Drawing.Point(0, 0);
+            this.authorsPanel.Name = "authorsPanel";
+            this.authorsPanel.Size = new System.Drawing.Size(709, 487);
+            this.authorsPanel.TabIndex = 9;
+            // 
+            // authors
+            // 
+            this.authors.Controls.Add(this.authorsErrorLabel);
+            this.authors.Controls.Add(this.nameRadioButton);
+            this.authors.Controls.Add(this.firstLastNameRadioButton);
+            this.authors.Controls.Add(this.label1);
+            this.authors.Controls.Add(this.authorLastNameTextBox);
+            this.authors.Controls.Add(this.authorFirstNameTextBox);
+            this.authors.Controls.Add(this.authorNameTextBox);
+            this.authors.Controls.Add(this.authorLastNameLabel);
+            this.authors.Controls.Add(this.authorFirstNameLabel);
+            this.authors.Controls.Add(this.authorNameLabel);
+            this.authors.Controls.Add(this.newAuthorLabel);
+            this.authors.Controls.Add(this.addAuthorButton);
+            this.authors.Dock = System.Windows.Forms.DockStyle.Right;
+            this.authors.Location = new System.Drawing.Point(354, 0);
+            this.authors.Name = "authors";
+            this.authors.Size = new System.Drawing.Size(355, 409);
+            this.authors.TabIndex = 3;
+            // 
+            // authorsErrorLabel
+            // 
+            this.authorsErrorLabel.AutoSize = true;
+            this.authorsErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.authorsErrorLabel.Location = new System.Drawing.Point(40, 339);
+            this.authorsErrorLabel.Name = "authorsErrorLabel";
+            this.authorsErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.authorsErrorLabel.TabIndex = 20;
+            // 
+            // nameRadioButton
+            // 
+            this.nameRadioButton.AutoSize = true;
+            this.nameRadioButton.Location = new System.Drawing.Point(155, 84);
+            this.nameRadioButton.Name = "nameRadioButton";
+            this.nameRadioButton.Size = new System.Drawing.Size(60, 19);
+            this.nameRadioButton.TabIndex = 19;
+            this.nameRadioButton.Text = "Nazwa";
+            this.nameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // firstLastNameRadioButton
+            // 
+            this.firstLastNameRadioButton.AutoSize = true;
+            this.firstLastNameRadioButton.Checked = true;
+            this.firstLastNameRadioButton.Location = new System.Drawing.Point(40, 84);
+            this.firstLastNameRadioButton.Name = "firstLastNameRadioButton";
+            this.firstLastNameRadioButton.Size = new System.Drawing.Size(105, 19);
+            this.firstLastNameRadioButton.TabIndex = 18;
+            this.firstLastNameRadioButton.TabStop = true;
+            this.firstLastNameRadioButton.Text = "Imię i nazwisko";
+            this.firstLastNameRadioButton.UseVisualStyleBackColor = true;
+            this.firstLastNameRadioButton.CheckedChanged += new System.EventHandler(this.firstLastNameRadioButton_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(40, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.TabIndex = 17;
+            // 
+            // authorLastNameTextBox
+            // 
+            this.authorLastNameTextBox.Location = new System.Drawing.Point(38, 199);
+            this.authorLastNameTextBox.Name = "authorLastNameTextBox";
+            this.authorLastNameTextBox.Size = new System.Drawing.Size(267, 23);
+            this.authorLastNameTextBox.TabIndex = 16;
+            // 
+            // authorFirstNameTextBox
+            // 
+            this.authorFirstNameTextBox.Location = new System.Drawing.Point(38, 136);
+            this.authorFirstNameTextBox.Name = "authorFirstNameTextBox";
+            this.authorFirstNameTextBox.Size = new System.Drawing.Size(267, 23);
+            this.authorFirstNameTextBox.TabIndex = 16;
+            // 
+            // authorNameTextBox
+            // 
+            this.authorNameTextBox.Enabled = false;
+            this.authorNameTextBox.Location = new System.Drawing.Point(39, 288);
+            this.authorNameTextBox.Name = "authorNameTextBox";
+            this.authorNameTextBox.Size = new System.Drawing.Size(267, 23);
+            this.authorNameTextBox.TabIndex = 16;
+            // 
+            // authorLastNameLabel
+            // 
+            this.authorLastNameLabel.AutoSize = true;
+            this.authorLastNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.authorLastNameLabel.Location = new System.Drawing.Point(39, 169);
+            this.authorLastNameLabel.Name = "authorLastNameLabel";
+            this.authorLastNameLabel.Size = new System.Drawing.Size(80, 21);
+            this.authorLastNameLabel.TabIndex = 15;
+            this.authorLastNameLabel.Text = "Nazwisko:";
+            // 
+            // authorFirstNameLabel
+            // 
+            this.authorFirstNameLabel.AutoSize = true;
+            this.authorFirstNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.authorFirstNameLabel.Location = new System.Drawing.Point(39, 106);
+            this.authorFirstNameLabel.Name = "authorFirstNameLabel";
+            this.authorFirstNameLabel.Size = new System.Drawing.Size(43, 21);
+            this.authorFirstNameLabel.TabIndex = 15;
+            this.authorFirstNameLabel.Text = "Imię:";
+            // 
+            // authorNameLabel
+            // 
+            this.authorNameLabel.AutoSize = true;
+            this.authorNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.authorNameLabel.Location = new System.Drawing.Point(40, 258);
+            this.authorNameLabel.Name = "authorNameLabel";
+            this.authorNameLabel.Size = new System.Drawing.Size(64, 21);
+            this.authorNameLabel.TabIndex = 15;
+            this.authorNameLabel.Text = "Nazwa: ";
+            // 
+            // newAuthorLabel
+            // 
+            this.newAuthorLabel.AutoSize = true;
+            this.newAuthorLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.newAuthorLabel.Location = new System.Drawing.Point(39, 30);
+            this.newAuthorLabel.Name = "newAuthorLabel";
+            this.newAuthorLabel.Size = new System.Drawing.Size(268, 30);
+            this.newAuthorLabel.TabIndex = 14;
+            this.newAuthorLabel.Text = "Dodawanie nowego autora:";
+            // 
+            // addAuthorButton
+            // 
+            this.addAuthorButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addAuthorButton.Location = new System.Drawing.Point(110, 352);
+            this.addAuthorButton.Name = "addAuthorButton";
+            this.addAuthorButton.Size = new System.Drawing.Size(103, 40);
+            this.addAuthorButton.TabIndex = 0;
+            this.addAuthorButton.Text = "Dodaj";
+            this.addAuthorButton.UseVisualStyleBackColor = true;
+            this.addAuthorButton.Click += new System.EventHandler(this.addAuthorButton_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel6.Controls.Add(this.authorsDeleteErrorLabel);
+            this.panel6.Controls.Add(this.deleteAuthorButton);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 409);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(709, 78);
+            this.panel6.TabIndex = 2;
+            // 
+            // authorsDeleteErrorLabel
+            // 
+            this.authorsDeleteErrorLabel.AutoSize = true;
+            this.authorsDeleteErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.authorsDeleteErrorLabel.Location = new System.Drawing.Point(137, 32);
+            this.authorsDeleteErrorLabel.Name = "authorsDeleteErrorLabel";
+            this.authorsDeleteErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.authorsDeleteErrorLabel.TabIndex = 3;
+            // 
+            // deleteAuthorButton
+            // 
+            this.deleteAuthorButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteAuthorButton.Location = new System.Drawing.Point(28, 19);
+            this.deleteAuthorButton.Name = "deleteAuthorButton";
+            this.deleteAuthorButton.Size = new System.Drawing.Size(103, 40);
+            this.deleteAuthorButton.TabIndex = 0;
+            this.deleteAuthorButton.Text = "Usuń";
+            this.deleteAuthorButton.UseVisualStyleBackColor = true;
+            this.deleteAuthorButton.Click += new System.EventHandler(this.deleteAuthorButton_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.button8);
+            this.panel7.Controls.Add(this.button11);
+            this.panel7.Location = new System.Drawing.Point(0, 1955);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(709, 80);
+            this.panel7.TabIndex = 1;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.Location = new System.Drawing.Point(137, -24);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(103, 40);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "Zmień ilość";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button11.Location = new System.Drawing.Point(14, -24);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(103, 40);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "Dodaj";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // authorsDataGridView
+            // 
+            this.authorsDataGridView.AllowUserToAddRows = false;
+            this.authorsDataGridView.AllowUserToDeleteRows = false;
+            this.authorsDataGridView.AllowUserToResizeRows = false;
+            this.authorsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.authorsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.authorsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.authorsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.authorsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.authorsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.authorsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.authorsDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.authorsDataGridView.MultiSelect = false;
+            this.authorsDataGridView.Name = "authorsDataGridView";
+            this.authorsDataGridView.ReadOnly = true;
+            this.authorsDataGridView.RowHeadersVisible = false;
+            this.authorsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.authorsDataGridView.RowTemplate.Height = 25;
+            this.authorsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.authorsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.authorsDataGridView.Size = new System.Drawing.Size(709, 487);
+            this.authorsDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn2.FillWeight = 68.52792F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nazwa";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // booksPage
             // 
@@ -356,12 +680,24 @@
             // 
             this.booksBottonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.booksBottonPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.booksBottonPanel.Controls.Add(this.deleteBookButton);
             this.booksBottonPanel.Controls.Add(this.changeBookQuantityButton);
             this.booksBottonPanel.Controls.Add(this.addNewBookButton);
             this.booksBottonPanel.Location = new System.Drawing.Point(0, 407);
             this.booksBottonPanel.Name = "booksBottonPanel";
             this.booksBottonPanel.Size = new System.Drawing.Size(709, 80);
             this.booksBottonPanel.TabIndex = 1;
+            // 
+            // deleteBookButton
+            // 
+            this.deleteBookButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteBookButton.Location = new System.Drawing.Point(260, 16);
+            this.deleteBookButton.Name = "deleteBookButton";
+            this.deleteBookButton.Size = new System.Drawing.Size(103, 40);
+            this.deleteBookButton.TabIndex = 0;
+            this.deleteBookButton.Text = "Usuń";
+            this.deleteBookButton.UseVisualStyleBackColor = true;
+            this.deleteBookButton.Click += new System.EventHandler(this.deleteBookButton_Click);
             // 
             // changeBookQuantityButton
             // 
@@ -391,14 +727,14 @@
             this.booksDataGridView.AllowUserToDeleteRows = false;
             this.booksDataGridView.AllowUserToResizeRows = false;
             this.booksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booksDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booksDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.booksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -411,14 +747,14 @@
             this.inStock,
             this.avaliableQuantity,
             this.totalQuantity});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.booksDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.booksDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.booksDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.booksDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.booksDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -630,14 +966,14 @@
             this.lendingsDataGridView.AllowUserToDeleteRows = false;
             this.lendingsDataGridView.AllowUserToResizeRows = false;
             this.lendingsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lendingsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lendingsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.lendingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lendingsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -650,14 +986,14 @@
             this.finalReturnDate,
             this.lendingStatus,
             this.lendingStatusExtended});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lendingsDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lendingsDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.lendingsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lendingsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.lendingsDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -820,9 +1156,9 @@
             this.mainTabControl.Controls.Add(this.booksPage);
             this.mainTabControl.Controls.Add(this.customersPage);
             this.mainTabControl.Controls.Add(this.employeesPage);
-            this.mainTabControl.Controls.Add(this.statisticsPage);
             this.mainTabControl.Controls.Add(this.publishersPage);
             this.mainTabControl.Controls.Add(this.authorsPage);
+            this.mainTabControl.Controls.Add(this.statisticsPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(211, 56);
             this.mainTabControl.Margin = new System.Windows.Forms.Padding(0);
@@ -832,7 +1168,6 @@
             this.mainTabControl.Size = new System.Drawing.Size(717, 518);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 2;
-            this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.mainTabControl_SelectedIndexChanged);
             // 
             // customersPage
             // 
@@ -859,6 +1194,7 @@
             // customersBottomPanel
             // 
             this.customersBottomPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.customersBottomPanel.Controls.Add(this.deleteCustomerButton);
             this.customersBottomPanel.Controls.Add(this.modifyCustomerButton);
             this.customersBottomPanel.Controls.Add(this.addCustomerButton);
             this.customersBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -867,6 +1203,17 @@
             this.customersBottomPanel.Size = new System.Drawing.Size(709, 80);
             this.customersBottomPanel.TabIndex = 2;
             // 
+            // deleteCustomerButton
+            // 
+            this.deleteCustomerButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteCustomerButton.Location = new System.Drawing.Point(256, 17);
+            this.deleteCustomerButton.Name = "deleteCustomerButton";
+            this.deleteCustomerButton.Size = new System.Drawing.Size(103, 40);
+            this.deleteCustomerButton.TabIndex = 0;
+            this.deleteCustomerButton.Text = "Usuń";
+            this.deleteCustomerButton.UseVisualStyleBackColor = true;
+            this.deleteCustomerButton.Click += new System.EventHandler(this.deleteCustomerButton_Click);
+            // 
             // modifyCustomerButton
             // 
             this.modifyCustomerButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -874,7 +1221,7 @@
             this.modifyCustomerButton.Name = "modifyCustomerButton";
             this.modifyCustomerButton.Size = new System.Drawing.Size(103, 40);
             this.modifyCustomerButton.TabIndex = 0;
-            this.modifyCustomerButton.Text = "Zmień ilość";
+            this.modifyCustomerButton.Text = "Modyfikuj";
             this.modifyCustomerButton.UseVisualStyleBackColor = true;
             // 
             // addCustomerButton
@@ -924,14 +1271,14 @@
             this.customersDataGridView.AllowUserToDeleteRows = false;
             this.customersDataGridView.AllowUserToResizeRows = false;
             this.customersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.customersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.customersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.customersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerID,
@@ -939,14 +1286,14 @@
             this.customerPhoneNumber,
             this.customerAddress,
             this.customerEmailAddress});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.customersDataGridView.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.customersDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.customersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customersDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.customersDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -1023,33 +1370,34 @@
             // employeesBottomPanel
             // 
             this.employeesBottomPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.employeesBottomPanel.Controls.Add(this.button3);
-            this.employeesBottomPanel.Controls.Add(this.button4);
+            this.employeesBottomPanel.Controls.Add(this.deleteEmployeeButton);
+            this.employeesBottomPanel.Controls.Add(this.addEmployeeButton);
             this.employeesBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.employeesBottomPanel.Location = new System.Drawing.Point(0, 407);
             this.employeesBottomPanel.Name = "employeesBottomPanel";
             this.employeesBottomPanel.Size = new System.Drawing.Size(709, 80);
             this.employeesBottomPanel.TabIndex = 2;
             // 
-            // button3
+            // deleteEmployeeButton
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.Location = new System.Drawing.Point(137, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 40);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Zmień ilość";
-            this.button3.UseVisualStyleBackColor = true;
+            this.deleteEmployeeButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deleteEmployeeButton.Location = new System.Drawing.Point(137, 19);
+            this.deleteEmployeeButton.Name = "deleteEmployeeButton";
+            this.deleteEmployeeButton.Size = new System.Drawing.Size(103, 40);
+            this.deleteEmployeeButton.TabIndex = 0;
+            this.deleteEmployeeButton.Text = "Usuń";
+            this.deleteEmployeeButton.UseVisualStyleBackColor = true;
+            this.deleteEmployeeButton.Click += new System.EventHandler(this.deleteEmployeeButton_Click);
             // 
-            // button4
+            // addEmployeeButton
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button4.Location = new System.Drawing.Point(14, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 40);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Dodaj";
-            this.button4.UseVisualStyleBackColor = true;
+            this.addEmployeeButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addEmployeeButton.Location = new System.Drawing.Point(14, 19);
+            this.addEmployeeButton.Name = "addEmployeeButton";
+            this.addEmployeeButton.Size = new System.Drawing.Size(103, 40);
+            this.addEmployeeButton.TabIndex = 0;
+            this.addEmployeeButton.Text = "Dodaj";
+            this.addEmployeeButton.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -1088,29 +1436,31 @@
             this.employeesDataGridView.AllowUserToDeleteRows = false;
             this.employeesDataGridView.AllowUserToResizeRows = false;
             this.employeesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.employeesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeesDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.employeesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.employeesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientID,
-            this.clientName,
-            this.clientPhoneNumber,
-            this.clientAddress,
-            this.clientEmailAddress});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.employeesDataGridView.DefaultCellStyle = dataGridViewCellStyle16;
+            this.employeeID,
+            this.employeeLogin,
+            this.employeeName,
+            this.employeeEmailAddress,
+            this.employeeJobTitle,
+            this.employeePrivilege,
+            this.jobTitleID});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.employeesDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
             this.employeesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.employeesDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -1125,42 +1475,255 @@
             this.employeesDataGridView.Size = new System.Drawing.Size(709, 487);
             this.employeesDataGridView.TabIndex = 0;
             // 
-            // clientID
+            // employeeID
             // 
-            this.clientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clientID.FillWeight = 68.52792F;
-            this.clientID.HeaderText = "ID";
-            this.clientID.Name = "clientID";
-            this.clientID.ReadOnly = true;
-            this.clientID.Width = 40;
+            this.employeeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.employeeID.FillWeight = 68.52792F;
+            this.employeeID.HeaderText = "ID";
+            this.employeeID.Name = "employeeID";
+            this.employeeID.ReadOnly = true;
+            this.employeeID.Width = 40;
             // 
-            // clientName
+            // employeeLogin
             // 
-            this.clientName.FillWeight = 85.32957F;
-            this.clientName.HeaderText = "Imię i nazwisko";
-            this.clientName.Name = "clientName";
-            this.clientName.ReadOnly = true;
+            this.employeeLogin.HeaderText = "Login";
+            this.employeeLogin.Name = "employeeLogin";
+            this.employeeLogin.ReadOnly = true;
             // 
-            // clientPhoneNumber
+            // employeeName
             // 
-            this.clientPhoneNumber.FillWeight = 85.32957F;
-            this.clientPhoneNumber.HeaderText = "Nr telefonu";
-            this.clientPhoneNumber.Name = "clientPhoneNumber";
-            this.clientPhoneNumber.ReadOnly = true;
+            this.employeeName.FillWeight = 85.32957F;
+            this.employeeName.HeaderText = "Imię i nazwisko";
+            this.employeeName.Name = "employeeName";
+            this.employeeName.ReadOnly = true;
             // 
-            // clientAddress
+            // employeeEmailAddress
             // 
-            this.clientAddress.FillWeight = 85.32957F;
-            this.clientAddress.HeaderText = "Adres zamieszkania";
-            this.clientAddress.Name = "clientAddress";
-            this.clientAddress.ReadOnly = true;
+            this.employeeEmailAddress.FillWeight = 85.32957F;
+            this.employeeEmailAddress.HeaderText = "E-mail";
+            this.employeeEmailAddress.Name = "employeeEmailAddress";
+            this.employeeEmailAddress.ReadOnly = true;
             // 
-            // clientEmailAddress
+            // employeeJobTitle
             // 
-            this.clientEmailAddress.FillWeight = 85.32957F;
-            this.clientEmailAddress.HeaderText = "Adres e-mail";
-            this.clientEmailAddress.Name = "clientEmailAddress";
-            this.clientEmailAddress.ReadOnly = true;
+            this.employeeJobTitle.FillWeight = 85.32957F;
+            this.employeeJobTitle.HeaderText = "Stanowisko";
+            this.employeeJobTitle.Name = "employeeJobTitle";
+            this.employeeJobTitle.ReadOnly = true;
+            // 
+            // employeePrivilege
+            // 
+            this.employeePrivilege.FillWeight = 85.32957F;
+            this.employeePrivilege.HeaderText = "Uprawnienia";
+            this.employeePrivilege.Name = "employeePrivilege";
+            this.employeePrivilege.ReadOnly = true;
+            // 
+            // jobTitleID
+            // 
+            this.jobTitleID.HeaderText = "jobTitleID";
+            this.jobTitleID.Name = "jobTitleID";
+            this.jobTitleID.ReadOnly = true;
+            this.jobTitleID.Visible = false;
+            // 
+            // publishersPage
+            // 
+            this.publishersPage.Controls.Add(this.publishersPanel);
+            this.publishersPage.Location = new System.Drawing.Point(4, 27);
+            this.publishersPage.Name = "publishersPage";
+            this.publishersPage.Size = new System.Drawing.Size(709, 487);
+            this.publishersPage.TabIndex = 6;
+            this.publishersPage.Text = "publishersPage";
+            this.publishersPage.UseVisualStyleBackColor = true;
+            // 
+            // publishersPanel
+            // 
+            this.publishersPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.publishersPanel.Controls.Add(this.publishersSidePanel);
+            this.publishersPanel.Controls.Add(this.publishersBottomPanel);
+            this.publishersPanel.Controls.Add(this.panel5);
+            this.publishersPanel.Controls.Add(this.publishersDataGridView);
+            this.publishersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.publishersPanel.Location = new System.Drawing.Point(0, 0);
+            this.publishersPanel.Name = "publishersPanel";
+            this.publishersPanel.Size = new System.Drawing.Size(709, 487);
+            this.publishersPanel.TabIndex = 8;
+            // 
+            // publishersSidePanel
+            // 
+            this.publishersSidePanel.Controls.Add(this.publishersErrorLabel);
+            this.publishersSidePanel.Controls.Add(this.publisherNameTextBox);
+            this.publishersSidePanel.Controls.Add(this.publisherNameLabel);
+            this.publishersSidePanel.Controls.Add(this.newPublisherLabel);
+            this.publishersSidePanel.Controls.Add(this.addPublisherButton);
+            this.publishersSidePanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.publishersSidePanel.Location = new System.Drawing.Point(354, 0);
+            this.publishersSidePanel.Name = "publishersSidePanel";
+            this.publishersSidePanel.Size = new System.Drawing.Size(355, 413);
+            this.publishersSidePanel.TabIndex = 3;
+            // 
+            // publishersErrorLabel
+            // 
+            this.publishersErrorLabel.AutoSize = true;
+            this.publishersErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.publishersErrorLabel.Location = new System.Drawing.Point(40, 144);
+            this.publishersErrorLabel.Name = "publishersErrorLabel";
+            this.publishersErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.publishersErrorLabel.TabIndex = 17;
+            // 
+            // publisherNameTextBox
+            // 
+            this.publisherNameTextBox.Location = new System.Drawing.Point(39, 108);
+            this.publisherNameTextBox.Name = "publisherNameTextBox";
+            this.publisherNameTextBox.Size = new System.Drawing.Size(267, 23);
+            this.publisherNameTextBox.TabIndex = 16;
+            // 
+            // publisherNameLabel
+            // 
+            this.publisherNameLabel.AutoSize = true;
+            this.publisherNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.publisherNameLabel.Location = new System.Drawing.Point(39, 75);
+            this.publisherNameLabel.Name = "publisherNameLabel";
+            this.publisherNameLabel.Size = new System.Drawing.Size(64, 21);
+            this.publisherNameLabel.TabIndex = 15;
+            this.publisherNameLabel.Text = "Nazwa: ";
+            // 
+            // newPublisherLabel
+            // 
+            this.newPublisherLabel.AutoSize = true;
+            this.newPublisherLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.newPublisherLabel.Location = new System.Drawing.Point(39, 30);
+            this.newPublisherLabel.Name = "newPublisherLabel";
+            this.newPublisherLabel.Size = new System.Drawing.Size(291, 30);
+            this.newPublisherLabel.TabIndex = 14;
+            this.newPublisherLabel.Text = "Dodawanie nowego wydawcy:";
+            // 
+            // addPublisherButton
+            // 
+            this.addPublisherButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addPublisherButton.Location = new System.Drawing.Point(110, 180);
+            this.addPublisherButton.Name = "addPublisherButton";
+            this.addPublisherButton.Size = new System.Drawing.Size(103, 40);
+            this.addPublisherButton.TabIndex = 0;
+            this.addPublisherButton.Text = "Dodaj";
+            this.addPublisherButton.UseVisualStyleBackColor = true;
+            this.addPublisherButton.Click += new System.EventHandler(this.addPublisherButton_Click);
+            // 
+            // publishersBottomPanel
+            // 
+            this.publishersBottomPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.publishersBottomPanel.Controls.Add(this.publishersDeleteErrorLabel);
+            this.publishersBottomPanel.Controls.Add(this.deletePublisherButton);
+            this.publishersBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.publishersBottomPanel.Location = new System.Drawing.Point(0, 413);
+            this.publishersBottomPanel.Name = "publishersBottomPanel";
+            this.publishersBottomPanel.Size = new System.Drawing.Size(709, 74);
+            this.publishersBottomPanel.TabIndex = 2;
+            // 
+            // publishersDeleteErrorLabel
+            // 
+            this.publishersDeleteErrorLabel.AutoSize = true;
+            this.publishersDeleteErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.publishersDeleteErrorLabel.Location = new System.Drawing.Point(137, 30);
+            this.publishersDeleteErrorLabel.Name = "publishersDeleteErrorLabel";
+            this.publishersDeleteErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.publishersDeleteErrorLabel.TabIndex = 2;
+            // 
+            // deletePublisherButton
+            // 
+            this.deletePublisherButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.deletePublisherButton.Location = new System.Drawing.Point(28, 17);
+            this.deletePublisherButton.Name = "deletePublisherButton";
+            this.deletePublisherButton.Size = new System.Drawing.Size(103, 40);
+            this.deletePublisherButton.TabIndex = 1;
+            this.deletePublisherButton.Text = "Usuń";
+            this.deletePublisherButton.UseVisualStyleBackColor = true;
+            this.deletePublisherButton.Click += new System.EventHandler(this.deletePublisherButton_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel5.Controls.Add(this.button9);
+            this.panel5.Controls.Add(this.button10);
+            this.panel5.Location = new System.Drawing.Point(0, 1568);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(709, 80);
+            this.panel5.TabIndex = 1;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button9.Location = new System.Drawing.Point(137, -14);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(103, 40);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "Zmień ilość";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button10.Location = new System.Drawing.Point(14, -14);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(103, 40);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "Dodaj";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // publishersDataGridView
+            // 
+            this.publishersDataGridView.AllowUserToAddRows = false;
+            this.publishersDataGridView.AllowUserToDeleteRows = false;
+            this.publishersDataGridView.AllowUserToResizeRows = false;
+            this.publishersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.publishersDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.publishersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.publishersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.publisherID,
+            this.publisherName});
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.publishersDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            this.publishersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.publishersDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.publishersDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.publishersDataGridView.MultiSelect = false;
+            this.publishersDataGridView.Name = "publishersDataGridView";
+            this.publishersDataGridView.ReadOnly = true;
+            this.publishersDataGridView.RowHeadersVisible = false;
+            this.publishersDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.publishersDataGridView.RowTemplate.Height = 25;
+            this.publishersDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.publishersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.publishersDataGridView.Size = new System.Drawing.Size(709, 487);
+            this.publishersDataGridView.TabIndex = 0;
+            // 
+            // publisherID
+            // 
+            this.publisherID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.publisherID.FillWeight = 68.52792F;
+            this.publisherID.HeaderText = "ID";
+            this.publisherID.Name = "publisherID";
+            this.publisherID.ReadOnly = true;
+            this.publisherID.Width = 40;
+            // 
+            // publisherName
+            // 
+            this.publisherName.HeaderText = "Nazwa";
+            this.publisherName.Name = "publisherName";
+            this.publisherName.ReadOnly = true;
             // 
             // statisticsPage
             // 
@@ -1170,15 +1733,6 @@
             this.statisticsPage.TabIndex = 5;
             this.statisticsPage.Text = "statisticsPage";
             this.statisticsPage.UseVisualStyleBackColor = true;
-            // 
-            // publishersPage
-            // 
-            this.publishersPage.Location = new System.Drawing.Point(4, 27);
-            this.publishersPage.Name = "publishersPage";
-            this.publishersPage.Size = new System.Drawing.Size(709, 487);
-            this.publishersPage.TabIndex = 6;
-            this.publishersPage.Text = "publishersPage";
-            this.publishersPage.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
@@ -1199,6 +1753,14 @@
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).EndInit();
+            this.authorsPage.ResumeLayout(false);
+            this.authorsPanel.ResumeLayout(false);
+            this.authors.ResumeLayout(false);
+            this.authors.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.authorsDataGridView)).EndInit();
             this.booksPage.ResumeLayout(false);
             this.booksPanel.ResumeLayout(false);
             this.booksBottonPanel.ResumeLayout(false);
@@ -1222,6 +1784,14 @@
             this.employeesBottomPanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.employeesDataGridView)).EndInit();
+            this.publishersPage.ResumeLayout(false);
+            this.publishersPanel.ResumeLayout(false);
+            this.publishersSidePanel.ResumeLayout(false);
+            this.publishersSidePanel.PerformLayout();
+            this.publishersBottomPanel.ResumeLayout(false);
+            this.publishersBottomPanel.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.publishersDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1309,16 +1879,59 @@
         private DataGridViewTextBoxColumn customerEmailAddress;
         private Panel employeesPanel;
         private Panel employeesBottomPanel;
-        private Button button3;
-        private Button button4;
+        private Button deleteEmployeeButton;
+        private Button addEmployeeButton;
         private Panel panel4;
         private Button button5;
         private Button button6;
         public DataGridView employeesDataGridView;
-        private DataGridViewTextBoxColumn clientID;
-        private DataGridViewTextBoxColumn clientName;
-        private DataGridViewTextBoxColumn clientPhoneNumber;
-        private DataGridViewTextBoxColumn clientAddress;
-        private DataGridViewTextBoxColumn clientEmailAddress;
+        private DataGridViewTextBoxColumn employeeID;
+        private DataGridViewTextBoxColumn employeeLogin;
+        private DataGridViewTextBoxColumn employeeName;
+        private DataGridViewTextBoxColumn employeeEmailAddress;
+        private DataGridViewTextBoxColumn employeeJobTitle;
+        private DataGridViewTextBoxColumn employeePrivilege;
+        private DataGridViewTextBoxColumn jobTitleID;
+        private Panel publishersPanel;
+        private Panel publishersSidePanel;
+        private Button addPublisherButton;
+        private Panel publishersBottomPanel;
+        private Panel panel5;
+        private Button button9;
+        private Button button10;
+        public DataGridView publishersDataGridView;
+        private DataGridViewTextBoxColumn publisherID;
+        private DataGridViewTextBoxColumn publisherName;
+        private Label publishersErrorLabel;
+        private TextBox publisherNameTextBox;
+        private Label publisherNameLabel;
+        private Label newPublisherLabel;
+        private Panel authorsPanel;
+        private Panel authors;
+        private RadioButton nameRadioButton;
+        private RadioButton firstLastNameRadioButton;
+        private Label label1;
+        private TextBox authorLastNameTextBox;
+        private TextBox authorFirstNameTextBox;
+        private TextBox authorNameTextBox;
+        private Label authorLastNameLabel;
+        private Label authorFirstNameLabel;
+        private Label authorNameLabel;
+        private Label newAuthorLabel;
+        private Button addAuthorButton;
+        private Panel panel6;
+        private Panel panel7;
+        private Button button8;
+        private Button button11;
+        public DataGridView authorsDataGridView;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private Label authorsErrorLabel;
+        private Button deleteAuthorButton;
+        private Button deletePublisherButton;
+        private Button deleteBookButton;
+        private Button deleteCustomerButton;
+        private Label authorsDeleteErrorLabel;
+        private Label publishersDeleteErrorLabel;
     }
 }
