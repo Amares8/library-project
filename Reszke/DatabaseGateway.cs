@@ -69,6 +69,13 @@ namespace Reszke
                 Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
                 return -1;
             }
+            finally
+            {
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Open)
+                {
+                    databaseConnection.Close();
+                }
+            }
         }
 
         public static string[,] ExecuteSelectCommand(string sql, ref MySqlConnection databaseConnection)
@@ -133,6 +140,13 @@ namespace Reszke
                 Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
                 return null;
             }
+            finally
+            {
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Open)
+                {
+                    databaseConnection.Close();
+                }
+            }
 
         }
 
@@ -160,6 +174,13 @@ namespace Reszke
                 //error
                 Debugger.CreateLogMessage($"Błąd przy wykonywaniu komendy '{sql}', ({e.Message})");
                 return null;
+            }
+            finally
+            {
+                if (databaseConnection != null && databaseConnection.State == ConnectionState.Open)
+                {
+                    databaseConnection.Close();
+                }
             }
         }
 

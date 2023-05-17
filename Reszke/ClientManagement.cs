@@ -37,7 +37,7 @@ namespace Reszke
 
             if (newName == "" || newSurname == "" || newPhoneNumber == "" || newPostalCode == "" ||
                 newCity == "" || newStreet == ""  || newHouseNumber == "" ||
-                newApartmentNumber == "" || newEmail == "")
+                 newEmail == "")
             {
                 //invalid parameters
                 Debugger.CreateLogMessage("Błędne lub puste parametry przy próbie dodania nowego klienta");

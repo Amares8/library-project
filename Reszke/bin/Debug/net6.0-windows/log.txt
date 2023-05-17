@@ -9,3 +9,17 @@
 17.05.2023 21:30:12 - Błąd przy wykonywaniu komendy 'DELETE FROM bookauthors WHERE authorID = 4', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_1` FOREIGN KEY (`bookAuthorID`) REFERENCES `bookauthors` (`authorID`)))
 17.05.2023 21:30:59 - Błąd przy wykonywaniu komendy 'DELETE FROM bookauthors WHERE authorID = 4', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_1` FOREIGN KEY (`bookAuthorID`) REFERENCES `bookauthors` (`authorID`)))
 17.05.2023 21:31:42 - 2023-05-17
+17.05.2023 21:38:31 - Błąd przy wykonywaniu komendy 'DELETE FROM books WHERE bookID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_7` FOREIGN KEY (`bookID`) REFERENCES `books` (`bookID`)))
+17.05.2023 21:38:41 - Błąd przy wykonywaniu komendy 'DELETE FROM customers WHERE `customers`.`customerID` = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_5` FOREIGN KEY (`customerID`) REFERENCES `customers` (`customerID`)))
+17.05.2023 21:38:41 - Błąd przy usuwaniu klienta
+17.05.2023 23:46:03 - Błędne lub puste parametry przy próbie dodania nowego klienta
+17.05.2023 23:46:30 - Błędne lub puste parametry przy próbie dodania nowego klienta
+17.05.2023 23:48:45 - 2023-05-17
+17.05.2023 23:49:05 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+17.05.2023 23:49:07 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 4', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 00:15:37 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 00:15:37 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 00:15:40 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 00:15:43 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 00:15:50 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 00:15:59 - Błędne lub puste parametry przy próbie dodania nowego pracownika

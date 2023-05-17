@@ -4,6 +4,12 @@
     <Compile Update="AddBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AddClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ChangeBookQuantityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -20,6 +26,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModifyClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="NewLendingForm.cs">

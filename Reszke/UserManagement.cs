@@ -261,6 +261,10 @@ namespace Reszke
         
         }
 
+        public static string GetDefaultPassword()
+        {
+            return defaultPassword;
+        }
 
 
         public static int FillEmployeesDataGrid(ref UserSession userSession, DataGridView dataGridView)

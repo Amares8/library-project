@@ -1233,6 +1233,7 @@
             this.addCustomerButton.TabIndex = 0;
             this.addCustomerButton.Text = "Dodaj";
             this.addCustomerButton.UseVisualStyleBackColor = true;
+            this.addCustomerButton.Click += new System.EventHandler(this.addCustomerButton_Click);
             // 
             // panel3
             // 
@@ -1398,6 +1399,7 @@
             this.addEmployeeButton.TabIndex = 0;
             this.addEmployeeButton.Text = "Dodaj";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
+            this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
             // panel4
             // 

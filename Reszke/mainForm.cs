@@ -566,6 +566,15 @@ namespace Reszke
             ClientManagement.FillCustomersDataGrid(ref userSession, customersDataGridView);
         }
 
+
+        private void addCustomerButton_Click(object sender, EventArgs e)
+        {
+            AddClientForm addClientForm = new AddClientForm(ref userSession);
+            addClientForm.ShowDialog();
+            RefreshCustomersPanel();
+        }
+
+
         private void deleteCustomerButton_Click(object sender, EventArgs e)
         {
             //delete client record button click
@@ -585,6 +594,12 @@ namespace Reszke
         /*                             Employees panel                              */
         /* ------------------------------------------------------------------------ */
 
+        private void addEmployeeButton_Click(object sender, EventArgs e)
+        {
+            AddEmployeeForm addEmployeeForm = new AddEmployeeForm(ref userSession);
+            addEmployeeForm.ShowDialog();
+            RefreshEmployeesPanel();
+        }
         private void RefreshEmployeesPanel()
         {
             //when panel turned on
@@ -693,7 +708,7 @@ namespace Reszke
                 case 0:
                     //success
                     publishersDeleteErrorLabel.Text = "";
-                    MessageBox.Show("Pomyślnie usunięto rekord klienta. ");
+                    MessageBox.Show("Pomyślnie usunięto rekord wydawcy. ");
                     RefreshPublishersPanel();
                     break;
                 case 1:
@@ -706,7 +721,7 @@ namespace Reszke
                     break;
                 case 4:
                     //cannot delete
-                    publishersDeleteErrorLabel.Text = "Klient nie mógł zostać usunięty. ";
+                    publishersDeleteErrorLabel.Text = "Wydawca nie mógł zostać usunięty. ";
                     break;
                 case 5:
                     //wrong paramteretrs
@@ -867,5 +882,7 @@ namespace Reszke
                     break;
             }
         }
+
+        
     }
 }

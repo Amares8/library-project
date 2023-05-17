@@ -96,3 +96,5 @@ C:\Users\Amares8\Documents\Programy\Biblioteka\library-project\Reszke\obj\Debug\
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.DeleteBookForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.CustomerDeleteForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.EmployeeDeleteForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddClientForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddEmployeeForm.resources
