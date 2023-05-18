@@ -23,3 +23,34 @@
 18.05.2023 00:15:43 - Błędne lub puste parametry przy próbie dodania nowego pracownika
 18.05.2023 00:15:50 - Błędne lub puste parametry przy próbie dodania nowego pracownika
 18.05.2023 00:15:59 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 17:10:02 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = 'amares8'', (Unable to connect to any of the specified MySQL hosts.)
+18.05.2023 17:10:02 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
+18.05.2023 17:42:38 - Błąd przy wykonywaniu komendy 'UPDATE `customers` SET `firstName` = '1, `lastName` = 'Barbara Kowalczyk', `phoneNr` = '48 149 320 038', `postalCode` = '65-970', `city` = 'Gdansk', `street` = 'f', `houseNumber` = '5', `apartmentNumber` = '', `email` = 'barbara22@gmail.com' WHERE `customers`.`customerID` = 1', (You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Barbara Kowalczyk', `phoneNr` = '48 149 320 038', `postalCode` = '65-970', `c...' at line 1)
+18.05.2023 17:42:38 - Błąd przy zmianie danych klienta
+18.05.2023 17:50:54 - 2023-05-18
+18.05.2023 17:58:23 - 2023-05-18
+18.05.2023 18:03:07 - Podano zły login przy próbie zalogowania użytkownika szymnek
+18.05.2023 18:03:15 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 18:06:26 - Próba wypozyczenia ksiazki bez uprawnien, uzytkownik aolek
+18.05.2023 18:06:27 - Próba wypozyczenia ksiazki bez uprawnien, uzytkownik aolek
+18.05.2023 18:06:41 - Błędne lub puste parametry przy próbie dodania nowego pracownika
+18.05.2023 18:29:34 - 2023-05-18
+18.05.2023 18:30:15 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 4', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 18:37:59 - Błąd przy wykonywaniu komendy 'DELETE FROM books WHERE bookID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_7` FOREIGN KEY (`bookID`) REFERENCES `books` (`bookID`)))
+18.05.2023 18:40:23 - 2023-05-18
+18.05.2023 18:49:39 - 2023-05-18
+18.05.2023 18:50:07 - 2023-05-18
+18.05.2023 19:14:33 - Błąd przy wykonywaniu komendy 'DELETE FROM books WHERE bookID = 4', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_7` FOREIGN KEY (`bookID`) REFERENCES `books` (`bookID`)))
+18.05.2023 19:16:26 - 2023-05-18
+18.05.2023 19:16:41 - 2023-05-18
+18.05.2023 19:17:55 - 2023-05-18
+18.05.2023 20:28:55 - 2023-05-18
+18.05.2023 20:29:12 - 2023-05-18
+18.05.2023 20:31:56 - Błąd przy wykonywaniu komendy 'DELETE FROM books WHERE bookID = 10', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_7` FOREIGN KEY (`bookID`) REFERENCES `books` (`bookID`)))
+18.05.2023 20:32:56 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:56 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))

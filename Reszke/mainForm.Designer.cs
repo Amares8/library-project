@@ -44,6 +44,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.sideNavPanel = new System.Windows.Forms.Panel();
             this.navButtonsPanel = new System.Windows.Forms.Panel();
+            this.booksPictureBox = new System.Windows.Forms.PictureBox();
+            this.lendingsPictureBox = new System.Windows.Forms.PictureBox();
             this.authorsNavButton = new System.Windows.Forms.Button();
             this.publishersNavButton = new System.Windows.Forms.Button();
             this.statisticsNavButton = new System.Windows.Forms.Button();
@@ -55,6 +57,7 @@
             this.navTopImage = new System.Windows.Forms.PictureBox();
             this.navTimeTimer = new System.Windows.Forms.Timer(this.components);
             this.topPanel = new System.Windows.Forms.Panel();
+            this.loggedPictureBox = new System.Windows.Forms.PictureBox();
             this.currentTabLabel = new System.Windows.Forms.Label();
             this.currentUserLabel = new System.Windows.Forms.Label();
             this.userSessionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -143,6 +146,13 @@
             this.customerPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerEmailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.street = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.houseNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apartmentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeesPage = new System.Windows.Forms.TabPage();
             this.employeesPanel = new System.Windows.Forms.Panel();
             this.employeesBottomPanel = new System.Windows.Forms.Panel();
@@ -177,10 +187,17 @@
             this.publisherID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.publisherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statisticsPage = new System.Windows.Forms.TabPage();
+            this.clientsPictureBox = new System.Windows.Forms.PictureBox();
+            this.employeesPictureBox = new System.Windows.Forms.PictureBox();
+            this.publishersPictureBox = new System.Windows.Forms.PictureBox();
+            this.authorsPictureBox = new System.Windows.Forms.PictureBox();
             this.sideNavPanel.SuspendLayout();
             this.navButtonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.booksPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lendingsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).BeginInit();
             this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loggedPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).BeginInit();
             this.authorsPage.SuspendLayout();
             this.authorsPanel.SuspendLayout();
@@ -215,6 +232,10 @@
             this.publishersBottomPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.publishersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.publishersPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.authorsPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // sideNavPanel
@@ -231,6 +252,12 @@
             // 
             // navButtonsPanel
             // 
+            this.navButtonsPanel.Controls.Add(this.authorsPictureBox);
+            this.navButtonsPanel.Controls.Add(this.publishersPictureBox);
+            this.navButtonsPanel.Controls.Add(this.employeesPictureBox);
+            this.navButtonsPanel.Controls.Add(this.clientsPictureBox);
+            this.navButtonsPanel.Controls.Add(this.booksPictureBox);
+            this.navButtonsPanel.Controls.Add(this.lendingsPictureBox);
             this.navButtonsPanel.Controls.Add(this.authorsNavButton);
             this.navButtonsPanel.Controls.Add(this.publishersNavButton);
             this.navButtonsPanel.Controls.Add(this.statisticsNavButton);
@@ -240,9 +267,29 @@
             this.navButtonsPanel.Controls.Add(this.lendingsNavButton);
             this.navButtonsPanel.Location = new System.Drawing.Point(12, 96);
             this.navButtonsPanel.Name = "navButtonsPanel";
-            this.navButtonsPanel.Size = new System.Drawing.Size(173, 411);
+            this.navButtonsPanel.Size = new System.Drawing.Size(173, 442);
             this.navButtonsPanel.TabIndex = 3;
             this.navButtonsPanel.Visible = false;
+            // 
+            // booksPictureBox
+            // 
+            this.booksPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("booksPictureBox.Image")));
+            this.booksPictureBox.Location = new System.Drawing.Point(0, 88);
+            this.booksPictureBox.Name = "booksPictureBox";
+            this.booksPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.booksPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.booksPictureBox.TabIndex = 2;
+            this.booksPictureBox.TabStop = false;
+            // 
+            // lendingsPictureBox
+            // 
+            this.lendingsPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("lendingsPictureBox.Image")));
+            this.lendingsPictureBox.Location = new System.Drawing.Point(0, 30);
+            this.lendingsPictureBox.Name = "lendingsPictureBox";
+            this.lendingsPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.lendingsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.lendingsPictureBox.TabIndex = 2;
+            this.lendingsPictureBox.TabStop = false;
             // 
             // authorsNavButton
             // 
@@ -266,12 +313,14 @@
             // 
             // statisticsNavButton
             // 
-            this.statisticsNavButton.Location = new System.Drawing.Point(32, 352);
+            this.statisticsNavButton.Enabled = false;
+            this.statisticsNavButton.Location = new System.Drawing.Point(32, 392);
             this.statisticsNavButton.Name = "statisticsNavButton";
             this.statisticsNavButton.Size = new System.Drawing.Size(107, 38);
             this.statisticsNavButton.TabIndex = 3;
             this.statisticsNavButton.Text = "Statystyki";
             this.statisticsNavButton.UseVisualStyleBackColor = true;
+            this.statisticsNavButton.Visible = false;
             this.statisticsNavButton.Click += new System.EventHandler(this.statisticsNavButton_Click);
             // 
             // employeesNavButton
@@ -296,7 +345,7 @@
             // 
             // booksNavButton
             // 
-            this.booksNavButton.Location = new System.Drawing.Point(32, 86);
+            this.booksNavButton.Location = new System.Drawing.Point(32, 85);
             this.booksNavButton.Name = "booksNavButton";
             this.booksNavButton.Size = new System.Drawing.Size(107, 38);
             this.booksNavButton.TabIndex = 3;
@@ -347,6 +396,7 @@
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.topPanel.Controls.Add(this.loggedPictureBox);
             this.topPanel.Controls.Add(this.currentTabLabel);
             this.topPanel.Controls.Add(this.currentUserLabel);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -354,6 +404,15 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(717, 56);
             this.topPanel.TabIndex = 2;
+            // 
+            // loggedPictureBox
+            // 
+            this.loggedPictureBox.Location = new System.Drawing.Point(584, 12);
+            this.loggedPictureBox.Name = "loggedPictureBox";
+            this.loggedPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.loggedPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loggedPictureBox.TabIndex = 2;
+            this.loggedPictureBox.TabStop = false;
             // 
             // currentTabLabel
             // 
@@ -369,11 +428,11 @@
             // 
             this.currentUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.currentUserLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.currentUserLabel.Location = new System.Drawing.Point(534, 9);
+            this.currentUserLabel.Location = new System.Drawing.Point(437, 9);
             this.currentUserLabel.Name = "currentUserLabel";
             this.currentUserLabel.Size = new System.Drawing.Size(141, 44);
             this.currentUserLabel.TabIndex = 0;
-            this.currentUserLabel.Text = "as";
+            this.currentUserLabel.Text = "Nie zalogowano";
             this.currentUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // userSessionBindingSource
@@ -1223,6 +1282,7 @@
             this.modifyCustomerButton.TabIndex = 0;
             this.modifyCustomerButton.Text = "Modyfikuj";
             this.modifyCustomerButton.UseVisualStyleBackColor = true;
+            this.modifyCustomerButton.Click += new System.EventHandler(this.modifyCustomerButton_Click);
             // 
             // addCustomerButton
             // 
@@ -1286,7 +1346,14 @@
             this.customerName,
             this.customerPhoneNumber,
             this.customerAddress,
-            this.customerEmailAddress});
+            this.customerEmailAddress,
+            this.postalCode,
+            this.city,
+            this.street,
+            this.houseNumber,
+            this.apartmentNumber,
+            this.firstName,
+            this.lastName});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1345,6 +1412,55 @@
             this.customerEmailAddress.HeaderText = "Adres e-mail";
             this.customerEmailAddress.Name = "customerEmailAddress";
             this.customerEmailAddress.ReadOnly = true;
+            // 
+            // postalCode
+            // 
+            this.postalCode.HeaderText = "postalCode";
+            this.postalCode.Name = "postalCode";
+            this.postalCode.ReadOnly = true;
+            this.postalCode.Visible = false;
+            // 
+            // city
+            // 
+            this.city.HeaderText = "city";
+            this.city.Name = "city";
+            this.city.ReadOnly = true;
+            this.city.Visible = false;
+            // 
+            // street
+            // 
+            this.street.HeaderText = "street";
+            this.street.Name = "street";
+            this.street.ReadOnly = true;
+            this.street.Visible = false;
+            // 
+            // houseNumber
+            // 
+            this.houseNumber.HeaderText = "houseNumber";
+            this.houseNumber.Name = "houseNumber";
+            this.houseNumber.ReadOnly = true;
+            this.houseNumber.Visible = false;
+            // 
+            // apartmentNumber
+            // 
+            this.apartmentNumber.HeaderText = "apartmentNumber";
+            this.apartmentNumber.Name = "apartmentNumber";
+            this.apartmentNumber.ReadOnly = true;
+            this.apartmentNumber.Visible = false;
+            // 
+            // firstName
+            // 
+            this.firstName.HeaderText = "firstName";
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            this.firstName.Visible = false;
+            // 
+            // lastName
+            // 
+            this.lastName.HeaderText = "lastName";
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
+            this.lastName.Visible = false;
             // 
             // employeesPage
             // 
@@ -1736,6 +1852,46 @@
             this.statisticsPage.Text = "statisticsPage";
             this.statisticsPage.UseVisualStyleBackColor = true;
             // 
+            // clientsPictureBox
+            // 
+            this.clientsPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("clientsPictureBox.Image")));
+            this.clientsPictureBox.Location = new System.Drawing.Point(3, 139);
+            this.clientsPictureBox.Name = "clientsPictureBox";
+            this.clientsPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.clientsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.clientsPictureBox.TabIndex = 2;
+            this.clientsPictureBox.TabStop = false;
+            // 
+            // employeesPictureBox
+            // 
+            this.employeesPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("employeesPictureBox.Image")));
+            this.employeesPictureBox.Location = new System.Drawing.Point(0, 192);
+            this.employeesPictureBox.Name = "employeesPictureBox";
+            this.employeesPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.employeesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.employeesPictureBox.TabIndex = 2;
+            this.employeesPictureBox.TabStop = false;
+            // 
+            // publishersPictureBox
+            // 
+            this.publishersPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("publishersPictureBox.Image")));
+            this.publishersPictureBox.Location = new System.Drawing.Point(3, 246);
+            this.publishersPictureBox.Name = "publishersPictureBox";
+            this.publishersPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.publishersPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.publishersPictureBox.TabIndex = 2;
+            this.publishersPictureBox.TabStop = false;
+            // 
+            // authorsPictureBox
+            // 
+            this.authorsPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("authorsPictureBox.Image")));
+            this.authorsPictureBox.Location = new System.Drawing.Point(3, 299);
+            this.authorsPictureBox.Name = "authorsPictureBox";
+            this.authorsPictureBox.Size = new System.Drawing.Size(33, 35);
+            this.authorsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.authorsPictureBox.TabIndex = 2;
+            this.authorsPictureBox.TabStop = false;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1751,9 +1907,12 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.sideNavPanel.ResumeLayout(false);
             this.navButtonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.booksPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lendingsPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navTopImage)).EndInit();
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loggedPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userSessionBindingSource)).EndInit();
             this.authorsPage.ResumeLayout(false);
             this.authorsPanel.ResumeLayout(false);
@@ -1794,6 +1953,10 @@
             this.publishersBottomPanel.PerformLayout();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.publishersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.publishersPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.authorsPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1874,11 +2037,6 @@
         private Button button1;
         private Button button2;
         public DataGridView customersDataGridView;
-        private DataGridViewTextBoxColumn customerID;
-        private DataGridViewTextBoxColumn customerName;
-        private DataGridViewTextBoxColumn customerPhoneNumber;
-        private DataGridViewTextBoxColumn customerAddress;
-        private DataGridViewTextBoxColumn customerEmailAddress;
         private Panel employeesPanel;
         private Panel employeesBottomPanel;
         private Button deleteEmployeeButton;
@@ -1935,5 +2093,24 @@
         private Button deleteCustomerButton;
         private Label authorsDeleteErrorLabel;
         private Label publishersDeleteErrorLabel;
+        private DataGridViewTextBoxColumn customerID;
+        private DataGridViewTextBoxColumn customerName;
+        private DataGridViewTextBoxColumn customerPhoneNumber;
+        private DataGridViewTextBoxColumn customerAddress;
+        private DataGridViewTextBoxColumn customerEmailAddress;
+        private DataGridViewTextBoxColumn postalCode;
+        private DataGridViewTextBoxColumn city;
+        private DataGridViewTextBoxColumn street;
+        private DataGridViewTextBoxColumn houseNumber;
+        private DataGridViewTextBoxColumn apartmentNumber;
+        private DataGridViewTextBoxColumn firstName;
+        private DataGridViewTextBoxColumn lastName;
+        private PictureBox booksPictureBox;
+        private PictureBox lendingsPictureBox;
+        private PictureBox loggedPictureBox;
+        private PictureBox authorsPictureBox;
+        private PictureBox publishersPictureBox;
+        private PictureBox employeesPictureBox;
+        private PictureBox clientsPictureBox;
     }
 }

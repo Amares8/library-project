@@ -212,8 +212,22 @@ namespace Reszke
         {
             //when panel turned on
             LibraryManagement.FillLendingsDataGrid(ref userSession, lendingsDataGridView);
-            //apply "all" filter
+            
+            //apply "lended" filter
             lendedFilterButton_Click(null, null);
+
+            
+            int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
+            if (firstVisibleIndex == -1)
+            {
+                deleteLendingButton.Enabled = false;
+            }
+            else
+            {
+                lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
+                deleteLendingButton.Enabled = true;
+            }
+            
         }
 
         private int getFirstVisibleRowIndex(DataGridView dataGridView)
@@ -231,7 +245,17 @@ namespace Reszke
         private void lendingsDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             //Managing disabling and enabling returnLendingButton button
-            DataGridViewRow selectedRow = lendingsDataGridView.CurrentRow;
+            DataGridViewRow selectedRow;
+            try
+            {
+                 selectedRow = lendingsDataGridView.SelectedRows[0];
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+            
+            
             bool isReturnable = false;
             if (selectedRow != null)
             {
@@ -265,24 +289,24 @@ namespace Reszke
         {
             //return book button click
             //open return book panel
-            int returnedBookID = int.Parse(lendingsDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int returnedBookID = int.Parse(lendingsDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string lendingDetails = String.Empty;
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[2].Value.ToString() + " - "; // author
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n"; // title
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[3].Value.ToString() + "\nz: "; // lending date
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[5].Value.ToString() + "\ndo: "; // lending date
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[6].Value.ToString();            //return date
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[2].Value.ToString() + " - "; // author
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[1].Value.ToString() + "\n"; // title
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[3].Value.ToString() + "\nz: "; // lending date
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[5].Value.ToString() + "\ndo: "; // lending date
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[6].Value.ToString();            //return date
 
             DateTime returnDateTime;
             DateTime finalReturnedDateTime;
 
-            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[5].Value.ToString(), out returnDateTime))
+            if (!DateTime.TryParse(lendingsDataGridView.SelectedRows[0].Cells[5].Value.ToString(), out returnDateTime))
             {
                 Debugger.CreateLogMessage("Błąd konwersji daty przy próbie oddania książki");
                 return;
             }
 
-            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[6].Value.ToString(), out finalReturnedDateTime))
+            if (!DateTime.TryParse(lendingsDataGridView.SelectedRows[0].Cells[6].Value.ToString(), out finalReturnedDateTime))
             {
                 Debugger.CreateLogMessage("Błąd konwersji daty przy próbie oddania książki");
                 return;
@@ -299,16 +323,16 @@ namespace Reszke
         private void deleteLendingButton_Click(object sender, EventArgs e)
         {
             //delete lending record button click
-            int deleteLendingID = int.Parse(lendingsDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int deleteLendingID = int.Parse(lendingsDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string lendingDetails = String.Empty;
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[2].Value.ToString() + " - ";
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n";
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[3].Value.ToString() + "\nz: ";
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[5].Value.ToString() + "\ndo: ";
-            lendingDetails += lendingsDataGridView.CurrentRow.Cells[6].Value.ToString();
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[2].Value.ToString() + " - ";
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[1].Value.ToString() + "\n";
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[3].Value.ToString() + "\nz: ";
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[5].Value.ToString() + "\ndo: ";
+            lendingDetails += lendingsDataGridView.SelectedRows[0].Cells[6].Value.ToString();
             DateTime finalReturnedDateTime;
 
-            if (!DateTime.TryParse(lendingsDataGridView.CurrentRow.Cells[6].Value.ToString(), out finalReturnedDateTime))
+            if (!DateTime.TryParse(lendingsDataGridView.SelectedRows[0].Cells[6].Value.ToString(), out finalReturnedDateTime))
             {
                 Debugger.CreateLogMessage("Błąd konwersji daty przy próbie usunięcia rekordu wypożyczenia");
                 return;
@@ -356,7 +380,7 @@ namespace Reszke
             returnedFilterButton.Enabled = true;
             allFilterButton.Enabled = true;
 
-            //auto select or disable delete button
+            //auto select or disable delete and button
             int firstVisibleIndex = getFirstVisibleRowIndex(lendingsDataGridView);
             if (firstVisibleIndex == -1)
             {
@@ -367,6 +391,8 @@ namespace Reszke
                 lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
                 deleteLendingButton.Enabled = true;
             }
+
+
         }
 
         private void overdueFilterButton_Click(object sender, EventArgs e)
@@ -406,6 +432,7 @@ namespace Reszke
                 lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
                 deleteLendingButton.Enabled = true;
             }
+
         }
 
         private void returnedFilterButton_Click(object sender, EventArgs e)
@@ -445,6 +472,8 @@ namespace Reszke
                 lendingsDataGridView.Rows[firstVisibleIndex].Selected = true;
                 deleteLendingButton.Enabled = true;
             }
+
+            //lendingsDataGridView_SelectionChanged(null, null);
         }
 
         private void allFilterButton_Click(object sender, EventArgs e)
@@ -478,6 +507,7 @@ namespace Reszke
                 deleteLendingButton.Enabled = true;
             }
 
+           // lendingsDataGridView_SelectionChanged(null, null);
         }
 
 
@@ -508,15 +538,15 @@ namespace Reszke
             //change book stock lvbel button click
             //open chnage quantity of book panel
 
-            int bookID = int.Parse(booksDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int bookID = int.Parse(booksDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string bookDetails = String.Empty;
-            int stockLevel = int.Parse(booksDataGridView.CurrentRow.Cells[8].Value.ToString());
-            int totalStockLevel = int.Parse(booksDataGridView.CurrentRow.Cells[9].Value.ToString());
+            int stockLevel = int.Parse(booksDataGridView.SelectedRows[0].Cells[8].Value.ToString());
+            int totalStockLevel = int.Parse(booksDataGridView.SelectedRows[0].Cells[9].Value.ToString());
 
-            bookDetails += booksDataGridView.CurrentRow.Cells[2].Value.ToString() + " - "; // author
-            bookDetails += booksDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n"; // title
-            bookDetails += booksDataGridView.CurrentRow.Cells[3].Value.ToString() + ", ";//publisher
-            bookDetails += booksDataGridView.CurrentRow.Cells[4].Value.ToString() + "\nStan: ";//year
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[2].Value.ToString() + " - "; // author
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[1].Value.ToString() + "\n"; // title
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[3].Value.ToString() + ", ";//publisher
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[4].Value.ToString() + "\nStan: ";//year
             bookDetails += stockLevel + " / ";//stock level
             bookDetails += totalStockLevel;//total stock level
 
@@ -538,12 +568,12 @@ namespace Reszke
         private void deleteBookButton_Click(object sender, EventArgs e)
         {
             //delete book record button click
-            int bookID = int.Parse(booksDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int bookID = int.Parse(booksDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string bookDetails = "";
-            bookDetails += booksDataGridView.CurrentRow.Cells[2].Value.ToString() + " - ";
-            bookDetails += booksDataGridView.CurrentRow.Cells[1].Value.ToString() + "\n(";
-            bookDetails += booksDataGridView.CurrentRow.Cells[3].Value.ToString() + ", ";
-            bookDetails += booksDataGridView.CurrentRow.Cells[4].Value.ToString() + ")";
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[2].Value.ToString() + " - ";
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[1].Value.ToString() + "\n(";
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[3].Value.ToString() + ", ";
+            bookDetails += booksDataGridView.SelectedRows[0].Cells[4].Value.ToString() + ")";
 
             DeleteBookForm deleteBookForm = new DeleteBookForm(ref userSession, bookID, bookDetails);
             deleteBookForm.ShowDialog();
@@ -574,15 +604,35 @@ namespace Reszke
             RefreshCustomersPanel();
         }
 
+        private void modifyCustomerButton_Click(object sender, EventArgs e)
+        {
+            int clientID = int.Parse(customersDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+
+
+            string firstName = customersDataGridView.SelectedRows[0].Cells[10].Value.ToString();
+            string lastName = customersDataGridView.SelectedRows[0].Cells[11].Value.ToString();
+            string telephone = customersDataGridView.SelectedRows[0].Cells[2].Value.ToString();
+            string email = customersDataGridView.SelectedRows[0].Cells[4].Value.ToString();
+            string postalCode = customersDataGridView.SelectedRows[0].Cells[5].Value.ToString();
+            string city = customersDataGridView.SelectedRows[0].Cells[6].Value.ToString();
+            string street = customersDataGridView.SelectedRows[0].Cells[7].Value.ToString();
+            string houseNumber = customersDataGridView.SelectedRows[0].Cells[8].Value.ToString();
+            string apartmentNumber = customersDataGridView.SelectedRows[0].Cells[9].Value.ToString();
+            ModifyClientForm modifyClientForm = new ModifyClientForm(ref userSession, clientID, firstName, lastName, telephone,
+                email, postalCode, city, street, houseNumber, apartmentNumber);
+            modifyClientForm.ShowDialog();
+            RefreshCustomersPanel();
+        }
+
 
         private void deleteCustomerButton_Click(object sender, EventArgs e)
         {
             //delete client record button click
-            int bookID = int.Parse(customersDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int bookID = int.Parse(customersDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string clientDetails = "";
-            clientDetails += customersDataGridView.CurrentRow.Cells[1].Value.ToString() + ", ";
-            clientDetails += customersDataGridView.CurrentRow.Cells[2].Value.ToString() + "\n";
-            clientDetails += customersDataGridView.CurrentRow.Cells[3].Value.ToString();
+            clientDetails += customersDataGridView.SelectedRows[0].Cells[1].Value.ToString() + ", ";
+            clientDetails += customersDataGridView.SelectedRows[0].Cells[2].Value.ToString() + "\n";
+            clientDetails += customersDataGridView.SelectedRows[0].Cells[3].Value.ToString();
 
 
             CustomerDeleteForm customerDeleteForm = new CustomerDeleteForm(ref userSession, bookID, clientDetails);
@@ -610,12 +660,12 @@ namespace Reszke
         private void deleteEmployeeButton_Click(object sender, EventArgs e)
         {
             //delete employee record button click
-            int employeeID = int.Parse(employeesDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int employeeID = int.Parse(employeesDataGridView.SelectedRows[0].Cells[0].Value.ToString());
             string employeeDetails = "";
-            employeeDetails += employeesDataGridView.CurrentRow.Cells[1].Value.ToString() + ", ";
-            employeeDetails += employeesDataGridView.CurrentRow.Cells[2].Value.ToString() + "\n";
-            employeeDetails += employeesDataGridView.CurrentRow.Cells[4].Value.ToString() + ", ";
-            employeeDetails += employeesDataGridView.CurrentRow.Cells[3].Value.ToString();
+            employeeDetails += employeesDataGridView.SelectedRows[0].Cells[1].Value.ToString() + ", ";
+            employeeDetails += employeesDataGridView.SelectedRows[0].Cells[2].Value.ToString() + "\n";
+            employeeDetails += employeesDataGridView.SelectedRows[0].Cells[4].Value.ToString() + ", ";
+            employeeDetails += employeesDataGridView.SelectedRows[0].Cells[3].Value.ToString();
 
 
             EmployeeDeleteForm employeeDeleteForm = new EmployeeDeleteForm(ref userSession, employeeID, employeeDetails);
@@ -687,7 +737,7 @@ namespace Reszke
         private void deletePublisherButton_Click(object sender, EventArgs e)
         {
             //delete
-            int publisherID = int.Parse(publishersDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int publisherID = int.Parse(publishersDataGridView.SelectedRows[0].Cells[0].Value.ToString());
 
 
             int publisherDeletingResult = LibraryManagement.DeletePublisher(ref userSession, publisherID);
@@ -836,7 +886,7 @@ namespace Reszke
         private void deleteAuthorButton_Click(object sender, EventArgs e)
         {
             //delete
-            int authorID = int.Parse(authorsDataGridView.CurrentRow.Cells[0].Value.ToString());
+            int authorID = int.Parse(authorsDataGridView.SelectedRows[0].Cells[0].Value.ToString());
 
 
             int authorDeletingResult = LibraryManagement.DeleteAuthor(ref userSession, authorID);
@@ -883,6 +933,6 @@ namespace Reszke
             }
         }
 
-        
+       
     }
 }

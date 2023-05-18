@@ -99,6 +99,87 @@ namespace Reszke
         }
 
 
+
+        public static int ModifyClient(ref UserSession userSession, int clientID, string newName,
+            string newSurname, string newPhoneNumber, string newPostalCode,
+            string newCity, string newStreet, string newHouseNumber,
+            string newApartmentNumber, string newEmail)
+        {
+            /*
+            * - FUNCTION RETURN VALUES -
+            * 0 - successfull
+            * 1 - not logged in
+            * 3 - no permissions
+            * 4 - sql/other error
+            * 5 - invalid/empty parameters
+            */
+
+
+            if (newName == "" || newSurname == "" || newPhoneNumber == "" || newPostalCode == "" ||
+                newCity == "" || newStreet == "" || newHouseNumber == "" ||
+                 newEmail == "" || clientID < 0)
+            {
+                //invalid parameters
+                Debugger.CreateLogMessage("Błędne lub puste parametry przy próbie zmianiy danych klienta");
+                return 5;
+            }
+            else if (!userSession.IsLoggedIn())
+            {
+                //not logged in
+                Debugger.CreateLogMessage("Próba zmianiy danych klinta nie będąc zalogowanym");
+                return 1;
+            }
+            else if (userSession.GetPrivilege() < addClientPrivilege || userSession.GetPrivilege() < addClientPrivilege)
+            {
+                //no permissions 
+                Debugger.CreateLogMessage($"Próba zmianie danych klienta bez uprawnień, użytkownik: {userSession.GetLogin()}");
+                return 3;
+            }
+            else
+            {
+                //sanitizing values
+                string newNameSanitized = DatabaseGateway.SanitizeString(newName);
+                string newSurnameSanitized = DatabaseGateway.SanitizeString(newSurname);
+                string newPhoneNumberSanitized = DatabaseGateway.SanitizeString(newPhoneNumber);
+                string newPostalCodeSanitized = DatabaseGateway.SanitizeString(newPostalCode);
+                string newCitySanitized = DatabaseGateway.SanitizeString(newCity);
+                string newStreetSanitized = DatabaseGateway.SanitizeString(newStreet);
+                string newHouseNumberSanitized = DatabaseGateway.SanitizeString(newHouseNumber);
+                string newApartmentNumberSanitized = DatabaseGateway.SanitizeString(newApartmentNumber);
+                string newEmailSanitized = DatabaseGateway.SanitizeString(newEmail);
+
+                try
+                {
+
+                    //inserting data
+
+                    string modifyCustomerSql = $"UPDATE `customers` SET `firstName` = '{newNameSanitized}', `lastName` = '{newSurnameSanitized}', `phoneNr` = '{newPhoneNumberSanitized}', `postalCode` = '{newPostalCodeSanitized}', `city` = '{newCitySanitized}', `street` = '{newStreetSanitized}', `houseNumber` = '{newHouseNumberSanitized}', `apartmentNumber` = '{newApartmentNumberSanitized}', `email` = '{newEmailSanitized}' WHERE `customers`.`customerID` = {clientID}";
+                    int modifyCustomerResult = DatabaseGateway.ExecuteNonQueryCommand(modifyCustomerSql, ref userSession.GetDatabaseConnectionRef());
+                    if (modifyCustomerResult == 1)
+                    {
+                        //success
+                        return 0;
+                    }
+                    else
+                    {
+                        //sql/other error
+                        Debugger.CreateLogMessage($"Błąd przy zmianie danych klienta");
+                        return 4;
+                    }
+
+
+                }
+                catch (Exception e)
+                {
+                    //sql/other error
+                    Debugger.CreateLogMessage($"Błąd przy zmianie danych klienta ({e.Message})");
+                    return 4;
+                }
+            }
+        }
+
+
+
         public static int DeleteClient(ref UserSession userSession, int idToDelete)
         {
             /*
@@ -213,6 +294,15 @@ namespace Reszke
                 row.Cells[3].Value += customersSelectArray[i, 7] + " ";
                 row.Cells[3].Value += customersSelectArray[i, 8];
                 row.Cells[4].Value = customersSelectArray[i, 9]; //email aderess
+                //hidden values
+                row.Cells[5].Value = customersSelectArray[i, 4]; //postalcode
+                row.Cells[6].Value = customersSelectArray[i, 5];//city
+                row.Cells[7].Value = customersSelectArray[i, 6]; //street
+                row.Cells[8].Value = customersSelectArray[i, 7]; //house no
+                row.Cells[9].Value = customersSelectArray[i, 8]; // apratment no
+                row.Cells[10].Value = customersSelectArray[i, 1]; // first name
+                row.Cells[11].Value = customersSelectArray[i, 2]; // last name
+                
 
 
 

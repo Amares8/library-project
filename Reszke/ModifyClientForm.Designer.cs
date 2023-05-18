@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModifyClientForm));
-            this.cancelClientAddButton = new System.Windows.Forms.Button();
-            this.confirmClientAddButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.confirmModifyButton = new System.Windows.Forms.Button();
             this.streetTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -49,25 +49,28 @@
             this.chooseLastNameLabel = new System.Windows.Forms.Label();
             this.chooseFirstNameLabel = new System.Windows.Forms.Label();
             this.newClientLabel = new System.Windows.Forms.Label();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // cancelClientAddButton
+            // cancelButton
             // 
-            this.cancelClientAddButton.Location = new System.Drawing.Point(289, 360);
-            this.cancelClientAddButton.Name = "cancelClientAddButton";
-            this.cancelClientAddButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelClientAddButton.TabIndex = 47;
-            this.cancelClientAddButton.Text = "Anuluj";
-            this.cancelClientAddButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Location = new System.Drawing.Point(289, 360);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(93, 46);
+            this.cancelButton.TabIndex = 47;
+            this.cancelButton.Text = "Anuluj";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // confirmClientAddButton
+            // confirmModifyButton
             // 
-            this.confirmClientAddButton.Location = new System.Drawing.Point(182, 360);
-            this.confirmClientAddButton.Name = "confirmClientAddButton";
-            this.confirmClientAddButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmClientAddButton.TabIndex = 48;
-            this.confirmClientAddButton.Text = "Dodaj";
-            this.confirmClientAddButton.UseVisualStyleBackColor = true;
+            this.confirmModifyButton.Location = new System.Drawing.Point(182, 360);
+            this.confirmModifyButton.Name = "confirmModifyButton";
+            this.confirmModifyButton.Size = new System.Drawing.Size(93, 46);
+            this.confirmModifyButton.TabIndex = 48;
+            this.confirmModifyButton.Text = "Modyfikuj";
+            this.confirmModifyButton.UseVisualStyleBackColor = true;
+            this.confirmModifyButton.Click += new System.EventHandler(this.confirmModifyButton_Click);
             // 
             // streetTextBox
             // 
@@ -222,13 +225,23 @@
             this.newClientLabel.TabIndex = 29;
             this.newClientLabel.Text = "Modyfikowanie danych klienta";
             // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(182, 333);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 15);
+            this.errorLabel.TabIndex = 49;
+            // 
             // ModifyClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 445);
-            this.Controls.Add(this.cancelClientAddButton);
-            this.Controls.Add(this.confirmClientAddButton);
+            this.Controls.Add(this.errorLabel);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.confirmModifyButton);
             this.Controls.Add(this.streetTextBox);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.emailTextBox);
@@ -254,6 +267,7 @@
             this.Name = "ModifyClientForm";
             this.ShowInTaskbar = false;
             this.Text = "Modyfikowanie danych klienta";
+            this.Load += new System.EventHandler(this.ModifyClientForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,8 +275,8 @@
 
         #endregion
 
-        private Button cancelClientAddButton;
-        private Button confirmClientAddButton;
+        private Button cancelButton;
+        private Button confirmModifyButton;
         private TextBox streetTextBox;
         private TextBox cityTextBox;
         private TextBox emailTextBox;
@@ -281,5 +295,6 @@
         private Label chooseLastNameLabel;
         private Label chooseFirstNameLabel;
         private Label newClientLabel;
+        private Label errorLabel;
     }
 }
