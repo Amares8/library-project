@@ -99,3 +99,4 @@ D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-w
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddClientForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.AddEmployeeForm.resources
 D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.ModifyClientForm.resources
+D:\Projekty_IT\VisualStudio\biblioteka\library-project\Reszke\obj\Debug\net6.0-windows\Reszke.ChangePasswordForm.resources

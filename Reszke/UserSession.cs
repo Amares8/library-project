@@ -201,7 +201,7 @@ namespace Reszke
             /*
             * - FUNCTION RETURN VALUES -
             * 0 - successfull
-            * 1 - already logged in
+            * 1 - not logged in
             * 2 - wrong password
             * 4 - sql/other error
             * 5 - invalid/empty parameters

@@ -15,12 +15,6 @@ namespace Reszke
         LanguagePack currentLanguage;
         public UserSession userSession;
 
-
-
-
-
-
-
         public mainForm()
         {
             InitializeComponent();
@@ -85,8 +79,8 @@ namespace Reszke
         private void loginButton_Click(object sender, EventArgs e)
         {
             //temporary !!!
-            loginTextBox.Text = "amares8";
-            passwordTextBox.Text = "Qwerty1@3";
+            //loginTextBox.Text = "amares8";
+            //passwordTextBox.Text = "Qwerty1@3";
 
 
             //logging in
@@ -98,12 +92,12 @@ namespace Reszke
                 case 0:
                     //login successfull
                     loginErrorLabel.Text = string.Empty;
+                    loginTextBox.Text = "";
+                    passwordTextBox.Text = "";
 
                     lendingsNavButton_Click(null, null);
                     navButtonsPanel.Show();
                     currentUserLabel.Text = userSession.GetFirstName() + " " + userSession.GetLastName();
-
-                    loginPanel.Hide();
                     break;
                 case 1:
                     //already logged in
@@ -196,6 +190,26 @@ namespace Reszke
             mainTabControl.SelectTab("authorsPage");
             currentTabLabel.Text = "Autorzy";
             RefreshAuthorsPanel();
+        }
+
+        private void passwordChangeButton_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(ref userSession);
+            changePasswordForm.ShowDialog();
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            //switch panel to authors
+            userSession.Logout();
+            loginInfoLabel.Text = "Nastąpiło wylogowanie. ";
+            currentTabLabel.Text = "Logowanie";
+            currentUserLabel.Text = "Nie zalogowano";
+            mainTabControl.SelectTab("loginPage");
+            navButtonsPanel.Hide();
+            
+
+
         }
 
         /* ----------------------------------------------------------------------- */
@@ -933,6 +947,6 @@ namespace Reszke
             }
         }
 
-       
+        
     }
 }

@@ -54,3 +54,16 @@
 18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
 18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
 18.05.2023 20:32:57 - Błąd przy wykonywaniu komendy 'DELETE FROM publishers WHERE publisherID = 1', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`books`, CONSTRAINT `books_ibfk_4` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`)))
+18.05.2023 22:09:55 - 2023-05-18
+18.05.2023 23:09:11 - Podano błędne hasło przy zmianie hasła, użytkownik: amares8
+18.05.2023 23:09:24 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:09:24 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:09:25 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:09:25 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:09:25 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:09:26 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:16:36 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:16:41 - Podano zły login przy próbie zalogowania użytkownika amares8
+18.05.2023 23:18:05 - 2023-05-18
+18.05.2023 23:18:09 - 2023-05-18
+18.05.2023 23:18:12 - 2023-05-18
