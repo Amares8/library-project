@@ -499,14 +499,14 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(211, 0);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(690, 56);
+            this.topPanel.Size = new System.Drawing.Size(928, 56);
             this.topPanel.TabIndex = 2;
             // 
             // loggedPictureBox
             // 
             this.loggedPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loggedPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("loggedPictureBox.Image")));
-            this.loggedPictureBox.Location = new System.Drawing.Point(645, 12);
+            this.loggedPictureBox.Location = new System.Drawing.Point(883, 12);
             this.loggedPictureBox.Name = "loggedPictureBox";
             this.loggedPictureBox.Size = new System.Drawing.Size(33, 35);
             this.loggedPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -527,7 +527,7 @@
             // 
             this.currentUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.currentUserLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.currentUserLabel.Location = new System.Drawing.Point(498, 9);
+            this.currentUserLabel.Location = new System.Drawing.Point(736, 9);
             this.currentUserLabel.Name = "currentUserLabel";
             this.currentUserLabel.Size = new System.Drawing.Size(141, 44);
             this.currentUserLabel.TabIndex = 0;
@@ -543,7 +543,7 @@
             this.authorsPage.Controls.Add(this.authorsPanel);
             this.authorsPage.Location = new System.Drawing.Point(4, 27);
             this.authorsPage.Name = "authorsPage";
-            this.authorsPage.Size = new System.Drawing.Size(656, 530);
+            this.authorsPage.Size = new System.Drawing.Size(682, 510);
             this.authorsPage.TabIndex = 3;
             this.authorsPage.Text = "authorsPage";
             this.authorsPage.UseVisualStyleBackColor = true;
@@ -558,7 +558,7 @@
             this.authorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.authorsPanel.Location = new System.Drawing.Point(0, 0);
             this.authorsPanel.Name = "authorsPanel";
-            this.authorsPanel.Size = new System.Drawing.Size(656, 530);
+            this.authorsPanel.Size = new System.Drawing.Size(682, 510);
             this.authorsPanel.TabIndex = 9;
             // 
             // authors
@@ -576,9 +576,9 @@
             this.authors.Controls.Add(this.newAuthorLabel);
             this.authors.Controls.Add(this.addAuthorButton);
             this.authors.Dock = System.Windows.Forms.DockStyle.Right;
-            this.authors.Location = new System.Drawing.Point(301, 0);
+            this.authors.Location = new System.Drawing.Point(327, 0);
             this.authors.Name = "authors";
-            this.authors.Size = new System.Drawing.Size(355, 452);
+            this.authors.Size = new System.Drawing.Size(355, 432);
             this.authors.TabIndex = 3;
             // 
             // authorsErrorLabel
@@ -687,7 +687,7 @@
             // addAuthorButton
             // 
             this.addAuthorButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.addAuthorButton.Location = new System.Drawing.Point(110, 374);
+            this.addAuthorButton.Location = new System.Drawing.Point(110, 364);
             this.addAuthorButton.Name = "addAuthorButton";
             this.addAuthorButton.Size = new System.Drawing.Size(103, 40);
             this.addAuthorButton.TabIndex = 0;
@@ -701,9 +701,9 @@
             this.panel6.Controls.Add(this.authorsDeleteErrorLabel);
             this.panel6.Controls.Add(this.deleteAuthorButton);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 452);
+            this.panel6.Location = new System.Drawing.Point(0, 432);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(656, 78);
+            this.panel6.Size = new System.Drawing.Size(682, 78);
             this.panel6.TabIndex = 2;
             // 
             // authorsDeleteErrorLabel
@@ -732,7 +732,7 @@
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel7.Controls.Add(this.button8);
             this.panel7.Controls.Add(this.button11);
-            this.panel7.Location = new System.Drawing.Point(0, 1998);
+            this.panel7.Location = new System.Drawing.Point(0, 1978);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(709, 80);
             this.panel7.TabIndex = 1;
@@ -794,7 +794,7 @@
             this.authorsDataGridView.RowTemplate.Height = 25;
             this.authorsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.authorsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.authorsDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.authorsDataGridView.Size = new System.Drawing.Size(682, 510);
             this.authorsDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn2
@@ -818,7 +818,7 @@
             this.booksPage.Location = new System.Drawing.Point(4, 27);
             this.booksPage.Margin = new System.Windows.Forms.Padding(0);
             this.booksPage.Name = "booksPage";
-            this.booksPage.Size = new System.Drawing.Size(656, 530);
+            this.booksPage.Size = new System.Drawing.Size(920, 510);
             this.booksPage.TabIndex = 2;
             this.booksPage.Text = "booksPage";
             this.booksPage.UseVisualStyleBackColor = true;
@@ -831,19 +831,19 @@
             this.booksPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.booksPanel.Location = new System.Drawing.Point(0, 0);
             this.booksPanel.Name = "booksPanel";
-            this.booksPanel.Size = new System.Drawing.Size(656, 530);
+            this.booksPanel.Size = new System.Drawing.Size(920, 510);
             this.booksPanel.TabIndex = 5;
             // 
             // booksBottonPanel
             // 
-            this.booksBottonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.booksBottonPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.booksBottonPanel.Controls.Add(this.deleteBookButton);
             this.booksBottonPanel.Controls.Add(this.changeBookQuantityButton);
             this.booksBottonPanel.Controls.Add(this.addNewBookButton);
-            this.booksBottonPanel.Location = new System.Drawing.Point(0, 450);
+            this.booksBottonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.booksBottonPanel.Location = new System.Drawing.Point(0, 430);
             this.booksBottonPanel.Name = "booksBottonPanel";
-            this.booksBottonPanel.Size = new System.Drawing.Size(709, 80);
+            this.booksBottonPanel.Size = new System.Drawing.Size(920, 80);
             this.booksBottonPanel.TabIndex = 1;
             // 
             // deleteBookButton
@@ -924,7 +924,7 @@
             this.booksDataGridView.RowTemplate.Height = 25;
             this.booksDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.booksDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.booksDataGridView.Size = new System.Drawing.Size(920, 510);
             this.booksDataGridView.TabIndex = 0;
             // 
             // id
@@ -1005,7 +1005,7 @@
             this.lendingsPage.Location = new System.Drawing.Point(4, 27);
             this.lendingsPage.Margin = new System.Windows.Forms.Padding(0);
             this.lendingsPage.Name = "lendingsPage";
-            this.lendingsPage.Size = new System.Drawing.Size(656, 530);
+            this.lendingsPage.Size = new System.Drawing.Size(920, 510);
             this.lendingsPage.TabIndex = 1;
             this.lendingsPage.Text = "lendingsPage";
             this.lendingsPage.UseVisualStyleBackColor = true;
@@ -1018,7 +1018,7 @@
             this.lendingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lendingsPanel.Location = new System.Drawing.Point(0, 0);
             this.lendingsPanel.Name = "lendingsPanel";
-            this.lendingsPanel.Size = new System.Drawing.Size(656, 530);
+            this.lendingsPanel.Size = new System.Drawing.Size(920, 510);
             this.lendingsPanel.TabIndex = 4;
             // 
             // lendingsBottomPanel
@@ -1033,9 +1033,9 @@
             this.lendingsBottomPanel.Controls.Add(this.returnLendingButton);
             this.lendingsBottomPanel.Controls.Add(this.newLendingButton);
             this.lendingsBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 422);
+            this.lendingsBottomPanel.Location = new System.Drawing.Point(0, 402);
             this.lendingsBottomPanel.Name = "lendingsBottomPanel";
-            this.lendingsBottomPanel.Size = new System.Drawing.Size(656, 108);
+            this.lendingsBottomPanel.Size = new System.Drawing.Size(920, 108);
             this.lendingsBottomPanel.TabIndex = 1;
             // 
             // allFilterButton
@@ -1163,7 +1163,7 @@
             this.lendingsDataGridView.RowTemplate.Height = 25;
             this.lendingsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lendingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lendingsDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.lendingsDataGridView.Size = new System.Drawing.Size(920, 510);
             this.lendingsDataGridView.TabIndex = 0;
             this.lendingsDataGridView.SelectionChanged += new System.EventHandler(this.lendingsDataGridView_SelectionChanged);
             // 
@@ -1381,7 +1381,7 @@
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.Padding = new System.Drawing.Point(0, 0);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(690, 541);
+            this.mainTabControl.Size = new System.Drawing.Size(928, 541);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 2;
             // 
@@ -1390,7 +1390,7 @@
             this.customersPage.Controls.Add(this.customersPanel);
             this.customersPage.Location = new System.Drawing.Point(4, 27);
             this.customersPage.Name = "customersPage";
-            this.customersPage.Size = new System.Drawing.Size(656, 530);
+            this.customersPage.Size = new System.Drawing.Size(682, 510);
             this.customersPage.TabIndex = 4;
             this.customersPage.Text = "customersPage";
             this.customersPage.UseVisualStyleBackColor = true;
@@ -1404,7 +1404,7 @@
             this.customersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customersPanel.Location = new System.Drawing.Point(0, 0);
             this.customersPanel.Name = "customersPanel";
-            this.customersPanel.Size = new System.Drawing.Size(656, 530);
+            this.customersPanel.Size = new System.Drawing.Size(682, 510);
             this.customersPanel.TabIndex = 6;
             // 
             // customersBottomPanel
@@ -1414,9 +1414,9 @@
             this.customersBottomPanel.Controls.Add(this.modifyCustomerButton);
             this.customersBottomPanel.Controls.Add(this.addCustomerButton);
             this.customersBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.customersBottomPanel.Location = new System.Drawing.Point(0, 450);
+            this.customersBottomPanel.Location = new System.Drawing.Point(0, 430);
             this.customersBottomPanel.Name = "customersBottomPanel";
-            this.customersBottomPanel.Size = new System.Drawing.Size(656, 80);
+            this.customersBottomPanel.Size = new System.Drawing.Size(682, 80);
             this.customersBottomPanel.TabIndex = 2;
             // 
             // deleteCustomerButton
@@ -1458,7 +1458,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Location = new System.Drawing.Point(0, 837);
+            this.panel3.Location = new System.Drawing.Point(0, 817);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(709, 80);
             this.panel3.TabIndex = 1;
@@ -1530,7 +1530,7 @@
             this.customersDataGridView.RowTemplate.Height = 25;
             this.customersDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.customersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customersDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.customersDataGridView.Size = new System.Drawing.Size(682, 510);
             this.customersDataGridView.TabIndex = 0;
             // 
             // customerID
@@ -1624,7 +1624,7 @@
             this.employeesPage.Controls.Add(this.employeesPanel);
             this.employeesPage.Location = new System.Drawing.Point(4, 27);
             this.employeesPage.Name = "employeesPage";
-            this.employeesPage.Size = new System.Drawing.Size(656, 530);
+            this.employeesPage.Size = new System.Drawing.Size(682, 510);
             this.employeesPage.TabIndex = 7;
             this.employeesPage.Text = "employeesPage";
             this.employeesPage.UseVisualStyleBackColor = true;
@@ -1638,7 +1638,7 @@
             this.employeesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeesPanel.Location = new System.Drawing.Point(0, 0);
             this.employeesPanel.Name = "employeesPanel";
-            this.employeesPanel.Size = new System.Drawing.Size(656, 530);
+            this.employeesPanel.Size = new System.Drawing.Size(682, 510);
             this.employeesPanel.TabIndex = 7;
             // 
             // employeesBottomPanel
@@ -1647,9 +1647,9 @@
             this.employeesBottomPanel.Controls.Add(this.deleteEmployeeButton);
             this.employeesBottomPanel.Controls.Add(this.addEmployeeButton);
             this.employeesBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.employeesBottomPanel.Location = new System.Drawing.Point(0, 450);
+            this.employeesBottomPanel.Location = new System.Drawing.Point(0, 430);
             this.employeesBottomPanel.Name = "employeesBottomPanel";
-            this.employeesBottomPanel.Size = new System.Drawing.Size(656, 80);
+            this.employeesBottomPanel.Size = new System.Drawing.Size(682, 80);
             this.employeesBottomPanel.TabIndex = 2;
             // 
             // deleteEmployeeButton
@@ -1680,7 +1680,7 @@
             this.panel4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel4.Controls.Add(this.button5);
             this.panel4.Controls.Add(this.button6);
-            this.panel4.Location = new System.Drawing.Point(0, 1224);
+            this.panel4.Location = new System.Drawing.Point(0, 1204);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(709, 80);
             this.panel4.TabIndex = 1;
@@ -1747,7 +1747,7 @@
             this.employeesDataGridView.RowTemplate.Height = 25;
             this.employeesDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.employeesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.employeesDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.employeesDataGridView.Size = new System.Drawing.Size(682, 510);
             this.employeesDataGridView.TabIndex = 0;
             // 
             // employeeID
@@ -1805,7 +1805,7 @@
             this.publishersPage.Controls.Add(this.publishersPanel);
             this.publishersPage.Location = new System.Drawing.Point(4, 27);
             this.publishersPage.Name = "publishersPage";
-            this.publishersPage.Size = new System.Drawing.Size(656, 530);
+            this.publishersPage.Size = new System.Drawing.Size(682, 510);
             this.publishersPage.TabIndex = 6;
             this.publishersPage.Text = "publishersPage";
             this.publishersPage.UseVisualStyleBackColor = true;
@@ -1820,7 +1820,7 @@
             this.publishersPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.publishersPanel.Location = new System.Drawing.Point(0, 0);
             this.publishersPanel.Name = "publishersPanel";
-            this.publishersPanel.Size = new System.Drawing.Size(656, 530);
+            this.publishersPanel.Size = new System.Drawing.Size(682, 510);
             this.publishersPanel.TabIndex = 8;
             // 
             // publishersSidePanel
@@ -1831,9 +1831,9 @@
             this.publishersSidePanel.Controls.Add(this.newPublisherLabel);
             this.publishersSidePanel.Controls.Add(this.addPublisherButton);
             this.publishersSidePanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.publishersSidePanel.Location = new System.Drawing.Point(301, 0);
+            this.publishersSidePanel.Location = new System.Drawing.Point(327, 0);
             this.publishersSidePanel.Name = "publishersSidePanel";
-            this.publishersSidePanel.Size = new System.Drawing.Size(355, 456);
+            this.publishersSidePanel.Size = new System.Drawing.Size(355, 436);
             this.publishersSidePanel.TabIndex = 3;
             // 
             // publishersErrorLabel
@@ -1875,7 +1875,7 @@
             // addPublisherButton
             // 
             this.addPublisherButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.addPublisherButton.Location = new System.Drawing.Point(110, 202);
+            this.addPublisherButton.Location = new System.Drawing.Point(110, 192);
             this.addPublisherButton.Name = "addPublisherButton";
             this.addPublisherButton.Size = new System.Drawing.Size(103, 40);
             this.addPublisherButton.TabIndex = 0;
@@ -1889,9 +1889,9 @@
             this.publishersBottomPanel.Controls.Add(this.publishersDeleteErrorLabel);
             this.publishersBottomPanel.Controls.Add(this.deletePublisherButton);
             this.publishersBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.publishersBottomPanel.Location = new System.Drawing.Point(0, 456);
+            this.publishersBottomPanel.Location = new System.Drawing.Point(0, 436);
             this.publishersBottomPanel.Name = "publishersBottomPanel";
-            this.publishersBottomPanel.Size = new System.Drawing.Size(656, 74);
+            this.publishersBottomPanel.Size = new System.Drawing.Size(682, 74);
             this.publishersBottomPanel.TabIndex = 2;
             // 
             // publishersDeleteErrorLabel
@@ -1920,7 +1920,7 @@
             this.panel5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel5.Controls.Add(this.button9);
             this.panel5.Controls.Add(this.button10);
-            this.panel5.Location = new System.Drawing.Point(0, 1611);
+            this.panel5.Location = new System.Drawing.Point(0, 1591);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(709, 80);
             this.panel5.TabIndex = 1;
@@ -1982,7 +1982,7 @@
             this.publishersDataGridView.RowTemplate.Height = 25;
             this.publishersDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.publishersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.publishersDataGridView.Size = new System.Drawing.Size(656, 530);
+            this.publishersDataGridView.Size = new System.Drawing.Size(682, 510);
             this.publishersDataGridView.TabIndex = 0;
             // 
             // publisherID
@@ -2004,7 +2004,7 @@
             // 
             this.statisticsPage.Location = new System.Drawing.Point(4, 27);
             this.statisticsPage.Name = "statisticsPage";
-            this.statisticsPage.Size = new System.Drawing.Size(656, 530);
+            this.statisticsPage.Size = new System.Drawing.Size(682, 510);
             this.statisticsPage.TabIndex = 5;
             this.statisticsPage.Text = "statisticsPage";
             this.statisticsPage.UseVisualStyleBackColor = true;
@@ -2013,7 +2013,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 597);
+            this.ClientSize = new System.Drawing.Size(1139, 597);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.sideNavPanel);

@@ -69,3 +69,5 @@
 18.05.2023 23:18:12 - 2023-05-18
 18.05.2023 23:36:57 - Błędne lub puste parametry przy próbie dodania nowego pracownika
 18.05.2023 23:37:41 - Błąd przy wykonywaniu komendy 'DELETE FROM books WHERE bookID = 10', (Cannot delete or update a parent row: a foreign key constraint fails (`library`.`lendings`, CONSTRAINT `lendings_ibfk_7` FOREIGN KEY (`bookID`) REFERENCES `books` (`bookID`)))
+19.05.2023 03:53:46 - Błąd przy wykonywaniu komendy 'SELECT COUNT(*) FROM employees WHERE login = 'amares8'', (Unable to connect to any of the specified MySQL hosts.)
+19.05.2023 03:53:46 - Błąd przy próbie logowania. Użytkownik: amares8. (Input string was not in a correct format.)
