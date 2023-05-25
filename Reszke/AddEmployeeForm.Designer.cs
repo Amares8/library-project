@@ -55,7 +55,7 @@
             this.cancelAddButton.Location = new System.Drawing.Point(285, 302);
             this.cancelAddButton.Name = "cancelAddButton";
             this.cancelAddButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelAddButton.TabIndex = 38;
+            this.cancelAddButton.TabIndex = 7;
             this.cancelAddButton.Text = "Anuluj";
             this.cancelAddButton.UseVisualStyleBackColor = true;
             this.cancelAddButton.Click += new System.EventHandler(this.cancelAddButton_Click);
@@ -65,7 +65,7 @@
             this.confirmAddButton.Location = new System.Drawing.Point(178, 302);
             this.confirmAddButton.Name = "confirmAddButton";
             this.confirmAddButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmAddButton.TabIndex = 39;
+            this.confirmAddButton.TabIndex = 6;
             this.confirmAddButton.Text = "Dodaj";
             this.confirmAddButton.UseVisualStyleBackColor = true;
             this.confirmAddButton.Click += new System.EventHandler(this.confirmAddButton_Click);
@@ -75,28 +75,28 @@
             this.emailTextBox.Location = new System.Drawing.Point(322, 102);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(223, 23);
-            this.emailTextBox.TabIndex = 34;
+            this.emailTextBox.TabIndex = 3;
             // 
             // loginTextBox
             // 
             this.loginTextBox.Location = new System.Drawing.Point(35, 229);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(123, 23);
-            this.loginTextBox.TabIndex = 35;
+            this.loginTextBox.TabIndex = 2;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(38, 165);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(220, 23);
-            this.lastNameTextBox.TabIndex = 36;
+            this.lastNameTextBox.TabIndex = 1;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(38, 102);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(220, 23);
-            this.firstNameTextBox.TabIndex = 37;
+            this.firstNameTextBox.TabIndex = 0;
             // 
             // emailLabel
             // 
@@ -159,7 +159,7 @@
             this.privilegeUpDown.Location = new System.Drawing.Point(321, 165);
             this.privilegeUpDown.Name = "privilegeUpDown";
             this.privilegeUpDown.Size = new System.Drawing.Size(140, 23);
-            this.privilegeUpDown.TabIndex = 40;
+            this.privilegeUpDown.TabIndex = 4;
             // 
             // privilegeLabel
             // 
@@ -187,7 +187,7 @@
             this.jobTitleComboBox.Location = new System.Drawing.Point(321, 228);
             this.jobTitleComboBox.Name = "jobTitleComboBox";
             this.jobTitleComboBox.Size = new System.Drawing.Size(140, 23);
-            this.jobTitleComboBox.TabIndex = 41;
+            this.jobTitleComboBox.TabIndex = 5;
             // 
             // jobTitleLabel
             // 

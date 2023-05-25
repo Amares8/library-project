@@ -62,7 +62,7 @@
             this.cancelDeleteButton.Location = new System.Drawing.Point(187, 262);
             this.cancelDeleteButton.Name = "cancelDeleteButton";
             this.cancelDeleteButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelDeleteButton.TabIndex = 29;
+            this.cancelDeleteButton.TabIndex = 1;
             this.cancelDeleteButton.Text = "Anuluj";
             this.cancelDeleteButton.UseVisualStyleBackColor = true;
             this.cancelDeleteButton.Click += new System.EventHandler(this.cancelDeleteButton_Click);
@@ -72,7 +72,7 @@
             this.confirmDeleteButton.Location = new System.Drawing.Point(65, 262);
             this.confirmDeleteButton.Name = "confirmDeleteButton";
             this.confirmDeleteButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmDeleteButton.TabIndex = 30;
+            this.confirmDeleteButton.TabIndex = 0;
             this.confirmDeleteButton.Text = "Usuń";
             this.confirmDeleteButton.UseVisualStyleBackColor = true;
             this.confirmDeleteButton.Click += new System.EventHandler(this.confirmDeleteButton_Click);

@@ -95,6 +95,7 @@
             this.bookSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bookSelectDataGridView.Size = new System.Drawing.Size(485, 238);
             this.bookSelectDataGridView.TabIndex = 0;
+            this.bookSelectDataGridView.TabStop = false;
             this.bookSelectDataGridView.SelectionChanged += new System.EventHandler(this.bookSelectDataGridView_SelectionChanged);
             // 
             // bookID
@@ -187,6 +188,7 @@
             this.customerSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerSelectDataGridView.Size = new System.Drawing.Size(182, 238);
             this.customerSelectDataGridView.TabIndex = 0;
+            this.customerSelectDataGridView.TabStop = false;
             this.customerSelectDataGridView.SelectionChanged += new System.EventHandler(this.customerSelectDataGridView_SelectionChanged);
             // 
             // customerID
@@ -219,7 +221,7 @@
             this.returnDateTimePicker.Location = new System.Drawing.Point(742, 266);
             this.returnDateTimePicker.Name = "returnDateTimePicker";
             this.returnDateTimePicker.Size = new System.Drawing.Size(200, 23);
-            this.returnDateTimePicker.TabIndex = 2;
+            this.returnDateTimePicker.TabIndex = 3;
             this.returnDateTimePicker.ValueChanged += new System.EventHandler(this.returnDateTimePicker_ValueChanged);
             // 
             // caluclateReturnDateCheckbox
@@ -228,7 +230,7 @@
             this.caluclateReturnDateCheckbox.Location = new System.Drawing.Point(742, 295);
             this.caluclateReturnDateCheckbox.Name = "caluclateReturnDateCheckbox";
             this.caluclateReturnDateCheckbox.Size = new System.Drawing.Size(117, 19);
-            this.caluclateReturnDateCheckbox.TabIndex = 3;
+            this.caluclateReturnDateCheckbox.TabIndex = 4;
             this.caluclateReturnDateCheckbox.Text = "Do zwrotu za dni:";
             this.caluclateReturnDateCheckbox.UseVisualStyleBackColor = true;
             this.caluclateReturnDateCheckbox.CheckedChanged += new System.EventHandler(this.caluclateReturnDateCheckbox_CheckedChanged);
@@ -244,7 +246,7 @@
             0});
             this.calculateReturnDateNumericUpDown.Name = "calculateReturnDateNumericUpDown";
             this.calculateReturnDateNumericUpDown.Size = new System.Drawing.Size(76, 23);
-            this.calculateReturnDateNumericUpDown.TabIndex = 4;
+            this.calculateReturnDateNumericUpDown.TabIndex = 5;
             this.calculateReturnDateNumericUpDown.ValueChanged += new System.EventHandler(this.calculateReturnDateNumericUpDown_ValueChanged);
             // 
             // chosenBookLabel
@@ -284,7 +286,7 @@
             this.acceptNewLendingButton.Location = new System.Drawing.Point(113, 374);
             this.acceptNewLendingButton.Name = "acceptNewLendingButton";
             this.acceptNewLendingButton.Size = new System.Drawing.Size(121, 48);
-            this.acceptNewLendingButton.TabIndex = 6;
+            this.acceptNewLendingButton.TabIndex = 7;
             this.acceptNewLendingButton.Text = "Wypożycz";
             this.acceptNewLendingButton.UseVisualStyleBackColor = true;
             this.acceptNewLendingButton.Click += new System.EventHandler(this.acceptNewLendingButton_Click);
@@ -294,7 +296,7 @@
             this.cancelNewLendingButton.Location = new System.Drawing.Point(258, 374);
             this.cancelNewLendingButton.Name = "cancelNewLendingButton";
             this.cancelNewLendingButton.Size = new System.Drawing.Size(121, 48);
-            this.cancelNewLendingButton.TabIndex = 6;
+            this.cancelNewLendingButton.TabIndex = 8;
             this.cancelNewLendingButton.Text = "Anuluj";
             this.cancelNewLendingButton.UseVisualStyleBackColor = true;
             this.cancelNewLendingButton.Click += new System.EventHandler(this.cancelNewLendingButton_Click);
@@ -317,7 +319,7 @@
             this.lendingDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.lendingDateTimePicker.Name = "lendingDateTimePicker";
             this.lendingDateTimePicker.Size = new System.Drawing.Size(200, 23);
-            this.lendingDateTimePicker.TabIndex = 2;
+            this.lendingDateTimePicker.TabIndex = 0;
             this.lendingDateTimePicker.Value = new System.DateTime(2023, 5, 25, 23, 59, 59, 0);
             this.lendingDateTimePicker.ValueChanged += new System.EventHandler(this.lendingDateTimePicker_ValueChanged);
             // 
@@ -329,7 +331,7 @@
             this.todayCheckbox.Location = new System.Drawing.Point(742, 128);
             this.todayCheckbox.Name = "todayCheckbox";
             this.todayCheckbox.Size = new System.Drawing.Size(59, 19);
-            this.todayCheckbox.TabIndex = 3;
+            this.todayCheckbox.TabIndex = 1;
             this.todayCheckbox.Text = "Dzisiaj";
             this.todayCheckbox.UseVisualStyleBackColor = true;
             this.todayCheckbox.CheckedChanged += new System.EventHandler(this.todayCheckbox_CheckedChanged);

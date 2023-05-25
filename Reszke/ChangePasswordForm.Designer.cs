@@ -47,7 +47,7 @@
             this.newPassword1TextBox.Location = new System.Drawing.Point(31, 191);
             this.newPassword1TextBox.Name = "newPassword1TextBox";
             this.newPassword1TextBox.Size = new System.Drawing.Size(220, 23);
-            this.newPassword1TextBox.TabIndex = 49;
+            this.newPassword1TextBox.TabIndex = 1;
             this.newPassword1TextBox.UseSystemPasswordChar = true;
             // 
             // newPasswordLabel
@@ -85,7 +85,7 @@
             this.newPassword2TextBox.Location = new System.Drawing.Point(31, 241);
             this.newPassword2TextBox.Name = "newPassword2TextBox";
             this.newPassword2TextBox.Size = new System.Drawing.Size(220, 23);
-            this.newPassword2TextBox.TabIndex = 49;
+            this.newPassword2TextBox.TabIndex = 2;
             this.newPassword2TextBox.UseSystemPasswordChar = true;
             // 
             // repeatPasswordLabel
@@ -112,7 +112,7 @@
             this.cancelButton.Location = new System.Drawing.Point(152, 295);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelButton.TabIndex = 51;
+            this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Anuluj";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -122,7 +122,7 @@
             this.confirmButton.Location = new System.Drawing.Point(45, 295);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmButton.TabIndex = 52;
+            this.confirmButton.TabIndex = 3;
             this.confirmButton.Text = "Zmień hasło";
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
@@ -142,7 +142,7 @@
             this.oldPasswordTextBox.Location = new System.Drawing.Point(31, 131);
             this.oldPasswordTextBox.Name = "oldPasswordTextBox";
             this.oldPasswordTextBox.Size = new System.Drawing.Size(220, 23);
-            this.oldPasswordTextBox.TabIndex = 49;
+            this.oldPasswordTextBox.TabIndex = 0;
             this.oldPasswordTextBox.UseSystemPasswordChar = true;
             // 
             // ChangePasswordForm

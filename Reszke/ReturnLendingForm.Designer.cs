@@ -61,7 +61,7 @@
             this.finalReturnedDateTimePicker.MinDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             this.finalReturnedDateTimePicker.Name = "finalReturnedDateTimePicker";
             this.finalReturnedDateTimePicker.Size = new System.Drawing.Size(200, 23);
-            this.finalReturnedDateTimePicker.TabIndex = 9;
+            this.finalReturnedDateTimePicker.TabIndex = 0;
             this.finalReturnedDateTimePicker.ValueChanged += new System.EventHandler(this.finalReturnedDateTimePicker_ValueChanged);
             // 
             // todayCheckBox
@@ -72,7 +72,7 @@
             this.todayCheckBox.Location = new System.Drawing.Point(40, 224);
             this.todayCheckBox.Name = "todayCheckBox";
             this.todayCheckBox.Size = new System.Drawing.Size(59, 19);
-            this.todayCheckBox.TabIndex = 10;
+            this.todayCheckBox.TabIndex = 1;
             this.todayCheckBox.Text = "Dzisiaj";
             this.todayCheckBox.UseVisualStyleBackColor = true;
             this.todayCheckBox.CheckedChanged += new System.EventHandler(this.todayCheckBox_CheckedChanged);
@@ -103,9 +103,8 @@
             this.lendingInfoDetailsLabel.Location = new System.Drawing.Point(40, 89);
             this.lendingInfoDetailsLabel.MaximumSize = new System.Drawing.Size(240, 0);
             this.lendingInfoDetailsLabel.Name = "lendingInfoDetailsLabel";
-            this.lendingInfoDetailsLabel.Size = new System.Drawing.Size(21, 15);
+            this.lendingInfoDetailsLabel.Size = new System.Drawing.Size(0, 15);
             this.lendingInfoDetailsLabel.TabIndex = 13;
-            this.lendingInfoDetailsLabel.Text = "ks:";
             // 
             // overdueLabel
             // 
@@ -131,7 +130,7 @@
             this.returnBookButton.Location = new System.Drawing.Point(40, 362);
             this.returnBookButton.Name = "returnBookButton";
             this.returnBookButton.Size = new System.Drawing.Size(112, 49);
-            this.returnBookButton.TabIndex = 15;
+            this.returnBookButton.TabIndex = 2;
             this.returnBookButton.Text = "Zwróć książkę";
             this.returnBookButton.UseVisualStyleBackColor = true;
             this.returnBookButton.Click += new System.EventHandler(this.returnBookButton_Click);
@@ -141,7 +140,7 @@
             this.cancelReturningButton.Location = new System.Drawing.Point(158, 362);
             this.cancelReturningButton.Name = "cancelReturningButton";
             this.cancelReturningButton.Size = new System.Drawing.Size(112, 49);
-            this.cancelReturningButton.TabIndex = 15;
+            this.cancelReturningButton.TabIndex = 3;
             this.cancelReturningButton.Text = "Anuluj";
             this.cancelReturningButton.UseVisualStyleBackColor = true;
             this.cancelReturningButton.Click += new System.EventHandler(this.cancelReturningButton_Click);

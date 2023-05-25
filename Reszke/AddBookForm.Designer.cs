@@ -111,7 +111,8 @@
             this.authorSelectDataGridView.RowTemplate.Height = 25;
             this.authorSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.authorSelectDataGridView.Size = new System.Drawing.Size(182, 238);
-            this.authorSelectDataGridView.TabIndex = 8;
+            this.authorSelectDataGridView.TabIndex = 3;
+            this.authorSelectDataGridView.TabStop = false;
             this.authorSelectDataGridView.SelectionChanged += new System.EventHandler(this.authorSelectDataGridView_SelectionChanged);
             // 
             // authorID
@@ -154,7 +155,7 @@
             this.titleTextBox.Location = new System.Drawing.Point(31, 108);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(220, 23);
-            this.titleTextBox.TabIndex = 13;
+            this.titleTextBox.TabIndex = 0;
             // 
             // chooseDescriptionLabel
             // 
@@ -171,7 +172,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(31, 171);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(220, 23);
-            this.descriptionTextBox.TabIndex = 13;
+            this.descriptionTextBox.TabIndex = 1;
             // 
             // chosenPublisherLabel
             // 
@@ -221,7 +222,8 @@
             this.publisherSelectDataGridView.RowTemplate.Height = 25;
             this.publisherSelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.publisherSelectDataGridView.Size = new System.Drawing.Size(182, 238);
-            this.publisherSelectDataGridView.TabIndex = 14;
+            this.publisherSelectDataGridView.TabIndex = 4;
+            this.publisherSelectDataGridView.TabStop = false;
             this.publisherSelectDataGridView.SelectionChanged += new System.EventHandler(this.publisherSelectDataGridView_SelectionChanged);
             // 
             // publisherID
@@ -287,7 +289,8 @@
             this.categorySelectDataGridView.RowTemplate.Height = 25;
             this.categorySelectDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.categorySelectDataGridView.Size = new System.Drawing.Size(182, 238);
-            this.categorySelectDataGridView.TabIndex = 17;
+            this.categorySelectDataGridView.TabIndex = 5;
+            this.categorySelectDataGridView.TabStop = false;
             this.categorySelectDataGridView.SelectionChanged += new System.EventHandler(this.categorySelectDataGridView_SelectionChanged);
             // 
             // categoryID
@@ -310,7 +313,7 @@
             this.cancelBookAddButton.Location = new System.Drawing.Point(140, 300);
             this.cancelBookAddButton.Name = "cancelBookAddButton";
             this.cancelBookAddButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelBookAddButton.TabIndex = 20;
+            this.cancelBookAddButton.TabIndex = 4;
             this.cancelBookAddButton.Text = "Anuluj";
             this.cancelBookAddButton.UseVisualStyleBackColor = true;
             this.cancelBookAddButton.Click += new System.EventHandler(this.cancelBookAddButton_Click);
@@ -320,7 +323,7 @@
             this.confirmBookAddButton.Location = new System.Drawing.Point(31, 300);
             this.confirmBookAddButton.Name = "confirmBookAddButton";
             this.confirmBookAddButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmBookAddButton.TabIndex = 21;
+            this.confirmBookAddButton.TabIndex = 3;
             this.confirmBookAddButton.Text = "Dodaj";
             this.confirmBookAddButton.UseVisualStyleBackColor = true;
             this.confirmBookAddButton.Click += new System.EventHandler(this.confirmBookAddButton_Click);
@@ -350,7 +353,7 @@
             0});
             this.chooseYearUpDown.Name = "chooseYearUpDown";
             this.chooseYearUpDown.Size = new System.Drawing.Size(120, 23);
-            this.chooseYearUpDown.TabIndex = 22;
+            this.chooseYearUpDown.TabIndex = 2;
             this.chooseYearUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chooseYearUpDown.Value = new decimal(new int[] {
             1,

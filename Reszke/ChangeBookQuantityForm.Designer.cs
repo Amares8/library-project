@@ -57,7 +57,7 @@
             this.cancelQuantityChangeButton.Location = new System.Drawing.Point(184, 290);
             this.cancelQuantityChangeButton.Name = "cancelQuantityChangeButton";
             this.cancelQuantityChangeButton.Size = new System.Drawing.Size(93, 46);
-            this.cancelQuantityChangeButton.TabIndex = 15;
+            this.cancelQuantityChangeButton.TabIndex = 2;
             this.cancelQuantityChangeButton.Text = "Anuluj";
             this.cancelQuantityChangeButton.UseVisualStyleBackColor = true;
             this.cancelQuantityChangeButton.Click += new System.EventHandler(this.cancelQuantityChangeButton_Click);
@@ -67,7 +67,7 @@
             this.confirmQuantityChangeButton.Location = new System.Drawing.Point(75, 290);
             this.confirmQuantityChangeButton.Name = "confirmQuantityChangeButton";
             this.confirmQuantityChangeButton.Size = new System.Drawing.Size(93, 46);
-            this.confirmQuantityChangeButton.TabIndex = 16;
+            this.confirmQuantityChangeButton.TabIndex = 1;
             this.confirmQuantityChangeButton.Text = "Zmień ilość";
             this.confirmQuantityChangeButton.UseVisualStyleBackColor = true;
             this.confirmQuantityChangeButton.Click += new System.EventHandler(this.confirmQuantityChangeButton_Click);
@@ -106,7 +106,7 @@
             this.quantityChangeUpDown.Location = new System.Drawing.Point(63, 169);
             this.quantityChangeUpDown.Name = "quantityChangeUpDown";
             this.quantityChangeUpDown.Size = new System.Drawing.Size(54, 23);
-            this.quantityChangeUpDown.TabIndex = 19;
+            this.quantityChangeUpDown.TabIndex = 0;
             this.quantityChangeUpDown.ValueChanged += new System.EventHandler(this.quantityChangeUpDown_ValueChanged);
             // 
             // afterChangeQuantityLabel
